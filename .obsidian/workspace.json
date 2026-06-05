@@ -1,0 +1,230 @@
+{
+  "main": {
+    "id": "e9e9b9661558d683",
+    "type": "split",
+    "children": [
+      {
+        "id": "1f3def112233e4d1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2fb83a63b1dd8a3f",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nova aba"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a7d5f817f9ab918a",
+    "type": "split",
+    "children": [
+      {
+        "id": "608bf4a1e2f99ed3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba565bf6be6d9b09",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "1297dec9658de513",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "16be663f08b967e2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "369de5b4728c2e4c",
+    "type": "split",
+    "children": [
+      {
+        "id": "77819f357dca173a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc8d76c09fe14e44",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "312113081e637b32",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "1f71f059a37bea67",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "a99754666a468ba0",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "f4f5c4e7d0abc22d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          },
+          {
+            "id": "0c2a6c5b00f1da18",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Abrir visualização em gráfico": false,
+      "switcher:Abrir a troca rápida": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-excalidraw-plugin:New drawing": false
+    }
+  },
+  "active": "2fb83a63b1dd8a3f",
+  "lastOpenFiles": [
+    "Home.md",
+    "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Sem título.canvas",
+    "Docker/Boas Práticas/Segurança.md",
+    "Sistemas Operacionais/System Calls/System Calls.md",
+    "GO/Concorrência/Channels.md",
+    "GO/MOC - GO.md",
+    "Sistemas Operacionais/Processos e Threads/Utilização de Threads.md",
+    "_Contexto de Estudo.md",
+    "Nginx/CGI e FastCGI/CGI e FastCGI.md",
+    "Nginx/MOC - Nginx.md",
+    "Nginx/Performance/Conexões, Workers e Keep-Alive.md",
+    "Nginx/Performance/Compressão.md",
+    "Nginx/Performance/Cache no Servidor (Cache Reverso).md",
+    "Nginx/Load Balance/Servidores de Backup e Health Check.md",
+    "Nginx/Performance/Cache HTTP no Nginx.md",
+    "Nginx/Performance/Cache HTTP.md",
+    "Nginx/Load Balance/Algoritmos de Balanceamento e Pesos.md",
+    "Nginx/CGI e FastCGI/FastCGI no Nginx.md",
+    "Nginx/HTTPS/SSL-TLS no Nginx.md",
+    "Nginx/Load Balance/Load Balance.md",
+    "Nginx/CGI e FastCGI/Servidores de aplicação Embutidos.md",
+    "Nginx/Fundamentos/Socket.md",
+    "Nginx/CGI e FastCGI/Processos e Forks no CGI-FastCGI.md",
+    "Nginx/HTTPS/TLS e SSL.md",
+    "Nginx/Fundamentos/API Gateway.md",
+    "Nginx/Performance",
+    "Nginx/Load Balance",
+    "Nginx/HTTPS",
+    "Nginx/Fundamentos",
+    "Nginx/CGI e FastCGI",
+    "Nginx",
+    "Redes/IPv4 e Endereçamento/NAT e CGNAT.md.tmp.8439.7979a833df16",
+    "Redes/TCP-IP",
+    "Redes/Protocolos",
+    "Redes/Modelo OSI"
+  ]
+}
