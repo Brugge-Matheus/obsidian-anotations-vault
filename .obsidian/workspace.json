@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1f3def112233e4d1",
+        "id": "da9234339c5a0af6",
         "type": "tabs",
         "children": [
           {
-            "id": "2fb83a63b1dd8a3f",
+            "id": "7c746143406cb272",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -188,7 +188,7 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "2fb83a63b1dd8a3f",
+  "active": "7c746143406cb272",
   "lastOpenFiles": [
     "Home.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
