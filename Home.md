@@ -17,6 +17,7 @@ tags:
 | [[MOC - Docker\|Docker]] | Fundamentos + Runtime + Engine | Containers · Namespaces · Cgroups ✅ |
 | [[MOC - Redes\|Redes e Infraestruturas]] | Modelo OSI · IPv4 · TCP/IP | Fundamentos → TCP/IP ✅ |
 | [[MOC - Nginx\|Nginx]] | Servidor web · Proxy Reverso · TLS | Fundamentos → Performance ✅ |
+| [[MOC - Algoritmos e Estruturas de Dados\|Algoritmos e ED]] | Big O · Estruturas · Ordenação · Busca | Fundamentos → Grafos ✅ |
 
 ---
 
