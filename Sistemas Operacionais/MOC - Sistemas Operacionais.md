@@ -90,8 +90,13 @@ tags:
 - [[Implementações Híbridas]]
 - [[Convertendo Thread em Multithread]]
 
+### Servidores e Modelos de Concorrência
+
+- [[Servidores Single Threaded, Multi Threaded e Orientado a eventos]]
+
 ---
 
 ## Referência de Estudo
 
 - [[_Contexto de Estudo]] — dinâmica de estudo com Claude e progresso por capítulo
+
