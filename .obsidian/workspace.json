@@ -4,17 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "da9234339c5a0af6",
+        "id": "0fb1b1837eb30c83",
         "type": "tabs",
         "children": [
           {
-            "id": "7c746143406cb272",
+            "id": "f50f38ff9587ca10",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "MOC - Sistemas Operacionais"
+            }
+          },
+          {
+            "id": "e2cfe909b34ac1c3",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
             }
           }
         ]
@@ -74,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 290.5
   },
   "right": {
     "id": "369de5b4728c2e4c",
@@ -188,43 +202,44 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "7c746143406cb272",
+  "active": "f50f38ff9587ca10",
   "lastOpenFiles": [
-    "Home.md",
+    "Race Condition.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-    "Sem título.canvas",
-    "Docker/Boas Práticas/Segurança.md",
-    "Sistemas Operacionais/System Calls/System Calls.md",
-    "GO/Concorrência/Channels.md",
-    "GO/MOC - GO.md",
+    "Sistemas Operacionais/Processos e Threads/Servidores Single Threaded, Multi Threaded e Orientado a eventos.md",
+    "Sistemas Operacionais/Processos e Threads/Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Utilização de Threads.md",
+    "Sistemas Operacionais/Processos e Threads/Convertendo Thread em Multithread.md",
     "_Contexto de Estudo.md",
-    "Nginx/CGI e FastCGI/CGI e FastCGI.md",
-    "Nginx/MOC - Nginx.md",
-    "Nginx/Performance/Conexões, Workers e Keep-Alive.md",
-    "Nginx/Performance/Compressão.md",
-    "Nginx/Performance/Cache no Servidor (Cache Reverso).md",
-    "Nginx/Load Balance/Servidores de Backup e Health Check.md",
-    "Nginx/Performance/Cache HTTP no Nginx.md",
-    "Nginx/Performance/Cache HTTP.md",
-    "Nginx/Load Balance/Algoritmos de Balanceamento e Pesos.md",
-    "Nginx/CGI e FastCGI/FastCGI no Nginx.md",
-    "Nginx/HTTPS/SSL-TLS no Nginx.md",
-    "Nginx/Load Balance/Load Balance.md",
-    "Nginx/CGI e FastCGI/Servidores de aplicação Embutidos.md",
-    "Nginx/Fundamentos/Socket.md",
-    "Nginx/CGI e FastCGI/Processos e Forks no CGI-FastCGI.md",
-    "Nginx/HTTPS/TLS e SSL.md",
-    "Nginx/Fundamentos/API Gateway.md",
+    "Sistemas Operacionais/Processos e Threads/Threads POSIX.md",
+    "Sistemas Operacionais/Processos e Threads/O Modelo Clássico de Thread.md",
+    "Sistemas Operacionais/Processos e Threads/O Modelo de Processos.md",
+    "Sistemas Operacionais/Linguagem C/A Linguagem C.md",
+    "Sistemas Operacionais/Máquinas Virtuais/Paravirtualização e a Máquina Virtual Java.md",
+    "Sistemas Operacionais/Máquinas Virtuais/A Origem das Máquinas Virtuais.md",
+    "Sistemas Operacionais/Máquinas Virtuais/Máquinas Virtuais Redescobertas.md",
+    "Sistemas Operacionais/System Calls/Syscalls para Gerenciamento de Processos.md",
+    "Sistemas Operacionais/Conceitos Fundamentais/Memória Virtual.md",
+    "Sistemas Operacionais/Conceitos Fundamentais/Hardware de Proteção.md",
+    "Sistemas Operacionais/Conceitos Fundamentais/Interpretador de Comandos Shell.md",
+    "Sistemas Operacionais/Conceitos Fundamentais/Proteção.md",
+    "Sistemas Operacionais/Conceitos Fundamentais/Arquivos.md",
+    "Sistemas Operacionais/Conceitos Fundamentais/Espaços de Endereçamento.md",
+    "Sistemas Operacionais/Conceitos Fundamentais/Processos.md",
+    "Algoritmos e Estruturas de Dados/MOC - Algoritmos e Estruturas de Dados.md",
+    "Algoritmos e Estruturas de Dados/Algoritmos/Algoritmos de Ordenação.md",
+    "Algoritmos e Estruturas de Dados/Algoritmos/Algoritmos de Busca.md",
+    "Algoritmos e Estruturas de Dados/Grafos/Grafos.md",
+    "Algoritmos e Estruturas de Dados/Grafos",
+    "Algoritmos e Estruturas de Dados/Fundamentos",
+    "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
+    "Algoritmos e Estruturas de Dados/Estruturas de Mapeamento",
+    "Algoritmos e Estruturas de Dados/Estruturas Lineares",
+    "Algoritmos e Estruturas de Dados/Algoritmos",
+    "Algoritmos e Estruturas de Dados",
+    "Sem título.canvas",
     "Nginx/Performance",
     "Nginx/Load Balance",
-    "Nginx/HTTPS",
-    "Nginx/Fundamentos",
-    "Nginx/CGI e FastCGI",
-    "Nginx",
-    "Redes/IPv4 e Endereçamento/NAT e CGNAT.md.tmp.8439.7979a833df16",
-    "Redes/TCP-IP",
-    "Redes/Protocolos",
-    "Redes/Modelo OSI"
+    "Nginx/HTTPS"
   ]
 }

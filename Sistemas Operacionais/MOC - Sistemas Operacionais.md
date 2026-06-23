@@ -94,6 +94,10 @@ tags:
 
 - [[Servidores Single Threaded, Multi Threaded e Orientado a eventos]]
 
+### Sincronização e comunicação entre processos
+
+- [[Race Condition]]
+
 ---
 
 ## Referência de Estudo
