@@ -205,12 +205,12 @@ No modelo orientado a eventos com thread única, há apenas **uma pilha**, e o n
 
 Os sistemas operacionais populares oferecem interfaces altamente otimizadas para I/O assíncrona, muito mais eficientes que o `select` básico:
 
-| Sistema | Interface | Característica |
-|---------|-----------|----------------|
-| **Linux** | `epoll` | Escalonável para milhares de fds; retorna apenas os fds prontos |
-| **FreeBSD / macOS** | `kqueue` | Similar ao epoll, altamente eficiente |
-| **Windows** | IOCP (I/O Completion Ports) | Modelo diferente: notifica quando operação *completou* |
-| **Solaris** | `/dev/poll` | Similar ao epoll |
+| Sistema             | Interface                   | Característica                                                  |
+| ------------------- | --------------------------- | --------------------------------------------------------------- |
+| **Linux**           | `epoll`                     | Escalonável para milhares de fds; retorna apenas os fds prontos |
+| **FreeBSD / macOS** | `kqueue`                    | Similar ao epoll, altamente eficiente                           |
+| **Windows**         | IOCP (I/O Completion Ports) | Modelo diferente: notifica quando operação *completou*          |
+| **Solaris**         | `/dev/poll`                 | Similar ao epoll                                                |
 
 > 💡 **Problema C10k:** o desafio de fazer um servidor web atender **10.000 conexões simultâneas** de forma eficiente. Servidores como o **nginx** usam o modelo orientado a eventos com `epoll`/`kqueue` e conseguem lidar confortavelmente com 10k conexões em um único processo — algo inviável com o modelo multithreaded tradicional para cada conexão.
 

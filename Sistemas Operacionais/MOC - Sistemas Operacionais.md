@@ -97,6 +97,8 @@ tags:
 ### Sincronização e comunicação entre processos
 
 - [[Race Condition]]
+- [[Regiões Críticas]]
+- [[Exclusão mútua com espera ocupada]]
 
 ---
 

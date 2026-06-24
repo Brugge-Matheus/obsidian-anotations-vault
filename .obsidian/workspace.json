@@ -202,12 +202,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "f50f38ff9587ca10",
+  "active": "ba565bf6be6d9b09",
   "lastOpenFiles": [
-    "Race Condition.md",
+    "Sistemas Operacionais/Processos e Threads/Exclusão mútua com espera ocupada.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-    "Sistemas Operacionais/Processos e Threads/Servidores Single Threaded, Multi Threaded e Orientado a eventos.md",
+    "Sistemas Operacionais/Processos e Threads/Regiões Críticas.md",
     "Sistemas Operacionais/Processos e Threads/Race Condition.md",
+    "Sistemas Operacionais/Processos e Threads/Servidores Single Threaded, Multi Threaded e Orientado a eventos.md",
+    "Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Utilização de Threads.md",
     "Sistemas Operacionais/Processos e Threads/Convertendo Thread em Multithread.md",
     "_Contexto de Estudo.md",
@@ -228,8 +230,6 @@
     "Sistemas Operacionais/Conceitos Fundamentais/Processos.md",
     "Algoritmos e Estruturas de Dados/MOC - Algoritmos e Estruturas de Dados.md",
     "Algoritmos e Estruturas de Dados/Algoritmos/Algoritmos de Ordenação.md",
-    "Algoritmos e Estruturas de Dados/Algoritmos/Algoritmos de Busca.md",
-    "Algoritmos e Estruturas de Dados/Grafos/Grafos.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
