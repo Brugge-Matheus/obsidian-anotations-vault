@@ -198,8 +198,7 @@ void enter_region(int process)   /* processo: 0 ou 1 */
     other = 1 - process;         /* o oposto do processo atual */
     interested[process] = TRUE;  /* mostra que você está interessado */
     turn = process;              /* marca o flag */
-    while (turn == process && interested[other] == TRUE)
-        ;                        /* comando nulo — espera ocupada */
+    while (turn == process && interested[other] == TRUE);                                                         /* comando nulo — espera ocupada */
 }
 
 void leave_region(int process)   /* processo: quem está saindo */
