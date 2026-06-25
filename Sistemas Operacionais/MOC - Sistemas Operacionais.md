@@ -99,10 +99,10 @@ tags:
 - [[Race Condition]]
 - [[Regiões Críticas]]
 - [[Exclusão mútua com espera ocupada]]
+- [[Dormir e Despertar]]
 
 ---
 
 ## Referência de Estudo
 
 - [[_Contexto de Estudo]] — dinâmica de estudo com Claude e progresso por capítulo
-
