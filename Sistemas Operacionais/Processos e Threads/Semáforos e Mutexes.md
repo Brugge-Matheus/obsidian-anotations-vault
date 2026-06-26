@@ -4,11 +4,11 @@ tags:
   - so/processos-e-threads
   - so/sincronizacao
 source: "Sistemas Operacionais Modernos — Tanenbaum, 5ª Ed."
-chapter: "Cap. 2 — Seções 2.4.5 e 2.4.6"
+chapter: "Cap. 2 — Seção 2.4.5"
 ---
-# Semáforos e Mutexes
+# Semáforos
 
-📚 **Referência:** Sistemas Operacionais Modernos — Andrew S. Tanenbaum, 5ª Edição | Cap. 2 — Seções 2.4.5 e 2.4.6
+📚 **Referência:** Sistemas Operacionais Modernos — Andrew S. Tanenbaum, 5ª Edição | Cap. 2 — Seção 2.4.5
 
 ---
 
@@ -126,7 +126,7 @@ Por que? Imagine down(s) não sendo atômico:
 
 É garantido que, **uma vez que uma operação de semáforo tenha começado, nenhum outro processo pode acessar o semáforo até que ela seja concluída ou o processo seja bloqueado**. A implementação usa brevemente a desabilitação de interrupções (no SO) ou TSL/XCHG (em multiprocessadores) para garantir isso.
 
-> ⚠️ **Certificar-se de que você compreendeu:** usar TSL ou XCHG para proteger o acesso ao semáforo em si é bastante diferente do produtor ou consumidor em espera ocupada esperando o buffer esvaziar ou encher. A operação de semáforo levará apenas alguns microssegundos, enquanto o produtor ou consumidor podem levar tempos arbitrariamente longos. O uso de TSL aqui é mínimo e justificado.
+> ⚠️ **Importante:** usar TSL ou XCHG para proteger o acesso ao semáforo em si é bastante diferente do produtor ou consumidor em espera ocupada esperando o buffer esvaziar ou encher. A operação de semáforo levará apenas alguns microssegundos, enquanto o produtor ou consumidor podem levar tempos arbitrariamente longos. O uso de TSL aqui é mínimo e justificado.
 
 ---
 
@@ -347,7 +347,7 @@ LEITORES:
     rc == 0? SIM → faz up(&db) → libera o banco para escritores
 
 ESCRITORES:
-  down(&db) → se rc > 0 (há leitores), dorme
+  down(&db) → se há leitores ativos (db=0), dorme
   Quando todos os leitores saírem → up(&db) acorda o escritor
   Escritor tem acesso exclusivo total
   up(&db) ao terminar → próximo leitor ou escritor pode entrar
@@ -366,110 +366,13 @@ Isso é starvation (inanição) — um processo esperando indefinidamente.
 
 > 💡 **Starvation (inanição):** situação em que um processo nunca consegue acesso ao recurso que precisa, porque outros processos continuam chegando e sempre têm prioridade. Viola a **condição 4** das regiões críticas (nenhum processo deve esperar eternamente).
 
-Uma solução alternativa dá prioridade aos escritores: quando um escritor chega, nenhum novo leitor é admitido. Leitores já ativos terminam, e o escritor entra. A desvantagem é menor simultaneidade (leitores que chegam enquanto um escritor espera ficam bloqueados mesmo que não haja conflito com outros leitores).
-
----
-
-# 🔒 2.4.6 — Mutexes
-
-## O que é um mutex
-
-Quando a capacidade de **contagem** do semáforo não é necessária — quando você só quer garantir exclusão mútua simples — uma versão simplificada chamada **mutex** é usada.
-
-> 💡 **Mutex (*mutual exclusion*):** variável compartilhada que pode estar em apenas **dois estados**: travado (*locked*) ou destravado (*unlocked*). Diferente do semáforo, não conta — apenas representa "ocupado" ou "livre". É basicamente um semáforo binário, mas mais simples e eficiente de implementar.
-
-```
-mutex = 0  → DESTRAVADO (região crítica livre, pode entrar)
-mutex = 1  → TRAVADO    (região crítica ocupada, deve esperar)
-```
-
-Apenas 1 bit é necessário para representar um mutex — mas na prática um inteiro é usado, com 0 significando destravado e todos os outros valores significando travado.
-
-## As operações: `mutex_lock` e `mutex_unlock`
-
-Dois procedimentos são usados com mutexes:
-
-**`mutex_lock`** — chamado antes de entrar na região crítica:
-
-```asm
-mutex_lock:
-    TSL REGISTER, MUTEX    | copia mutex para registrador, define mutex = 1
-    CMP REGISTER, #0       | mutex valia zero (estava destravado)?
-    JZE ok                 | se sim: estava livre → entra na RC
-    CALL thread_yield      | se não: estava travado → CEDE a CPU para outra thread
-    JMP mutex_lock         | tenta novamente depois
-ok: RET                    | entra na região crítica
-```
-
-**`mutex_unlock`** — chamado ao sair da região crítica:
-
-```asm
-mutex_unlock:
-    MOVE MUTEX, #0         | coloca 0 em mutex (destrava)
-    RET
-```
-
-> 💡 **`thread_yield`:** chamada que permite que a thread ceda voluntariamente a CPU para outra thread. Diferente do `sleep` (que bloqueia até ser acordado), `yield` apenas reescalona — a thread continua na fila de prontos e tenta novamente logo. Em espaço de usuário, onde não há `sleep` real, é a alternativa à espera ocupada.
-
-## Mutex vs. TSL diretamente — qual a diferença?
-
-A implementação do mutex **também usa TSL/XCHG** internamente. Então por que é diferente das soluções de espera ocupada que criticamos?
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  TSL diretamente (espera ocupada pura)                         │
-│                                                                 │
-│  while (TSL(lock) != 0) { }  ← gira sem parar                │
-│  CPU fica 100% ocupada                                         │
-│  Processo H pode bloquear processo L indefinidamente          │
-└─────────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────────┐
-│  mutex_lock com thread_yield                                   │
-│                                                                 │
-│  TSL testa → travado → thread_yield() → outra thread executa  │
-│  CPU é cedida a quem pode fazer trabalho útil                  │
-│  L pode executar, liberar o mutex → H eventualmente entra     │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-A diferença chave: em vez de girar em falso consumindo CPU, o mutex chama `thread_yield` — **cede a CPU** para que outra thread (possivelmente aquela que detém o mutex) possa executar e liberar o recurso.
-
-## Por que mutexes são especialmente úteis em user space
-
-Mutexes são **fáceis e eficientes de implementar no espaço do usuário**, desde que uma instrução TSL ou XCHG esteja disponível. Isso os torna especialmente úteis em **pacotes de threads implementados inteiramente no espaço do usuário** — onde não há acesso a syscalls do kernel para sleep/wakeup.
-
-```
-Vantagens do mutex em user space:
-  ✅ Não exige syscall para travar/destravar (exceto quando há contenção)
-  ✅ Implementável com poucas instruções de assembly
-  ✅ Muito eficiente quando a contenção é rara
-  ✅ Sem overhead de chamada ao kernel no caso comum (sem contenção)
-```
-
-## Mutex vs. Semáforo — quando usar cada um
-
-```
-┌──────────────────┬──────────────────────┬──────────────────────────┐
-│  Característica  │       Mutex          │       Semáforo           │
-├──────────────────┼──────────────────────┼──────────────────────────┤
-│ Estados          │ 2: travado/destravado│ N: contador inteiro      │
-│ Uso principal    │ Exclusão mútua simples│ Exclusão mútua E/OU     │
-│                  │                      │ sincronização            │
-│ Inicialização    │ 0 (destravado)       │ 0, 1, N conforme o caso  │
-│ "Dono"           │ Thread que travou    │ Qualquer processo pode   │
-│                  │ deve destravar       │ fazer up/down            │
-│ Contagem         │ Não (binário)        │ Sim (conta recursos)     │
-│ Típico para      │ Proteger uma variável│ Produt/consumidor,       │
-│                  │ ou estrutura         │ leitores/escritores      │
-└──────────────────┴──────────────────────┴──────────────────────────┘
-```
+Uma solução alternativa dá prioridade aos escritores: quando um escritor chega, nenhum novo leitor é admitido. Leitores já ativos terminam, e o escritor entra. A desvantagem é menor simultaneidade — leitores que chegam enquanto um escritor espera ficam bloqueados mesmo que não haja conflito com outros leitores.
 
 ---
 
 ## 🔗 A conexão com interrupções — semáforos no kernel
 
-Os semáforos também são naturais para **esconder interrupções** dentro do SO. A ideia (referenciada na Figura 2.5 do livro):
+Os semáforos também são naturais para **esconder interrupções** dentro do SO:
 
 ```
 Para cada dispositivo de E/S:
@@ -481,40 +384,29 @@ Processo de gerenciamento inicia operação de E/S:
 Interrupção chega (operação concluída):
   Tratador de interrupção faz up(&sem_dispositivo)
   → processo de gerenciamento acorda e continua
-
-No passo 5 da Figura 2.5:
-  up() no semáforo do dispositivo
-  → no passo 6, escalonador executa o gerenciador do dispositivo
 ```
 
-Isso permite que o SO modele a espera por hardware de forma elegante, sem polling ou espera ocupada.
+Isso permite que o SO modele a espera por hardware de forma elegante, sem polling ou espera ocupada. O escalonador, no passo seguinte, pode executar o gerenciador do dispositivo ou escolher um processo mais prioritário.
 
 ---
 
 # ✅ Resumo do Conceito
 
-**Semáforos (`down`/`up`):**
-- Variável inteira que conta permissões disponíveis
-- `down`: se > 0, decrementa e continua; se = 0, bloqueia
-- `up`: se há processo dormindo, acorda um; senão, incrementa
-- **Diferença fundamental de `sleep`/`wakeup`:** créditos não são perdidos — `up` antes de `down` incrementa o contador e o processo não dorme
-- Operações são **atômicas** — implementadas com desabilitação de interrupções ou TSL/XCHG internamente
-- Dois usos: **exclusão mútua** (inicializado em 1, semáforo binário) e **sincronização** (inicializado em 0 ou N)
-- No produtor-consumidor: três semáforos (`mutex`, `empty`, `full`) — ordem dos `down` importa para evitar deadlock
-- No problema leitores/escritores: `rc` conta leitores ativos; primeiro leitor trava banco, último destrava
-
-**Mutexes:**
-- Versão simplificada do semáforo: apenas dois estados (travado/destravado)
-- `mutex_lock` usa TSL internamente, mas chama `thread_yield` se travado — cede CPU em vez de girar
-- Especialmente úteis em pacotes de threads em user space: eficientes, sem syscall no caso comum
-- Diferença do TSL puro: não desperdiça CPU ao chamar `yield` quando há contenção
+- **Semáforo** é um contador inteiro manipulado apenas por `down` e `up` — a solução robusta para o wakeup perdido do `sleep`/`wakeup`
+- **`down`:** se semáforo > 0, decrementa e continua; se = 0, bloqueia. É o `sleep` generalizado com verificação de crédito
+- **`up`:** se há processo dormindo, acorda um; senão, incrementa. É o `wakeup` generalizado que nunca perde o sinal
+- A diferença fundamental: `up` antes de `down` **acumula o crédito** no contador — o processo subsequente não precisa dormir
+- Operações são **atômicas** — implementadas com desabilitação de interrupções ou TSL/XCHG internamente por microssegundos
+- Dois usos distintos: **exclusão mútua** (inicializado em 1, semáforo binário) e **sincronização** (inicializado em 0 ou N)
+- No **produtor-consumidor** (Figura 2.28): três semáforos (`mutex`, `empty`, `full`) — a ordem dos `down` importa para evitar deadlock; sempre verifique o recurso antes de entrar na RC
+- No **problema leitores/escritores** (Figura 2.29): `rc` conta leitores ativos; primeiro leitor trava o banco (`down(&db)`), último o destrava (`up(&db)`) — escritores têm acesso exclusivo mas podem sofrer starvation
 
 ---
 
 ## 🔗 Notas Relacionadas
 
 - [[Dormir e Despertar]] — as primitivas `sleep`/`wakeup` que semáforos substituem e melhoram
-- [[Exclusão mútua com espera ocupada]] — TSL/XCHG usados internamente nas operações de semáforo e mutex
+- [[Exclusão mútua com espera ocupada]] — TSL/XCHG usados internamente nas operações de semáforo
 - [[Regiões Críticas]] — as 4 condições que semáforos satisfazem (starvation de escritores viola a condição 4)
 - [[Race Condition]] — semáforos são a solução robusta para as races vistas no spool e no produtor-consumidor
 - [[Estados de Processos]] — `down` com semáforo = 0 move processo para estado bloqueado; `up` move de bloqueado para pronto
