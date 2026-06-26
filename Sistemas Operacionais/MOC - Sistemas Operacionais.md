@@ -101,6 +101,7 @@ tags:
 - [[Exclusão mútua com espera ocupada]]
 - [[Dormir e Despertar]]
 - [[Semáforos]]
+- [[Mutexes]]
 
 ---
 
