@@ -20,16 +20,6 @@
               "icon": "lucide-file",
               "title": "MOC - Sistemas Operacionais"
             }
-          },
-          {
-            "id": "e2cfe909b34ac1c3",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
-            }
           }
         ]
       }
@@ -88,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 290.5
+    "width": 318.5
   },
   "right": {
     "id": "369de5b4728c2e4c",
@@ -204,8 +194,13 @@
   },
   "active": "f50f38ff9587ca10",
   "lastOpenFiles": [
-    "Sistemas Operacionais/Processos e Threads/Exclusão mútua com espera ocupada.md",
+    "Sistemas Operacionais/Processos e Threads/Mutexes.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Sistemas Operacionais/Processos e Threads/Semáforos.md",
+    "Sistemas Operacionais/Processos e Threads/Semáforos e Mutexes.md",
+    "Sistemas Operacionais/System Calls/System Calls.md",
+    "Sistemas Operacionais/Processos e Threads/Dormir e Despertar.md",
+    "Sistemas Operacionais/Processos e Threads/Exclusão mútua com espera ocupada.md",
     "Sistemas Operacionais/Processos e Threads/Regiões Críticas.md",
     "Sistemas Operacionais/Processos e Threads/Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Servidores Single Threaded, Multi Threaded e Orientado a eventos.md",
@@ -225,11 +220,6 @@
     "Sistemas Operacionais/Conceitos Fundamentais/Hardware de Proteção.md",
     "Sistemas Operacionais/Conceitos Fundamentais/Interpretador de Comandos Shell.md",
     "Sistemas Operacionais/Conceitos Fundamentais/Proteção.md",
-    "Sistemas Operacionais/Conceitos Fundamentais/Arquivos.md",
-    "Sistemas Operacionais/Conceitos Fundamentais/Espaços de Endereçamento.md",
-    "Sistemas Operacionais/Conceitos Fundamentais/Processos.md",
-    "Algoritmos e Estruturas de Dados/MOC - Algoritmos e Estruturas de Dados.md",
-    "Algoritmos e Estruturas de Dados/Algoritmos/Algoritmos de Ordenação.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",

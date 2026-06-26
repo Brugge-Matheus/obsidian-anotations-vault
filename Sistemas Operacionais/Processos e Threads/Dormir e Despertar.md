@@ -99,8 +99,8 @@ Dois processos compartilham um *buffer* de tamanho fixo N:
 
 ```
               ┌─────────────────────────────┐
-              │        Buffer (N slots)     │
-Produtor ──►  │ [ ][ ][ ][x][x][x][ ][ ]  │  ──► Consumidor
+              │       Buffer (N slots)      │
+Produtor ──►  │   [ ][ ][ ][x][x][x][ ][ ]  │  ──► Consumidor
   insere      └─────────────────────────────┘       retira
               
               count = número de itens no buffer
@@ -239,10 +239,10 @@ Poderíamos acrescentar um segundo *bit* de espera, ou talvez 8 ou 32 deles — 
 │ Uso de CPU enquanto     │ 100% (girando em       │ 0% (processo bloqueado,  │
 │ aguarda                 │ falso)                 │ cedeu a CPU)             │
 ├─────────────────────────┼────────────────────────┼──────────────────────────┤
-│ Inversão de prioridade  │ Sim — H bloqueia L     │ Não — H dorme,          │
+│ Inversão de prioridade  │ Sim — H bloqueia L     │ Não — H dorme,           │
 │                         │ indefinidamente        │ L pode executar          │
 ├─────────────────────────┼────────────────────────┼──────────────────────────┤
-│ Race condition           │ Não (se implementado   │ Sim — wakeup antes do   │
+│ Race condition          │ Não (se implementado   │ Sim — wakeup antes do    │
 │ própria                 │ corretamente)          │ sleep é perdido          │
 ├─────────────────────────┼────────────────────────┼──────────────────────────┤
 │ Quando usar             │ Esperas muito curtas   │ Esperas longas ou        │

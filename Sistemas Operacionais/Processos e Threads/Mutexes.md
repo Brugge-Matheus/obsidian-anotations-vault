@@ -82,24 +82,24 @@ O código de `mutex_lock` é semelhante ao `enter_region` da [[Exclusão mútua 
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  enter_region (TSL puro — espera ocupada)                       │
+│  enter_region (TSL puro — espera ocupada)                        │
 ├──────────────────────────────────────────────────────────────────┤
-│  Quando trava está ocupada:                                     │
-│    JNE enter_region ← volta imediatamente ao início             │
-│    CPU fica 100% ocupada testando a trava em loop               │
-│    Thread que tem a trava nunca recebe CPU para terminar        │
-│    → laço infinito em threads de usuário                        │
+│  Quando trava está ocupada:                                      │
+│    JNE enter_region ← volta imediatamente ao início              │
+│    CPU fica 100% ocupada testando a trava em loop                │
+│    Thread que tem a trava nunca recebe CPU para terminar         │
+│    → laço infinito em threads de usuário                         │
 └──────────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────────┐
-│  mutex_lock (com thread_yield)                                  │
+│  mutex_lock (com thread_yield)                                   │
 ├──────────────────────────────────────────────────────────────────┤
-│  Quando trava está ocupada:                                     │
-│    CALL thread_yield ← cede a CPU para outra thread             │
-│    Outra thread executa, possivelmente a que tem a trava        │
-│    Essa thread termina e libera o mutex                         │
-│    mutex_lock tenta novamente e consegue entrar                 │
-│    → sem espera ocupada, sem laço infinito                      │
+│  Quando trava está ocupada:                                      │
+│    CALL thread_yield ← cede a CPU para outra thread              │
+│    Outra thread executa, possivelmente a que tem a trava         │
+│    Essa thread termina e libera o mutex                          │ 
+│    mutex_lock tenta novamente e consegue entrar                  │ 
+│    → sem espera ocupada, sem laço infinito                       │ 
 └──────────────────────────────────────────────────────────────────┘
 ```
 
@@ -195,13 +195,13 @@ No Linux, a implementação de mutex de Pthreads é montada em cima de **futexes
 
 > 📌 **Figura 2.31 — Algumas chamadas de Pthreads relacionadas a mutexes**
 
-| Chamada de thread | Descrição |
-|---|---|
-| `pthread_mutex_init` | Cria um mutex |
-| `pthread_mutex_destroy` | Destrói um mutex existente |
-| `pthread_mutex_lock` | Obtém uma trava ou é bloqueado |
+| Chamada de thread       | Descrição                               |
+| ----------------------- | --------------------------------------- |
+| `pthread_mutex_init`    | Cria um mutex                           |
+| `pthread_mutex_destroy` | Destrói um mutex existente              |
+| `pthread_mutex_lock`    | Obtém uma trava ou é bloqueado          |
 | `pthread_mutex_trylock` | Obtém uma trava ou falha (não bloqueia) |
-| `pthread_mutex_unlock` | Libera uma trava |
+| `pthread_mutex_unlock`  | Libera uma trava                        |
 
 **Como funcionam:**
 

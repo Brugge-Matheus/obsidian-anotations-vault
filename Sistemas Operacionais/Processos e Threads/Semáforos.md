@@ -188,7 +188,7 @@ void consumer(void)
 **Cenário: buffer vazio, produtor produz o primeiro item**
 
 ```
-Estado inicial: mutex=1, empty=N, full=0
+Estado inicial: N=100, mutex=1, empty=N, full=0
 
 PRODUTOR:
   produce_item()        → item gerado
