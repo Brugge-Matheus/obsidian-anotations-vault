@@ -102,6 +102,7 @@ tags:
 - [[Dormir e Despertar]]
 - [[Semáforos]]
 - [[Mutexes]]
+- [[Monitores]]
 
 ---
 
