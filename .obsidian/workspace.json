@@ -20,6 +20,16 @@
               "icon": "lucide-file",
               "title": "MOC - Sistemas Operacionais"
             }
+          },
+          {
+            "id": "830d709db2720251",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
           }
         ]
       }
@@ -192,13 +202,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0c2a6c5b00f1da18",
+  "active": "f50f38ff9587ca10",
   "lastOpenFiles": [
-    "Sistemas Operacionais/Processos e Threads/Troca de Mensagens.md",
+    "Sistemas Operacionais/Processos e Threads/Inversão de Prioridade e RCU.md",
+    "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
     "Sistemas Operacionais/Processos e Threads/Barreiras.md",
+    "Sistemas Operacionais/Processos e Threads/Troca de Mensagens.md",
     "Sistemas Operacionais/Processos e Threads/Monitores.md",
     "Sistemas Operacionais/Processos e Threads/Troca de Mensagens e Barreiras.md",
-    "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
     "Sistemas Operacionais/Processos e Threads/Mutexes.md",
     "Sistemas Operacionais/Processos e Threads/Semáforos.md",
     "Sistemas Operacionais/Processos e Threads/Semáforos e Mutexes.md",
@@ -219,7 +230,6 @@
     "Sistemas Operacionais/Máquinas Virtuais/Paravirtualização e a Máquina Virtual Java.md",
     "Sistemas Operacionais/Máquinas Virtuais/A Origem das Máquinas Virtuais.md",
     "Sistemas Operacionais/Máquinas Virtuais/Máquinas Virtuais Redescobertas.md",
-    "Sistemas Operacionais/System Calls/Syscalls para Gerenciamento de Processos.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
