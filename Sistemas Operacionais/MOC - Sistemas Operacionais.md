@@ -103,7 +103,8 @@ tags:
 - [[Semáforos]]
 - [[Mutexes]]
 - [[Monitores]]
-- [[Troca de Mensagens e Barreiras]]
+- [[Troca de Mensagens]]
+- [[Barreiras]]
 
 ---
 
