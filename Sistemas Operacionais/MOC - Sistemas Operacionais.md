@@ -105,6 +105,7 @@ tags:
 - [[Monitores]]
 - [[Troca de Mensagens]]
 - [[Barreiras]]
+- [[Inversão de Prioridade e RCU]]
 
 ---
 
