@@ -4,11 +4,11 @@ tags:
   - so/processos-e-threads
   - so/sincronizacao
 source: "Sistemas Operacionais Modernos — Tanenbaum, 5ª Ed."
-chapter: "Cap. 2 — Seções 2.4.8 e 2.4.9"
+chapter: "Cap. 2 — Seção 2.4.8"
 ---
-# Troca de Mensagens e Barreiras
+# Troca de Mensagens
 
-📚 **Referência:** Sistemas Operacionais Modernos — Andrew S. Tanenbaum, 5ª Edição | Cap. 2 — Seções 2.4.8 e 2.4.9
+📚 **Referência:** Sistemas Operacionais Modernos — Andrew S. Tanenbaum, 5ª Edição | Cap. 2 — Seção 2.4.8
 
 ---
 
@@ -154,11 +154,13 @@ Processo C ──►
 Vantagem: desacoplamento — o emissor não precisa saber
           quem vai ler, e o receptor não precisa saber
           quem enviou
-          
+
 Comportamento quando mailbox está cheia:
   → processo emissor é suspenso até que uma mensagem
     seja removida da mailbox, abrindo espaço
 ```
+
+Para o problema produtor-consumidor com mailboxes: tanto produtor quanto consumidor criariam mailboxes grandes o suficiente para conter N mensagens. O produtor enviaria mensagens contendo dados reais para a mailbox do consumidor, e o consumidor enviaria mensagens vazias para a mailbox do produtor. A mailbox de destino armazena mensagens que foram enviadas para o processo de destino, mas que ainda não foram aceitas.
 
 ### Rendezvous — sem buffer
 
@@ -220,8 +222,6 @@ void consumer(void)
 
 ### Como funciona — a lógica das mensagens vazias
 
-Essa solução é elegante porque **usa as próprias mensagens como mecanismo de controle de fluxo**, sem nenhum semáforo ou variável compartilhada:
-
 ```
 INICIALIZAÇÃO:
   Consumidor envia N mensagens VAZIAS para o produtor
@@ -249,25 +249,7 @@ RESULTADO:
 
 ---
 
-## 🌐 Variações e usos práticos
-
-### Endereçamento flexível
-
-```
-send(destination, &message):
-  destination pode ser:
-    → PID de um processo específico
-    → nome de uma mailbox
-    → ANY (qualquer processo que esteja esperando)
-    
-receive(source, &message):
-  source pode ser:
-    → PID de um processo específico
-    → nome de uma mailbox
-    → ANY (aceita mensagem de qualquer origem)
-```
-
-### MPI — Message Passing Interface
+## 🌐 MPI — Message Passing Interface
 
 ```
 MPI (Message Passing Interface):
@@ -305,103 +287,15 @@ MPI (Message Passing Interface):
 
 ---
 
-# 🚧 2.4.9 — Barreiras
-
-## O problema que barreiras resolvem
-
-Os mecanismos anteriores focam em dois processos interagindo — produtor/consumidor, leitor/escritor. Mas algumas aplicações têm um padrão diferente: **grupos de processos trabalhando em fases**.
-
-```
-Exemplo: simulação científica em N processos
-
-Fase 1: cada processo calcula sua parte dos dados
-Fase 2: cada processo usa os dados de TODOS os outros para calcular
-Fase 3: cada processo usa os resultados de TODOS para a próxima etapa
-
-Problema:
-  Processo A termina a Fase 1 muito rápido
-  Processo A quer avançar para a Fase 2
-  Mas a Fase 2 usa dados do Processo D que ainda está na Fase 1!
-
-  Se A avançar antes de D terminar → usa dados incompletos → resultado errado
-```
-
-A regra é clara: **nenhum processo deve prosseguir para a fase seguinte até que TODOS os processos estejam prontos**.
-
----
-
-## 🚧 O que é uma barreira
-
-> 💡 **Barreira (*barrier*):** primitiva de sincronização colocada no fim de cada fase. Quando um processo atinge a barreira, ele é **bloqueado** até que todos os demais processos também tenham atingido a barreira. Só então todos são liberados simultaneamente para a próxima fase.
-
-> 📌 **Figura 2.38 — Uso de uma barreira**
-
-```
-(a) Processos aproximando-se da barreira:
-
-  Processo A ────────────────────────────►|
-  Processo B ──────────────────►          | BARREIRA
-  Processo C ────────────────────────────►|
-  Processo D ──────────►                  |
-  
-               Tempo ──────────────────►
-
-(b) Todos bloqueados exceto D (ainda computando):
-
-  Processo A ────────────────────────────►| BLOQUEADO
-  Processo B ──────────────────►──────────| BLOQUEADO
-  Processo C ────────────────────────────►| BLOQUEADO
-  Processo D ──────────►─────────────────►| chegando...
-  
-(c) D chega — todos liberados simultaneamente:
-
-  Processo A ────────────────────────────►|────────────►
-  Processo B ──────────────────►──────────|────────────►
-  Processo C ────────────────────────────►|────────────►
-  Processo D ──────────►─────────────────►|────────────►
-                                          
-                                    todos avançam juntos ✅
-```
-
----
-
-## Onde barreiras são usadas na prática
-
-```
-Computação paralela e científica:
-  → simulações de física, clima, dinâmica de fluidos
-  → cada nó computa uma parte, barreira sincroniza antes de trocar dados
-
-MPI (Message Passing Interface):
-  → MPI_Barrier() é uma chamada padrão
-  → usada extensivamente em clusters de supercomputadores
-
-Computação em GPU (CUDA):
-  → __syncthreads() é uma barreira entre threads do mesmo bloco
-  → garante que todos os threads terminaram antes de continuar
-  → fundamental para algoritmos paralelos corretos em GPU
-
-Algoritmos de ordenação paralela:
-  → cada thread ordena sua parte → barreira → merge das partes
-```
-
----
-
 # ✅ Resumo do Conceito
 
-**Troca de Mensagens (2.4.8):**
-- Motivação: semáforos e monitores precisam de memória compartilhada — inaplicáveis em sistemas distribuídos
-- Primitivas `send`/`receive` são **syscalls**, não construções de linguagem — funcionam em qualquer contexto
-- Questões de projeto únicas: mensagens perdidas (confirmação de recebimento), duplicatas (números de sequência), autenticação, desempenho
-- Endereçamento por processo (direto) ou por **mailbox** (desacoplado, múltiplos emissores/receptores)
-- **Rendezvous:** sem buffer — emissor e receptor bloqueiam até o encontro
-- Produtor-consumidor sem memória compartilhada: N mensagens circulam entre produtor e consumidor — mensagens vazias são as "fichas de permissão" para o produtor; total de mensagens no sistema é constante
-- **MPI** é o padrão industrial de troca de mensagens para computação científica paralela
-
-**Barreiras (2.4.9):**
-- Para grupos de processos trabalhando em **fases** — não apenas pares produtor/consumidor
-- Nenhum processo avança para a próxima fase até que **todos** tenham chegado à barreira
-- Usadas em: MPI (`MPI_Barrier`), CUDA (`__syncthreads`), algoritmos paralelos
+- Motivação: semáforos e monitores precisam de memória compartilhada — inaplicáveis em sistemas distribuídos onde cada máquina tem sua própria memória
+- Primitivas `send`/`receive` são **syscalls**, não construções de linguagem — funcionam em qualquer contexto e qualquer linguagem
+- Questões de projeto exclusivas da troca de mensagens em rede: mensagens perdidas (confirmação de recebimento), duplicatas (números de sequência), autenticação e desempenho
+- Endereçamento direto por processo ou via **mailbox** (desacoplada, múltiplos emissores/receptores)
+- **Rendezvous:** sem buffer — emissor e receptor bloqueiam até o encontro; simples mas menos flexível
+- Produtor-consumidor sem memória compartilhada: N mensagens circulam entre produtor e consumidor — mensagens vazias funcionam como "fichas de permissão", total no sistema é sempre constante
+- **MPI** é o padrão industrial de troca de mensagens para computação científica paralela em clusters
 
 ---
 
@@ -411,4 +305,4 @@ Algoritmos de ordenação paralela:
 - [[Semáforos]] — comparação: semáforos precisam de memória compartilhada, mensagens não
 - [[Dormir e Despertar]] — `receive` sem mensagem disponível bloqueia o processo, assim como `sleep`
 - [[Race Condition]] — troca de mensagens elimina races ao eliminar memória compartilhada completamente
-- [[Servidores Single Threaded, Multi Threaded e Orientado a eventos]] — servidores orientados a eventos usam conceitos similares de mensagens e eventos
+- [[Barreiras]] — próximo mecanismo de sincronização, para grupos de processos em fases
