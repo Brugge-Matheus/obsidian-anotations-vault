@@ -108,7 +108,8 @@ tags:
 - [[Inversão de Prioridade e RCU]]
 
 ### Escalonamento
-- [[Scheduler]]
+
+- [[Introdução ao Escalonamento]]
 
 ---
 
