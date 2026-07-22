@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scheduler.md",
+                "file": "Sistemas Operacionais/Escalonamento/Introdução ao Escalonamento.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Scheduler"
+              "title": "Introdução ao Escalonamento"
             }
           },
           {
@@ -206,6 +206,8 @@
   "lastOpenFiles": [
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
     "Scheduler.md",
+    "Sistemas Operacionais/Escalonamento/Introdução ao Escalonamento.md",
+    "Sistemas Operacionais/Escalonamento",
     "Sistemas Operacionais/Processos e Threads/Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Inversão de Prioridade e RCU.md",
     "Sistemas Operacionais/Processos e Threads/Exclusão mútua com espera ocupada.md",
@@ -229,7 +231,6 @@
     "Sistemas Operacionais/Processos e Threads/O Modelo de Processos.md",
     "Sistemas Operacionais/Linguagem C/A Linguagem C.md",
     "Sistemas Operacionais/Máquinas Virtuais/Paravirtualização e a Máquina Virtual Java.md",
-    "Sistemas Operacionais/Máquinas Virtuais/A Origem das Máquinas Virtuais.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
@@ -239,7 +240,6 @@
     "Algoritmos e Estruturas de Dados",
     "Sem título.canvas",
     "Nginx/Performance",
-    "Nginx/Load Balance",
-    "Nginx/HTTPS"
+    "Nginx/Load Balance"
   ]
 }
