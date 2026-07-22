@@ -107,6 +107,9 @@ tags:
 - [[Barreiras]]
 - [[Inversão de Prioridade e RCU]]
 
+### Escalonamento
+- [[Scheduler]]
+
 ---
 
 ## Referência de Estudo

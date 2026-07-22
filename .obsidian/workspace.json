@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+                "file": "Scheduler.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MOC - Sistemas Operacionais"
+              "title": "Scheduler"
             }
           },
           {
@@ -204,8 +204,11 @@
   },
   "active": "f50f38ff9587ca10",
   "lastOpenFiles": [
-    "Sistemas Operacionais/Processos e Threads/Inversão de Prioridade e RCU.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Scheduler.md",
+    "Sistemas Operacionais/Processos e Threads/Race Condition.md",
+    "Sistemas Operacionais/Processos e Threads/Inversão de Prioridade e RCU.md",
+    "Sistemas Operacionais/Processos e Threads/Exclusão mútua com espera ocupada.md",
     "Sistemas Operacionais/Processos e Threads/Barreiras.md",
     "Sistemas Operacionais/Processos e Threads/Troca de Mensagens.md",
     "Sistemas Operacionais/Processos e Threads/Monitores.md",
@@ -215,9 +218,7 @@
     "Sistemas Operacionais/Processos e Threads/Semáforos e Mutexes.md",
     "Sistemas Operacionais/System Calls/System Calls.md",
     "Sistemas Operacionais/Processos e Threads/Dormir e Despertar.md",
-    "Sistemas Operacionais/Processos e Threads/Exclusão mútua com espera ocupada.md",
     "Sistemas Operacionais/Processos e Threads/Regiões Críticas.md",
-    "Sistemas Operacionais/Processos e Threads/Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Servidores Single Threaded, Multi Threaded e Orientado a eventos.md",
     "Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Utilização de Threads.md",
@@ -229,7 +230,6 @@
     "Sistemas Operacionais/Linguagem C/A Linguagem C.md",
     "Sistemas Operacionais/Máquinas Virtuais/Paravirtualização e a Máquina Virtual Java.md",
     "Sistemas Operacionais/Máquinas Virtuais/A Origem das Máquinas Virtuais.md",
-    "Sistemas Operacionais/Máquinas Virtuais/Máquinas Virtuais Redescobertas.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
