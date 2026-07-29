@@ -113,7 +113,6 @@ tags:
 - [[Escalonamento em Sistemas em Lote]]
 - [[Escalonamento em Sistemas Interativos]]
 - [[Escalonamento em Sistemas em Tempo Real]]
-- [[Escalonamento em Sistemas em Tempo Real]]
 
 ---
 

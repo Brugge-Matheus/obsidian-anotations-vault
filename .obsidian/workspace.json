@@ -194,6 +194,7 @@
   },
   "active": "f50f38ff9587ca10",
   "lastOpenFiles": [
+    "Sistemas Operacionais/Escalonamento/Escalonamento em Sistemas em Tempo Real.md",
     "Escalonamento em Sistemas em Tempo Real.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
     "Sistemas Operacionais/Escalonamento/Escalonamento em Sistemas Interativos.md",
@@ -220,7 +221,6 @@
     "Sistemas Operacionais/Processos e Threads/Dormir e Despertar.md",
     "Sistemas Operacionais/Processos e Threads/Regiões Críticas.md",
     "Sistemas Operacionais/Processos e Threads/Servidores Single Threaded, Multi Threaded e Orientado a eventos.md",
-    "Race Condition.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
