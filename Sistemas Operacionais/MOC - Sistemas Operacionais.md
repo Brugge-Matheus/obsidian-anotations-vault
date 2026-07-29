@@ -112,6 +112,7 @@ tags:
 - [[Introdução ao Escalonamento]]
 - [[Escalonamento em Sistemas em Lote]]
 - [[Escalonamento em Sistemas Interativos]]
+- [[Escalonamento em Sistemas Interativos]]
 - [[Escalonamento em Sistemas em Tempo Real]]
 
 ---
@@ -119,4 +120,5 @@ tags:
 ## Referência de Estudo
 
 - [[_Contexto de Estudo]] — dinâmica de estudo com Claude e progresso por capítulo
+
 
