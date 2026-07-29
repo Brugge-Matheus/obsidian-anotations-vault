@@ -165,7 +165,7 @@ Quase todos os processos alternam **surtos de computação** com **solicitaçõe
 (b) Processo vinculado à E/S (muitos surtos curtos):
 
   [██][█][██][█][███][█][███][██][███][█]
-   ↑esperas frequentes pela E/S entre surtos curtos de CPU
+   ↑ esperas frequentes pela E/S entre surtos curtos de CPU
 ```
 
 **Como interpretar a figura:** a CPU executa por um tempo sem parar; então uma chamada de sistema é feita para ler ou escrever em um arquivo. Quando a chamada de sistema é concluída, a CPU calcula novamente até precisar de mais dados ou ter de escrever mais dados, e assim por diante.
@@ -179,7 +179,7 @@ Quase todos os processos alternam **surtos de computação** com **solicitaçõe
 > 💡 **Processo vinculado à E/S (*I/O-bound*):** processo que passa a maior parte do tempo esperando pela E/S — tem surtos de CPU curtos e esperas de E/S frequentes.
 
 ```
-                                              QUAL VARIÁVEL IMPORTA?
+QUAL VARIÁVEL IMPORTA?
 
 O fator-chave é o COMPRIMENTO DO SURTO DE CPU,
 NÃO o comprimento do surto de E/S.
@@ -383,36 +383,36 @@ Para projetar um bom algoritmo de escalonamento, é necessário ter clareza sobr
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│ TODOS OS SISTEMAS                                         │
+│ TODOS OS SISTEMAS                                        │
 ├──────────────────────────────────────────────────────────┤
-│ Imparcialidade    → dar a cada processo uma porção        │
-│                      justa da CPU                         │
-│ Aplicação da       → verificar se a política estabelecida │
-│ política             é cumprida                           │
-│ Equilíbrio        → manter ocupadas todas as partes       │
-│                      do sistema                           │
+│ Imparcialidade    → dar a cada processo uma porção       │
+│                      justa da CPU                        │
+│ Aplicação da       → verificar se a política estabelecida│
+│ política             é cumprida                          │
+│ Equilíbrio        → manter ocupadas todas as partes      │
+│                      do sistema                          │
 ├──────────────────────────────────────────────────────────┤
-│ SISTEMAS EM LOTE                                           │
+│ SISTEMAS EM LOTE                                         │
 ├──────────────────────────────────────────────────────────┤
-│ Vazão (throughput) → maximizar o número de tarefas         │
-│                       por hora                              │
-│ Tempo de retorno   → minimizar o tempo entre a submissão   │
-│                       e o término                           │
-│ Utilização de CPU  → manter a CPU ocupada o tempo todo      │
+│ Vazão (throughput) → maximizar o número de tarefas       │
+│                       por hora                           │
+│ Tempo de retorno   → minimizar o tempo entre a submissão │
+│                       e o término                        │
+│ Utilização de CPU  → manter a CPU ocupada o tempo todo   │
 ├──────────────────────────────────────────────────────────┤
-│ SISTEMAS INTERATIVOS                                        │
+│ SISTEMAS INTERATIVOS                                     │
 ├──────────────────────────────────────────────────────────┤
-│ Tempo de resposta   → responder rapidamente às              │
-│                        requisições                          │
-│ Proporcionalidade   → satisfazer às expectativas dos        │
-│                        usuários                              │
+│ Tempo de resposta   → responder rapidamente às           │
+│                        requisições                       │
+│ Proporcionalidade   → satisfazer às expectativas dos     │
+│                        usuários                          │
 ├──────────────────────────────────────────────────────────┤
-│ SISTEMAS DE TEMPO REAL                                       │
+│ SISTEMAS DE TEMPO REAL                                   │
 ├──────────────────────────────────────────────────────────┤
-│ Cumprimento dos     → evitar a perda de dados               │
-│ prazos                                                       │
-│ Previsibilidade     → evitar a degradação da qualidade      │
-│                        em sistemas multimídia                │
+│ Cumprimento dos     → evitar a perda de dados            │
+│ prazos                                                   │
+│ Previsibilidade     → evitar a degradação da qualidade   │
+│                        em sistemas multimídia            │
 └──────────────────────────────────────────────────────────┘
 ```
 

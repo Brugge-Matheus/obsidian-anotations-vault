@@ -13,22 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas Operacionais/Escalonamento/Introdução ao Escalonamento.md",
+                "file": "Escalonamento em Sistemas em Lote.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Introdução ao Escalonamento"
-            }
-          },
-          {
-            "id": "830d709db2720251",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
+              "title": "Escalonamento em Sistemas em Lote"
             }
           }
         ]
@@ -205,8 +195,12 @@
   "active": "f50f38ff9587ca10",
   "lastOpenFiles": [
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-    "Scheduler.md",
+    "Escalonamento em Sistemas em Lote.md",
     "Sistemas Operacionais/Escalonamento/Introdução ao Escalonamento.md",
+    "Redes/MOC - Redes.md",
+    "Sistemas Operacionais/Linguagem C/A Linguagem C.md",
+    "Sistemas Operacionais/Hardware/Processadores.md",
+    "Scheduler.md",
     "Sistemas Operacionais/Escalonamento",
     "Sistemas Operacionais/Processos e Threads/Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Inversão de Prioridade e RCU.md",
@@ -227,10 +221,6 @@
     "Sistemas Operacionais/Processos e Threads/Convertendo Thread em Multithread.md",
     "_Contexto de Estudo.md",
     "Sistemas Operacionais/Processos e Threads/Threads POSIX.md",
-    "Sistemas Operacionais/Processos e Threads/O Modelo Clássico de Thread.md",
-    "Sistemas Operacionais/Processos e Threads/O Modelo de Processos.md",
-    "Sistemas Operacionais/Linguagem C/A Linguagem C.md",
-    "Sistemas Operacionais/Máquinas Virtuais/Paravirtualização e a Máquina Virtual Java.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
