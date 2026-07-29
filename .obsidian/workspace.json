@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Escalonamento em Sistemas em Lote.md",
+                "file": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Escalonamento em Sistemas em Lote"
+              "title": "MOC - Sistemas Operacionais"
             }
           }
         ]
@@ -194,7 +194,9 @@
   },
   "active": "f50f38ff9587ca10",
   "lastOpenFiles": [
+    "Escalonamento em Sistemas Interativos.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Sistemas Operacionais/Escalonamento/Escalonamento em Sistemas em Lote.md",
     "Escalonamento em Sistemas em Lote.md",
     "Sistemas Operacionais/Escalonamento/Introdução ao Escalonamento.md",
     "Redes/MOC - Redes.md",
@@ -219,8 +221,6 @@
     "Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Utilização de Threads.md",
     "Sistemas Operacionais/Processos e Threads/Convertendo Thread em Multithread.md",
-    "_Contexto de Estudo.md",
-    "Sistemas Operacionais/Processos e Threads/Threads POSIX.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",

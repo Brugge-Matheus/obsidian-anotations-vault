@@ -111,7 +111,6 @@ tags:
 
 - [[Introdução ao Escalonamento]]
 - [[Escalonamento em Sistemas em Lote]]
-- [[Escalonamento em Sistemas em Lote]]
 - [[Escalonamento em Sistemas Interativos]]
 - [[Escalonamento em Sistemas em Tempo Real]]
 
