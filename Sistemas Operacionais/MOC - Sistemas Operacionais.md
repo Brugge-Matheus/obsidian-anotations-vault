@@ -114,7 +114,6 @@ tags:
 - [[Escalonamento em Sistemas Interativos]]
 - [[Escalonamento em Sistemas em Tempo Real]]
 - [[Escalonamento de Threads]]
-- [[Escalonamento de Threads]]
 
 ---
 
