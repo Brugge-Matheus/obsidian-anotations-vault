@@ -114,12 +114,14 @@ tags:
 - [[Escalonamento em Sistemas Interativos]]
 - [[Escalonamento em Sistemas em Tempo Real]]
 - [[Escalonamento de Threads]]
+- [[Escalonamento de Threads]]
 
 ---
 
 ## Referência de Estudo
 
 - [[_Contexto de Estudo]] — dinâmica de estudo com Claude e progresso por capítulo
+
 
 
 
