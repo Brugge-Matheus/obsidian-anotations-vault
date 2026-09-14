@@ -113,6 +113,7 @@ tags:
 - [[Escalonamento em Sistemas em Lote]]
 - [[Escalonamento em Sistemas Interativos]]
 - [[Escalonamento em Sistemas em Tempo Real]]
+- [[Política versus Mecanismo]]
 - [[Escalonamento de Threads]]
 
 ---
@@ -120,6 +121,7 @@ tags:
 ## Referência de Estudo
 
 - [[_Contexto de Estudo]] — dinâmica de estudo com Claude e progresso por capítulo
+
 
 
 
