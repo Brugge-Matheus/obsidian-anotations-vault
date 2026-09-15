@@ -7,7 +7,7 @@ tags:
 # Sistemas Operacionais — Mapa de Conteúdo
 
 > **Fonte:** Sistemas Operacionais Modernos — Andrew S. Tanenbaum, 5ª Edição
-> **Status:** Cap. 1 completo ✅ | Cap. 2 em andamento 🔄
+> **Status:** Cap. 1 completo ✅ | Cap. 2 completo ✅ | Cap. 3 em andamento 🔄
 
 ---
 
@@ -117,7 +117,11 @@ tags:
 - [[Escalonamento de Threads]]
 
 ---
-## Capítulo 3 - Gerenciamento de memória
+
+## Capítulo 3 — Gerenciamento de Memória
+
+### Modelos de memória sem abstração
+
 - [[Ausência de abstração de memória]]
 
 ---
@@ -125,8 +129,3 @@ tags:
 ## Referência de Estudo
 
 - [[_Contexto de Estudo]] — dinâmica de estudo com Claude e progresso por capítulo
-
-
-
-
-
