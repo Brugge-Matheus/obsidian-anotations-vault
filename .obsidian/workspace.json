@@ -206,8 +206,9 @@
   },
   "active": "ba5d6dd01aeb52dc",
   "lastOpenFiles": [
-    "Sistemas Operacionais/Gerenciamento de Memória/Gerenciando a Memória Livre.md",
+    "Paginação.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Gerenciando a Memória Livre.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Troca de Processos (Swapping).md",
     "Sistemas Operacionais/Gerenciamento de Memória/Espaços de Endereçamento e Registradores-Base e Limite.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Ausência de abstração de memória.md",
@@ -232,7 +233,6 @@
     "Sistemas Operacionais/Escalonamento/Escalonamento em Sistemas em Lote.md",
     "Escalonamento em Sistemas Interativos.md",
     "Escalonamento em Sistemas em Lote.md",
-    "Redes/MOC - Redes.md",
     "Sistemas Operacionais/Escalonamento",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",

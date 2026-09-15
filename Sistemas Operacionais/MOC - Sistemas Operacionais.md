@@ -130,6 +130,9 @@ tags:
 - [[Troca de Processos (Swapping)]]
 - [[Gerenciando a Memória Livre]]
 
+### Memória Virtual
+- [[Paginação]]
+
 ---
 
 ## Referência de Estudo
