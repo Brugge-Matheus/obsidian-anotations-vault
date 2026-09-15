@@ -117,6 +117,10 @@ tags:
 - [[Escalonamento de Threads]]
 
 ---
+## Capítulo 3 - Gerenciamento de memória
+
+
+---
 
 ## Referência de Estudo
 

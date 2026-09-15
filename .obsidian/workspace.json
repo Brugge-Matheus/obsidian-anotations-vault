@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "333b1f708ab2f889",
+            "id": "2a01c776df8565c1",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "Sistemas Operacionais/Escalonamento/Escalonamento de Threads.md",
-                "mode": "source",
-                "source": false
+                "aFile": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+                "bFile": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Escalonamento de Threads"
+              "icon": "diff",
+              "title": "Diff: MOC - Sistemas Operacionais  (Working Tree)"
             }
           }
         ]
@@ -194,9 +194,10 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "333b1f708ab2f889",
+  "active": "2a01c776df8565c1",
   "lastOpenFiles": [
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Sistemas Operacionais/Escalonamento/Política versus Mecanismo.md",
     "Sistemas Operacionais/Escalonamento/Escalonamento de Threads.md",
     "Escalonamento de Threads.md",
     "Sistemas Operacionais/Escalonamento/Escalonamento em Sistemas em Tempo Real.md",
@@ -222,7 +223,6 @@
     "Sistemas Operacionais/Processos e Threads/Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Inversão de Prioridade e RCU.md",
     "Sistemas Operacionais/Processos e Threads/Exclusão mútua com espera ocupada.md",
-    "Sistemas Operacionais/Processos e Threads/Barreiras.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
