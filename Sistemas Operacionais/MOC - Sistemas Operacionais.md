@@ -118,7 +118,7 @@ tags:
 
 ---
 ## Capítulo 3 - Gerenciamento de memória
-
+- [[Ausência de abstração de memória]]
 
 ---
 

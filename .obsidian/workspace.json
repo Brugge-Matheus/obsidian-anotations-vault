@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c22ac122d5965203",
+        "id": "d508d79285cc9127",
         "type": "tabs",
         "children": [
           {
-            "id": "2a01c776df8565c1",
+            "id": "ba5d6dd01aeb52dc",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-                "bFile": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-                "aRef": ""
+                "file": "Ausência de abstração de memória.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: MOC - Sistemas Operacionais  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "Ausência de abstração de memória"
             }
           }
         ]
@@ -194,9 +194,10 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "2a01c776df8565c1",
+  "active": "ba5d6dd01aeb52dc",
   "lastOpenFiles": [
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Ausência de abstração de memória.md",
     "Sistemas Operacionais/Escalonamento/Política versus Mecanismo.md",
     "Sistemas Operacionais/Escalonamento/Escalonamento de Threads.md",
     "Escalonamento de Threads.md",
@@ -222,7 +223,6 @@
     "Sistemas Operacionais/Escalonamento",
     "Sistemas Operacionais/Processos e Threads/Race Condition.md",
     "Sistemas Operacionais/Processos e Threads/Inversão de Prioridade e RCU.md",
-    "Sistemas Operacionais/Processos e Threads/Exclusão mútua com espera ocupada.md",
     "Algoritmos e Estruturas de Dados/Grafos",
     "Algoritmos e Estruturas de Dados/Fundamentos",
     "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
