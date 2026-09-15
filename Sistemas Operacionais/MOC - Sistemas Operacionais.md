@@ -124,8 +124,15 @@ tags:
 
 - [[Ausência de abstração de memória]]
 
+### Espaços de endereçamento e troca de processos
+
+- [[Espaços de Endereçamento e Registradores-Base e Limite]]
+- [[Troca de Processos (Swapping)]]
+- [[Gerenciando a Memória Livre]]
+
 ---
 
 ## Referência de Estudo
 
 - [[_Contexto de Estudo]] — dinâmica de estudo com Claude e progresso por capítulo
+
