@@ -132,6 +132,7 @@ tags:
 
 ### Memória Virtual
 - [[Paginação]]
+- [[Tabelas de Páginas]]
 
 ---
 
