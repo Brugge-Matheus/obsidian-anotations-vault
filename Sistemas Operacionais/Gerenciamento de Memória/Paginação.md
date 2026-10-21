@@ -85,9 +85,9 @@ Quando o programa referencia uma parte do espaço de endereçamento que **está*
 A **MMU (Memory Management Unit)** é o componente de hardware responsável por traduzir endereços virtuais em endereços físicos.
 
 ```
-┌─────────────────────────────────┐
+┌──────────────────────────────────┐
 │               CPU                │
-│                                   │
+│                                  │
 │   gera ENDEREÇOS VIRTUAIS        │
 │          │                       │
 │          ▼                       │

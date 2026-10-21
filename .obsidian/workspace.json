@@ -4,31 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d508d79285cc9127",
+        "id": "771ebd6627e7ed8d",
         "type": "tabs",
         "children": [
           {
-            "id": "ba5d6dd01aeb52dc",
+            "id": "503d5aef98167ae8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+                "file": "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MOC - Sistemas Operacionais"
-            }
-          },
-          {
-            "id": "30f4ceb706c09fb5",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
+              "title": "Tabelas de Páginas"
             }
           }
         ]
@@ -204,44 +194,44 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "ba5d6dd01aeb52dc",
+  "active": "503d5aef98167ae8",
   "lastOpenFiles": [
-    "Paginação.md",
+    "GO/05 - Métodos, Interfaces e Generics/Métodos e Receptores.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Gerenciando a Memória Livre.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Troca de Processos (Swapping).md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Espaços de Endereçamento e Registradores-Base e Limite.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Ausência de abstração de memória.md",
-    "Ausência de abstração de memória.md",
-    "Sistemas Operacionais/Gerenciamento de Memória",
-    "Sistemas Operacionais/Escalonamento/Política versus Mecanismo.md",
-    "Sistemas Operacionais/Escalonamento/Escalonamento de Threads.md",
-    "Escalonamento de Threads.md",
-    "Sistemas Operacionais/Escalonamento/Escalonamento em Sistemas em Tempo Real.md",
-    "Sistemas Operacionais/Escalonamento/Introdução ao Escalonamento.md",
+    "GO/10 - Rede e Web/Sockets e o Pacote net.md",
     "GO/MOC - GO.md",
-    "Home.md",
-    "Scheduler.md",
-    "_Contexto de Estudo.md",
-    "Nginx/Fundamentos/Socket.md",
-    "Nginx/Fundamentos/Proxy x Proxy Reverso.md",
-    "Nginx/Fundamentos/O que é o NGINX.md",
-    "Nginx/Fundamentos/API Gateway.md",
-    "Nginx/CGI e FastCGI/CGI e FastCGI.md",
-    "Sistemas Operacionais/Escalonamento/Escalonamento em Sistemas Interativos.md",
-    "Escalonamento em Sistemas em Tempo Real.md",
-    "Sistemas Operacionais/Escalonamento/Escalonamento em Sistemas em Lote.md",
-    "Escalonamento em Sistemas Interativos.md",
-    "Escalonamento em Sistemas em Lote.md",
-    "Sistemas Operacionais/Escalonamento",
-    "Algoritmos e Estruturas de Dados/Grafos",
-    "Algoritmos e Estruturas de Dados/Fundamentos",
-    "Algoritmos e Estruturas de Dados/Estruturas em Arvore",
-    "Algoritmos e Estruturas de Dados/Estruturas de Mapeamento",
-    "Algoritmos e Estruturas de Dados/Estruturas Lineares",
-    "Algoritmos e Estruturas de Dados/Algoritmos",
-    "Algoritmos e Estruturas de Dados",
-    "Sem título.canvas",
-    "Nginx/Performance"
+    "GO/09 - Concorrência/sync.WaitGroup e sync.Mutex.md",
+    "GO/09 - Concorrência/Select.md",
+    "GO/09 - Concorrência/Padrões de Concorrência.md",
+    "GO/09 - Concorrência/Goroutines.md",
+    "GO/09 - Concorrência/Fundamentos de Concorrência.md",
+    "GO/09 - Concorrência/context.Context.md",
+    "GO/09 - Concorrência/Channels.md",
+    "GO/10 - Rede e Web/HTTP (net-http).md",
+    "GO/05 - Métodos, Interfaces e Generics/Composição vs Herança.md",
+    "GO/02 - Fundamentos/Controle de Fluxo.md",
+    "GO/01 - Introdução/O que é Go.md",
+    "GO/10 - Rede e Web",
+    "GO/09 - Concorrência",
+    "GO/08 - IO e Serialização/io.Reader e io.Writer.md",
+    "GO/08 - IO e Serialização/Leitura e Escrita de Arquivos.md",
+    "GO/08 - IO e Serialização/JSON (marshal e unmarshal).md",
+    "GO/08 - IO e Serialização",
+    "GO/07 - Pacotes e Módulos/Sistema de Módulos (go mod).md",
+    "GO/07 - Pacotes e Módulos/Pacotes Importantes da Stdlib.md",
+    "GO/07 - Pacotes e Módulos/Criando Pacotes.md",
+    "GO/07 - Pacotes e Módulos",
+    "GO/06 - Tratamento de Erros/Wrapping e Unwrapping de Erros.md",
+    "GO/06 - Tratamento de Erros/O Padrão error em Go.md",
+    "GO/06 - Tratamento de Erros/Criando Erros Customizados.md",
+    "GO/06 - Tratamento de Erros",
+    "GO/05 - Métodos, Interfaces e Generics/Type Assertion e Type Switch.md",
+    "GO/05 - Métodos, Interfaces e Generics",
+    "GO/04 - Funções",
+    "GO/03 - Tipos Compostos",
+    "GO/02 - Fundamentos",
+    "GO/01 - Introdução",
+    "Sem título.canvas"
   ]
 }
