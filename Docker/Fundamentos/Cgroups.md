@@ -149,3 +149,10 @@ stat -fc %T /sys/fs/cgroup/
 
 - **Escrever em `/sys/fs/cgroup/memory/docker/<id>/memory.limit_in_bytes` é como o Docker define limites → [[System Calls]]**
   - A operação de escrever nesse arquivo é uma syscall `write()` comum. O VFS encaminha a escrita para o handler do Cgroup, que valida o valor e configura o limite no subsistema de memória do Kernel. Não há syscall especial para Cgroups — tudo passa pelo filesystem virtual.
+
+---
+
+## Conexão com Go
+
+- **Limite de CPU → `GOMAXPROCS`:** desde o Go 1.25, o runtime lê o limite de banda de CPU do cgroup e usa-o como `GOMAXPROCS` padrão (e o reavalia se mudar), evitando o *throttling* do CFS → [[Goroutines]], [[Scheduler do Go]]
+- **Limite de memória → `GOMEMLIMIT`:** o OOM killer olha o RSS do processo, não o heap do Go; `GOMEMLIMIT` um pouco abaixo do limite do cgroup faz o GC apertar antes → [[Garbage Collector]], [[Memória e Escape Analysis]]

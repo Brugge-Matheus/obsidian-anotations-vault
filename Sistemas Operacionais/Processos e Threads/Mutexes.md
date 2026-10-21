@@ -382,3 +382,4 @@ CONSUMIDOR (simétrico):
 - [[Dormir e Despertar]] — `pthread_cond_wait` resolve o mesmo problema de sinal perdido que motivou os semáforos, mas para threads Pthreads
 - [[Threads POSIX]] — contexto completo da API Pthreads onde mutexes e variáveis de condição vivem
 - [[Implementando Threads em User Space]] — por que `thread_yield` é necessário em user space e por que `enter_region` causaria deadlock
+- [[sync.WaitGroup e sync.Mutex]] — o `sync.Mutex` de Go: CAS no caminho rápido, giro curto e semáforo do runtime, a mesma filosofia do futex

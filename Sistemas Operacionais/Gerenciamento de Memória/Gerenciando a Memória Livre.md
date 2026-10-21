@@ -390,3 +390,4 @@ dados para manter a lista de espaços livres:
 
 - [[Troca de Processos (Swapping)]] — o contexto em que esses algoritmos de alocação são usados, ao trazer processos de volta do disco
 - [[Espaços de Endereçamento e Registradores-Base e Limite]] — os registradores usados para acessar corretamente a memória alocada por esses algoritmos
+- [[Memória e Escape Analysis]] e [[Garbage Collector]] — o alocador do Go (listas segregadas por classe de tamanho, bitmaps por span) e a liberação automática da memória

@@ -156,3 +156,10 @@ cat /proc/1/status | grep NSpid
 
 - **`/proc/1/status` dentro do container mostra o PID real do Kernel → [[Implementação de Processos]]**
   - O arquivo `NSpid` em `/proc/<pid>/status` lista o PID do processo em cada namespace da hierarquia. `NSpid: 1  4582` significa: PID 1 no namespace do container, PID 4582 no namespace do host. Isso é a evidência direta de que o "PID 1 do container" é apenas um processo normal do Kernel com uma visão filtrada.
+
+---
+
+## Conexão com Go
+
+- **SIGTERM → desligamento gracioso:** `signal.NotifyContext` transforma o `SIGTERM` do `docker stop` num cancelamento de contexto, e `srv.Shutdown(ctx)` termina as requisições em andamento antes dos 10 s do SIGKILL → [[context.Context]], [[HTTP (net-http)]]
+- **Exec form e binário estático:** um binário Go com `CGO_ENABLED=0` roda como PID 1 numa imagem `scratch`/distroless, sem shell no meio para engolir sinais → [[Build, Flags e Cross-compilation]]

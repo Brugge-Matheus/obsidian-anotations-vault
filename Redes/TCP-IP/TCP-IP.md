@@ -110,3 +110,4 @@ TCP/IP funde as camadas OSI 5 + 6 + 7 em uma única camada de Aplicação, e as 
 - `net.Dial("udp", "host:port")` → `sendto()`/`recvfrom()` sem handshake
 - Cada conexão TCP aceita por um servidor Go tipicamente ganha uma goroutine — [[Goroutines]]
 - `net/http` usa `net.Dial` internamente para gerenciar connection pools — [[HTTP (net-http)]]
+- TCP como fluxo sem fronteiras (e o enquadramento que isso exige), UDP com datagramas, `net/netip` — [[Sockets e o Pacote net]]

@@ -252,3 +252,4 @@ NO GERAL, entretanto:
 - [[Implementando Threads em Kernel Space]] — a implementação que fundamenta o custo da troca de contexto completa
 - [[Utilização de Threads]] — a arquitetura despachante + operárias do servidor web (Figura 2.8) usada como exemplo de escalonador específico de aplicação
 - [[Escalonamento em Sistemas Interativos]] — o escalonamento circular e por prioridades mencionados como os mais comuns para threads na prática
+- [[Scheduler do Go]] — um escalonador de dois níveis real: o runtime de Go escolhe qual goroutine roda em cada thread, e o kernel escolhe qual thread roda em cada núcleo

@@ -495,3 +495,4 @@ http {
 ## Conexão com Go
 
 - **Goroutines vs event loop: mesmo modelo subjacente** — o runtime do Go usa um netpoller baseado em `epoll` (Linux) internamente. As goroutines ficam suspensas quando aguardam I/O de rede; o runtime as reacorda quando o epoll notifica. Do ponto de vista do kernel, o comportamento é equivalente ao event loop do Nginx, mas a API para o programador é muito mais simples (goroutine por conexão vs callbacks) → [[Goroutines]], [[Implementando Threads em User Space]]
+- **Netpoller e escalonador na prática** — o `strace` de um servidor Go mostra `epoll_ctl`/`epoll_pwait`, sockets `SOCK_NONBLOCK`, `TCP_NODELAY` e keep-alive TCP ligados por padrão → [[Sockets e o Pacote net]], [[Scheduler do Go]]

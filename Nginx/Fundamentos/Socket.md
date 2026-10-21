@@ -151,3 +151,4 @@ Sockets são uma das abstrações mais fundamentais do SO — conectam diretamen
 - **[[HTTP (net-http)]]:** `net.Listen("tcp", ":8080")` e `net.Listen("unix", "/tmp/nginx.sock")` criam sockets TCP e Unix respectivamente. `net/http` usa `net.Listen` internamente para seu servidor HTTP.
 - **[[Interfaces]]:** `net.Conn` é a interface que abstrai qualquer socket (TCP, Unix, TLS) — qualquer tipo que implementa `Read`, `Write`, `Close` e métodos de deadline é uma `net.Conn`. Isso permite escrever código que funciona com TCP e Unix sockets sem mudanças.
 - **[[Goroutines]]:** O servidor `net/http` do Go chama `Accept()` em loop e dispara uma goroutine para cada nova conexão — o equivalente Go do loop `accept()` no worker do Nginx.
+- **[[Sockets e o Pacote net]]:** o pacote `net` em profundidade: servidor TCP, UDP, sockets Unix, deadlines, anatomia dos erros e o netpoller visto com `strace`.

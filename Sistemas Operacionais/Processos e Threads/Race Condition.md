@@ -184,3 +184,4 @@ A solução para race conditions é justamente garantir que operações sobre da
 - [[Convertendo Thread em Multithread]] — o problema do `errno` compartilhado é um exemplo clássico de race condition entre threads
 - [[O Modelo Clássico de Thread]] — threads compartilham variáveis globais e arquivos abertos, o que as torna suscetíveis a race conditions
 - [[Processos]] — processos também podem compartilhar memória (via shared memory) e incorrer em race conditions
+- [[Fundamentos de Concorrência]] e [[Modelo de Memória]] — race conditions e data races em Go: o detector `-race` e o que o compilador e o hardware fazem com código sem sincronização

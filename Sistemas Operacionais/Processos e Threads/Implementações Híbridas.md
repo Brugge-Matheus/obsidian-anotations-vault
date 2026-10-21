@@ -88,6 +88,8 @@ Goroutines (threads de usuário — milhares possíveis)
 
 O runtime do Go gerencia o mapeamento de goroutines para threads do SO automaticamente — o programador só cria goroutines e o runtime decide quantas threads do SO usar (geralmente uma por núcleo físico).
 
+> 💡 Em Go, o número de threads que executam código Go **ao mesmo tempo** é o `GOMAXPROCS` (por padrão, o número de CPUs lógicas), mas o processo pode ter **mais** threads: cada syscall bloqueante ou chamada C prende uma. O modelo completo (G-M-P, roubo de trabalho, preempção) está em [[Goroutines]] e [[Scheduler do Go]].
+
 ---
 
 # ✅ Resumo do Conceito

@@ -306,3 +306,4 @@ MPI (Message Passing Interface):
 - [[Dormir e Despertar]] — `receive` sem mensagem disponível bloqueia o processo, assim como `sleep`
 - [[Race Condition]] — troca de mensagens elimina races ao eliminar memória compartilhada completamente
 - [[Barreiras]] — próximo mecanismo de sincronização, para grupos de processos em fases
+- [[Channels]] — troca de mensagens em Go: channels com buffer (mailbox) e sem buffer (rendezvous)

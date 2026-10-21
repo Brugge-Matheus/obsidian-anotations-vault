@@ -279,3 +279,4 @@ Exemplos reais:
 - [[Convertendo Thread em Multithread]] — problemas com variáveis globais compartilhadas entre threads (ex: `errno`)
 - [[O Modelo Clássico de Thread]] — o que cada thread tem de privado vs. compartilhado
 - [[Implementando Threads em User Space]] — implementação de threads no espaço do usuário e o problema do gerenciamento de pilha
+- [[Sockets e o Pacote net]] e [[HTTP (net-http)]] — Go combina o modelo multithread (uma goroutine por conexão) com a execução orientada a eventos (netpoller sobre epoll)

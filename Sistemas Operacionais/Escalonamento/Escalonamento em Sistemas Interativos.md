@@ -560,3 +560,4 @@ o tempo de CPU do usuário 2, talvez tenhamos:
 - [[Introdução ao Escalonamento]] — as metas de imparcialidade e tempo de resposta que estes algoritmos tentam otimizar
 - [[Inversão de Prioridade e RCU]] — problemas relacionados a prioridades e como o Windows usa reforço aleatório de forma análoga ao escalonamento por loteria
 - [[Estados de Processos]] — a fila de processos executáveis manipulada pelo escalonamento circular
+- [[Scheduler do Go]] — um escalonador em espaço de usuário sem prioridades: filas FIFO por processador, fatia de ~10–20 ms e roubo de trabalho
