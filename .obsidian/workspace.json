@@ -4,21 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "771ebd6627e7ed8d",
+        "id": "d508d79285cc9127",
         "type": "tabs",
         "children": [
           {
-            "id": "503d5aef98167ae8",
+            "id": "ba5d6dd01aeb52dc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas.md",
+                "file": "GO/MOC - GO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tabelas de Páginas"
+              "title": "MOC - GO"
+            }
+          },
+          {
+            "id": "30f4ceb706c09fb5",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
             }
           }
         ]
@@ -80,7 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 318.5
+    "width": 200
   },
   "right": {
     "id": "369de5b4728c2e4c",
@@ -179,7 +189,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -194,29 +204,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "503d5aef98167ae8",
+  "active": "ba5d6dd01aeb52dc",
   "lastOpenFiles": [
-    "GO/05 - Métodos, Interfaces e Generics/Métodos e Receptores.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-    "GO/10 - Rede e Web/Sockets e o Pacote net.md",
-    "GO/MOC - GO.md",
-    "GO/09 - Concorrência/sync.WaitGroup e sync.Mutex.md",
-    "GO/09 - Concorrência/Select.md",
-    "GO/09 - Concorrência/Padrões de Concorrência.md",
-    "GO/09 - Concorrência/Goroutines.md",
-    "GO/09 - Concorrência/Fundamentos de Concorrência.md",
-    "GO/09 - Concorrência/context.Context.md",
-    "GO/09 - Concorrência/Channels.md",
-    "GO/10 - Rede e Web/HTTP (net-http).md",
-    "GO/05 - Métodos, Interfaces e Generics/Composição vs Herança.md",
-    "GO/02 - Fundamentos/Controle de Fluxo.md",
-    "GO/01 - Introdução/O que é Go.md",
-    "GO/10 - Rede e Web",
-    "GO/09 - Concorrência",
-    "GO/08 - IO e Serialização/io.Reader e io.Writer.md",
     "GO/08 - IO e Serialização/Leitura e Escrita de Arquivos.md",
     "GO/08 - IO e Serialização/JSON (marshal e unmarshal).md",
+    "GO/08 - IO e Serialização/io.Reader e io.Writer.md",
     "GO/08 - IO e Serialização",
     "GO/07 - Pacotes e Módulos/Sistema de Módulos (go mod).md",
     "GO/07 - Pacotes e Módulos/Pacotes Importantes da Stdlib.md",
@@ -226,12 +219,29 @@
     "GO/06 - Tratamento de Erros/O Padrão error em Go.md",
     "GO/06 - Tratamento de Erros/Criando Erros Customizados.md",
     "GO/06 - Tratamento de Erros",
-    "GO/05 - Métodos, Interfaces e Generics/Type Assertion e Type Switch.md",
+    "GO/12 - Go por Dentro/unsafe e cgo.md",
+    "GO/12 - Go por Dentro/Scheduler do Go.md",
+    "GO/12 - Go por Dentro/Reflection.md",
+    "GO/12 - Go por Dentro/Modelo de Memória.md",
+    "GO/12 - Go por Dentro/Memória e Escape Analysis.md",
+    "GO/12 - Go por Dentro/Garbage Collector.md",
+    "GO/12 - Go por Dentro",
+    "GO/11 - Tooling e Testes/Testes com go test.md",
+    "GO/11 - Tooling e Testes/Profiling e Diagnóstico.md",
+    "GO/11 - Tooling e Testes/Build, Flags e Cross-compilation.md",
+    "GO/11 - Tooling e Testes/Benchmarks.md",
+    "GO/11 - Tooling e Testes",
+    "GO/10 - Rede e Web/Sockets e o Pacote net.md",
+    "GO/10 - Rede e Web/HTTP (net-http).md",
+    "GO/10 - Rede e Web",
+    "GO/09 - Concorrência/sync.WaitGroup e sync.Mutex.md",
+    "GO/09 - Concorrência/Goroutines.md",
+    "GO/09 - Concorrência/Select.md",
+    "GO/09 - Concorrência/Fundamentos de Concorrência.md",
+    "GO/09 - Concorrência",
     "GO/05 - Métodos, Interfaces e Generics",
     "GO/04 - Funções",
     "GO/03 - Tipos Compostos",
-    "GO/02 - Fundamentos",
-    "GO/01 - Introdução",
     "Sem título.canvas"
   ]
 }

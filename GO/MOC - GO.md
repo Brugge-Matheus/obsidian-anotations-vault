@@ -11,15 +11,6 @@ tags:
 > **Status:** trilha completa ✅ — 54 notas em 12 módulos
 
 ---
-
-## 🧭 Como usar esta trilha
-
-As notas formam uma **sequência**: cada uma tem pré-requisitos no topo, uma seção "De onde viemos" que retoma as anteriores, e navegação **⬅️ Anterior / Próxima ➡️** no fim. Os módulos 01–08 cobrem a linguagem; 09–10, concorrência e rede; 11, as ferramentas; 12, o funcionamento interno do runtime.
-
-Toda nota tem uma seção **🔗 Conexões** ligando o assunto a [[MOC - Sistemas Operacionais|Sistemas Operacionais]] (Tanenbaum), [[MOC - Redes|Redes]], [[MOC - Nginx|Nginx]], [[MOC - Docker|Docker]] e [[MOC - Algoritmos e Estruturas de Dados|Algoritmos e ED]].
-
----
-
 ## 01 · Introdução
 
 | # | Nota | Em uma linha |
