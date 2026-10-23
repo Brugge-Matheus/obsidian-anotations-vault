@@ -132,6 +132,8 @@ tags:
 
 ### Memória Virtual
 - [[Paginação]]
+- [[Tabelas de Páginas]]
+- [[Acelerando a Paginação]]
 
 ---
 
