@@ -136,6 +136,14 @@ tags:
 - [[Acelerando a Paginação]]
 - [[Tabelas de Páginas para Memórias Grandes]]
 
+### Algoritmos de Substituição de Páginas
+
+- [[Substituição de Páginas e Algoritmo Ótimo]]
+- [[Não Usada Recentemente (NRU)]]
+- [[FIFO, Segunda Chance e Relógio]]
+- [[LRU e Envelhecimento]]
+- [[Conjunto de Trabalho]]
+
 ---
 
 ## Referência de Estudo
