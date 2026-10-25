@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+                "file": "Sistemas Operacionais/Gerenciamento de Memória/WSClock.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MOC - Sistemas Operacionais"
+              "title": "WSClock"
             }
           }
         ]
@@ -80,7 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 288.5
   },
   "right": {
     "id": "369de5b4728c2e4c",
@@ -196,12 +196,14 @@
   },
   "active": "30f4ceb706c09fb5",
   "lastOpenFiles": [
-    "Sistemas Operacionais/Gerenciamento de Memória/Conjunto de Trabalho.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Substituição de Páginas e Algoritmo Ótimo.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Não Usada Recentemente (NRU).md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Resumo dos Algoritmos de Substituição de Páginas.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Conjunto de Trabalho.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/WSClock.md",
     "Sistemas Operacionais/Gerenciamento de Memória/LRU e Envelhecimento.md",
     "Sistemas Operacionais/Gerenciamento de Memória/FIFO, Segunda Chance e Relógio.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Não Usada Recentemente (NRU).md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Substituição de Páginas e Algoritmo Ótimo.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas para Memórias Grandes.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Acelerando a Paginação.md",
     "Excalidraw/Drawing 2026-10-24 21.16.31.excalidraw.md",
@@ -224,8 +226,6 @@
     "GO/12 - Go por Dentro/Scheduler do Go.md",
     "GO/12 - Go por Dentro/Reflection.md",
     "GO/12 - Go por Dentro/Modelo de Memória.md",
-    "GO/12 - Go por Dentro/Memória e Escape Analysis.md",
-    "GO/12 - Go por Dentro/Garbage Collector.md",
     "GO/12 - Go por Dentro",
     "GO/11 - Tooling e Testes",
     "GO/10 - Rede e Web",

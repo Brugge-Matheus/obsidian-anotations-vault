@@ -75,12 +75,12 @@ Os bits R e M permitem construir um algoritmo simples:
    os valores atuais de R e M
 ```
 
-| Classe | R (referenciada) | M (modificada) | Significado |
-|---|---|---|---|
-| **0** | não | não | não referenciada, não modificada |
-| **1** | não | **sim** | não referenciada, **modificada** |
-| **2** | **sim** | não | referenciada, não modificada |
-| **3** | **sim** | **sim** | referenciada, modificada |
+| Classe | R (referenciada) | M (modificada) | Significado                      |
+| ------ | ---------------- | -------------- | -------------------------------- |
+| **0**  | não              | não            | não referenciada, não modificada |
+| **1**  | não              | **sim**        | não referenciada, **modificada** |
+| **2**  | **sim**          | não            | referenciada, não modificada     |
+| **3**  | **sim**          | **sim**        | referenciada, modificada         |
 
 > 💡 **"Classe 1 parece impossível?"** À primeira vista sim (como uma página modificada pode não ter sido referenciada?), mas ocorre quando uma página de **classe 3** tem seu **bit R limpo** por uma interrupção de relógio. As interrupções de relógio **não limpam o bit M**, porque essa informação é necessária para saber se a página precisa ser **reescrita no disco**. Limpar R mas não M leva uma página de classe 3 à classe 1. Em outras palavras: uma página de classe 1 é aquela que **foi modificada há muito tempo** e ainda não foi solicitada.
 
