@@ -134,6 +134,7 @@ tags:
 - [[Paginação]]
 - [[Tabelas de Páginas]]
 - [[Acelerando a Paginação]]
+- [[Tabelas de Páginas para Memórias Grandes]]
 
 ---
 
