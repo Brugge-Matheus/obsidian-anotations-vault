@@ -26,7 +26,7 @@ para cada processo.
 ```
 Uma maneira: monitorar o tamanho do conjunto de
 trabalho de cada processo, como indicado pelos BITS
-DE ENVELHECIMENTO (ver [[LRU e Envelhecimento]]).
+DE ENVELHECIMENTO.
 
 MAS essa abordagem NÃO EVITA necessariamente o
 THRASHING:
