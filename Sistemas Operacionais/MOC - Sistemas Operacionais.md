@@ -152,6 +152,7 @@ tags:
 - [[Alocação de Quadros e PFF]]
 - [[Controle de Carga]]
 - [[Política de Limpeza]]
+- [[Tamanho de Página]]
 
 ---
 
