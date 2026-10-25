@@ -312,3 +312,4 @@ trabalho. Nesse caso:
 - [[Acelerando a Paginação]] — o custo de uma falta de página (milissegundos de CPU) que torna a ultrapaginação tão ruim
 - [[Troca de Processos (Swapping)]] — processos movidos para o disco e trazidos de volta (onde a pré-paginação ajuda)
 - [[Paginação]] — a base: páginas, quadros e faltas de página
+- [[WSClock]] — versão melhorada deste algoritmo, baseada no relógio (3.4.9)

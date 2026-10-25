@@ -143,6 +143,8 @@ tags:
 - [[FIFO, Segunda Chance e Relógio]]
 - [[LRU e Envelhecimento]]
 - [[Conjunto de Trabalho]]
+- [[WSClock]]
+- [[Resumo dos Algoritmos de Substituição de Páginas]]
 
 ---
 
