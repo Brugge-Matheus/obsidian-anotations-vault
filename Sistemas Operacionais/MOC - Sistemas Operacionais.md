@@ -146,6 +146,11 @@ tags:
 - [[WSClock]]
 - [[Resumo dos Algoritmos de Substituição de Páginas]]
 
+### Questões de projeto para sistemas de paginação
+
+- [[Alocação Local versus Global]]
+- [[Alocação de Quadros e PFF]]
+
 ---
 
 ## Referência de Estudo
