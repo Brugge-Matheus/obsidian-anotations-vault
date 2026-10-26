@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "771ebd6627e7ed8d",
+        "id": "d508d79285cc9127",
         "type": "tabs",
         "children": [
           {
-            "id": "503d5aef98167ae8",
+            "id": "30f4ceb706c09fb5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas Operacionais/Gerenciamento de Memória/Tamanho de Página.md",
+                "file": "Sistemas Operacionais/Gerenciamento de Memória/Bibliotecas Compartilhadas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tamanho de Página"
+              "title": "Bibliotecas Compartilhadas"
             }
           }
         ]
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#sistemas-operacionais",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -80,7 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 318.5
+    "width": 288.5
   },
   "right": {
     "id": "369de5b4728c2e4c",
@@ -179,7 +179,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -194,42 +194,42 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "503d5aef98167ae8",
+  "active": "30f4ceb706c09fb5",
   "lastOpenFiles": [
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Páginas Compartilhadas.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Bibliotecas Compartilhadas.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Espaços Separados de Instruções e Dados.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Arquivos Mapeados em Memória.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Tamanho de Página.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Política de Limpeza.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Controle de Carga.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Conjunto de Trabalho.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Alocação de Quadros e PFF.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Alocação Local versus Global.md",
-    "_Contexto de Estudo.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Acelerando a Paginação.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/WSClock.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas para Memórias Grandes.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Substituição de Páginas e Algoritmo Ótimo.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Resumo dos Algoritmos de Substituição de Páginas.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Não Usada Recentemente (NRU).md",
+    "Sistemas Operacionais/Gerenciamento de Memória/WSClock.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Conjunto de Trabalho.md",
     "Sistemas Operacionais/Gerenciamento de Memória/LRU e Envelhecimento.md",
     "Sistemas Operacionais/Gerenciamento de Memória/FIFO, Segunda Chance e Relógio.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Não Usada Recentemente (NRU).md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Substituição de Páginas e Algoritmo Ótimo.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas para Memórias Grandes.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Acelerando a Paginação.md",
     "Excalidraw/Drawing 2026-10-24 21.16.31.excalidraw.md",
     "Excalidraw",
     "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Paginação.md",
     "GO/MOC - GO.md",
-    "GO/12 - Go por Dentro/unsafe e cgo.md",
-    "GO/12 - Go por Dentro/Scheduler do Go.md",
-    "GO/12 - Go por Dentro/Reflection.md",
-    "GO/12 - Go por Dentro/Modelo de Memória.md",
-    "GO/12 - Go por Dentro/Memória e Escape Analysis.md",
-    "GO/12 - Go por Dentro/Garbage Collector.md",
+    "GO/08 - IO e Serialização/Leitura e Escrita de Arquivos.md",
+    "GO/08 - IO e Serialização/JSON (marshal e unmarshal).md",
+    "GO/08 - IO e Serialização/io.Reader e io.Writer.md",
+    "GO/08 - IO e Serialização",
+    "GO/07 - Pacotes e Módulos/Sistema de Módulos (go mod).md",
+    "GO/07 - Pacotes e Módulos",
+    "GO/06 - Tratamento de Erros",
     "GO/12 - Go por Dentro",
     "GO/11 - Tooling e Testes",
     "GO/10 - Rede e Web",
     "GO/09 - Concorrência",
-    "GO/08 - IO e Serialização",
-    "GO/07 - Pacotes e Módulos",
-    "GO/06 - Tratamento de Erros",
     "GO/05 - Métodos, Interfaces e Generics",
     "GO/04 - Funções",
     "Sem título.canvas"
