@@ -153,6 +153,7 @@ tags:
 - [[Controle de Carga]]
 - [[Política de Limpeza]]
 - [[Tamanho de Página]]
+- [[Espaços Separados de Instruções e Dados]]
 
 ---
 
