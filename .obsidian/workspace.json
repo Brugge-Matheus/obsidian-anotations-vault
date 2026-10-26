@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas Operacionais/Gerenciamento de Memória/Bibliotecas Compartilhadas.md",
+                "file": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Bibliotecas Compartilhadas"
+              "title": "MOC - Sistemas Operacionais"
             }
           }
         ]
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#sistemas-operacionais",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -196,11 +196,14 @@
   },
   "active": "30f4ceb706c09fb5",
   "lastOpenFiles": [
+    "Docker/Fundamentos/Containers em outros OS.md",
+    "Docker/Fundamentos/Container vs VM.md",
+    "Docker/Fundamentos/Cgroups.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Páginas Compartilhadas.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Bibliotecas Compartilhadas.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Espaços Separados de Instruções e Dados.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Arquivos Mapeados em Memória.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Bibliotecas Compartilhadas.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Páginas Compartilhadas.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Espaços Separados de Instruções e Dados.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Tamanho de Página.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Política de Limpeza.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Controle de Carga.md",
@@ -220,10 +223,7 @@
     "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas.md",
     "GO/MOC - GO.md",
     "GO/08 - IO e Serialização/Leitura e Escrita de Arquivos.md",
-    "GO/08 - IO e Serialização/JSON (marshal e unmarshal).md",
-    "GO/08 - IO e Serialização/io.Reader e io.Writer.md",
     "GO/08 - IO e Serialização",
-    "GO/07 - Pacotes e Módulos/Sistema de Módulos (go mod).md",
     "GO/07 - Pacotes e Módulos",
     "GO/06 - Tratamento de Erros",
     "GO/12 - Go por Dentro",
