@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "d508d79285cc9127",
+        "id": "c12136a2ca01b4ab",
         "type": "tabs",
         "children": [
           {
@@ -13,15 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+                "file": "Sistemas Operacionais/Gerenciamento de Memória/Paginação.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MOC - Sistemas Operacionais"
+              "title": "Paginação"
+            }
+          },
+          {
+            "id": "813f93d4ff9c779b",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2026-10-26 00.41.53.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2026-10-26 00.41.53.excalidraw"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -80,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 288.5
+    "width": 288.5,
+    "collapsed": true
   },
   "right": {
     "id": "369de5b4728c2e4c",
@@ -194,12 +208,15 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "30f4ceb706c09fb5",
+  "active": "813f93d4ff9c779b",
   "lastOpenFiles": [
+    "Sistemas Operacionais/Gerenciamento de Memória/Paginação.md",
+    "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas.md",
+    "Excalidraw/Drawing 2026-10-26 00.41.53.excalidraw.md",
     "Docker/Fundamentos/Containers em outros OS.md",
     "Docker/Fundamentos/Container vs VM.md",
     "Docker/Fundamentos/Cgroups.md",
-    "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Arquivos Mapeados em Memória.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Bibliotecas Compartilhadas.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Páginas Compartilhadas.md",
@@ -220,9 +237,6 @@
     "Sistemas Operacionais/Gerenciamento de Memória/Acelerando a Paginação.md",
     "Excalidraw/Drawing 2026-10-24 21.16.31.excalidraw.md",
     "Excalidraw",
-    "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas.md",
-    "GO/MOC - GO.md",
-    "GO/08 - IO e Serialização/Leitura e Escrita de Arquivos.md",
     "GO/08 - IO e Serialização",
     "GO/07 - Pacotes e Módulos",
     "GO/06 - Tratamento de Erros",

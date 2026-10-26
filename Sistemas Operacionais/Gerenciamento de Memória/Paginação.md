@@ -5,7 +5,7 @@ tags:
 source: "Sistemas Operacionais Modernos — Tanenbaum, 5ª Ed."
 chapter: "Cap. 3 — Seções 3.3 e 3.3.1"
 ---
-# Memória Virtual e Paginação
+,# Memória Virtual e Paginação
 
 📚 **Referência:** Sistemas Operacionais Modernos — Andrew S. Tanenbaum, 5ª Edição | Cap. 3 — Seções 3.3 e 3.3.1
 
