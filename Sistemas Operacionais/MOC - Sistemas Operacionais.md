@@ -154,6 +154,9 @@ tags:
 - [[Política de Limpeza]]
 - [[Tamanho de Página]]
 - [[Espaços Separados de Instruções e Dados]]
+- [[Páginas Compartilhadas]]
+- [[Bibliotecas Compartilhadas]]
+- [[Arquivos Mapeados em Memória]]
 
 ---
 
