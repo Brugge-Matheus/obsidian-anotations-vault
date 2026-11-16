@@ -1,4 +1,5 @@
 {
   "theme": "obsidian",
-  "cssTheme": "Vanilla AMOLED"
+  "cssTheme": "Vanilla AMOLED",
+  "showRibbon": true
 }

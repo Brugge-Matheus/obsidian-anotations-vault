@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "TiNumbers",
+      "IbChip",
       "LiHome",
       "RiComputerLine",
-      "LiNetwork",
-      "SiNginx",
-      "SiGo"
+      "LiNetwork"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -39,5 +39,7 @@
   "Nginx": "SiNginx",
   "Redes": "LiNetwork",
   "Sistemas Operacionais": "RiComputerLine",
-  "Home.md": "LiHome"
+  "Home.md": "LiHome",
+  "Protocolos de Hardware": "IbChip",
+  "Algoritmos e Estruturas de Dados": "TiNumbers"
 }
