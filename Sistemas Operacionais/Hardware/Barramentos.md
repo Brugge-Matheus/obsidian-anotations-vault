@@ -230,3 +230,10 @@ CPU ──────────────────── barramento     
 - **SATA** conecta HDs e SSDs tradicionais
 - A grande evolução foi de **barramentos compartilhados** (PCI/ISA — todos dividem o mesmo fio) para **ponto a ponto** (PCIe — cada dispositivo tem seu próprio canal dedicado)
 - Dispositivos que exigem máxima performance (GPU, SSD NVMe) se conectam **diretamente à CPU via PCIe**, sem passar pelo chipset
+
+---
+
+# 🔗 Veja também
+
+- [[MOC - Protocolos de Hardware]] — os protocolos de comunicação **entre chips** (UART, SPI, I2C, CAN, RS-232, 1-Wire): a mesma lição de serial × paralelo e compartilhado × ponto a ponto, em escala de placa
+- [[Fundamentos de Protocolos de Hardware]] — vocabulário base (síncrono, assíncrono, diferencial, open-drain)

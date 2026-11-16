@@ -18,6 +18,7 @@ tags:
 | [[MOC - Redes\|Redes e Infraestruturas]] | Modelo OSI · IPv4 · TCP/IP | Fundamentos → TCP/IP ✅ |
 | [[MOC - Nginx\|Nginx]] | Servidor web · Proxy Reverso · TLS | Fundamentos → Performance ✅ |
 | [[MOC - Algoritmos e Estruturas de Dados\|Algoritmos e ED]] | Big O · Estruturas · Ordenação · Busca | Fundamentos → Grafos ✅ |
+| [[MOC - Protocolos de Hardware\|Protocolos de Hardware]] | UART · SPI · I2C · CAN · RS-232 · 1-Wire | Fundamentos → Comparativo ✅ |
 
 ---
 

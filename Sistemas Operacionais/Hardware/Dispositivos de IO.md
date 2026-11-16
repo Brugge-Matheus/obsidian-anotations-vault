@@ -426,3 +426,10 @@ Juntando tudo, o que acontece quando um programa lê um arquivo do disco:
 - **Interrupções** — dispositivo avisa a CPU quando terminou: CPU fica livre enquanto o dispositivo trabalha. A **tabela de vetor de interrupção** mapeia cada dispositivo para seu tratador
 - **DMA** — chip especializado transfere dados diretamente entre dispositivo e memória sem envolver a CPU: ideal para grandes volumes. Gera uma interrupção ao terminar
 - Os registradores do controlador são acessados via **I/O mapeado em memória** ou **espaço de porta de I/O** — ambos amplamente usados
+
+---
+
+# 🔗 Veja também
+
+- [[MOC - Protocolos de Hardware]] — como os controladores de UART, SPI, I2C e CAN falam com os dispositivos por fios; no Linux aparecem como arquivos em `/dev`
+- [[UART]] e [[I2C]] — exemplos de controladores operados por interrupção, polling ou DMA
