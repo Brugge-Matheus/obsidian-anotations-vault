@@ -8,9 +8,11 @@ tags:
 
 > **Fontes:** a definir conforme os materiais que forem enviados (sugestões: *The C Programming Language* — Kernighan & Ritchie, o padrão ISO C, [cppreference](https://en.cppreference.com/w/c) e o manual do GCC/Clang).
 > **Versão de referência:** C23 (ISO/IEC 9899:2024). Diferenças para C99/C11 serão destacadas quando importarem.
-> **Status:** em andamento 🔄 — módulo 01 (Introdução) completo: 5 notas escritas ✅
+> **Status:** em andamento 🔄 — módulo 01 (Introdução) completo ✅ · módulo 02 (Fundamentos): 3 de 6 notas
 
 > **Como este MOC funciona:** cada módulo abaixo tem uma **pasta própria** com o mesmo nome. Os tópicos aparecem como **planejados** (sem link) e viram `[[link]]` assim que a nota é escrita — assim o grafo do Obsidian não enche de nós vazios. A ordem e os tópicos são uma proposta e podem mudar conforme os assuntos que você for pedindo.
+>
+> **Nome dos arquivos:** notas de C que têm o mesmo nome de uma nota de Go ganham o sufixo **"em C"** (ex.: `Tipos de Dados em C`), porque o Obsidian resolve `[[links]]` pelo nome do arquivo.
 
 ---
 
@@ -28,9 +30,9 @@ tags:
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 6 | Sintaxe, Blocos e Escopo | Tokens, `;`, blocos, escopo e tempo de vida | ⏳ |
-| 7 | Variáveis e Constantes | Declaração × definição, `const`, `#define`, `enum` | ⏳ |
-| 8 | Tipos de Dados | Inteiros, `char`, floats, `sizeof`, `<stdint.h>`, sinal | ⏳ |
+| 6 | [[Sintaxe, Blocos e Escopo em C]] | Tokens, `;`, blocos, escopo, tempo de vida e ponteiro pendurado | ✅ |
+| 7 | [[Variáveis e Constantes em C]] | Declaração × definição, valor inicial, `const`, `#define`, `enum`, literais | ✅ |
+| 8 | [[Tipos de Dados em C]] | Inteiros, `char`, floats, `bool`, `sizeof`, `<stdint.h>`, overflow | ✅ |
 | 9 | Operadores | Aritméticos, relacionais, lógicos, bit a bit, precedência | ⏳ |
 | 10 | Controle de Fluxo | `if`, `switch`, `for`, `while`, `break`/`continue`, `goto` | ⏳ |
 | 11 | Conversões de Tipo | Promoções inteiras, conversões implícitas, *casts* | ⏳ |
