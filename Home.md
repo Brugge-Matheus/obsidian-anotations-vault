@@ -19,6 +19,7 @@ tags:
 | [[MOC - Nginx\|Nginx]] | Servidor web · Proxy Reverso · TLS | Fundamentos → Performance ✅ |
 | [[MOC - Algoritmos e Estruturas de Dados\|Algoritmos e ED]] | Big O · Estruturas · Ordenação · Busca | Fundamentos → Grafos ✅ |
 | [[MOC - Protocolos de Hardware\|Protocolos de Hardware]] | UART · SPI · I2C · CAN · RS-232 · 1-Wire | Fundamentos → Comparativo ✅ |
+| [[MOC - C\|C]] | Fundamentos · Ponteiros · Memória · C e o SO | Estrutura criada 🔄 |
 
 ---
 

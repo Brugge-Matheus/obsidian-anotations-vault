@@ -121,3 +121,9 @@ Algumas coisas que C **não** tem incluem:
 - **Ponteiros explícitos** — variáveis que guardam endereços de memória. Operador `&` = "endereço de", operador `*` = "conteúdo do endereço". Extremamente poderosos e extremamente perigosos
 - **Sem garbage collector** — toda memória é gerenciada manualmente com `malloc`/`free`. Isso dá controle total ao programador — essencial para SO — mas exige disciplina para evitar memory leaks e dangling pointers
 - C não tem: strings incorporadas, threads nativas, pacotes, classes, segurança de tipos nem GC — tudo isso torna a linguagem mais baixo nível e adequada para programação de sistemas
+
+---
+
+# 🔗 Veja também
+
+- [[MOC - C]] — trilha de estudo dedicada à linguagem C, do básico ao "C por dentro"
