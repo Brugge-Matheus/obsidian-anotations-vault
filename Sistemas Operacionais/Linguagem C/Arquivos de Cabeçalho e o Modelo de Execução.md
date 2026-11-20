@@ -186,3 +186,11 @@ Essa execução direta é uma das razões pelas quais SOs em C são muito mais r
 - **O processo de compilação** tem 3 passos: **pré-processador** (expande includes e macros) → **compilador C** (gera arquivos `.o`) → **ligador** (combina tudo em um executável `a.out`)
 - **make** — ferramenta que lê o `Makefile` e recompila apenas os arquivos que foram modificados desde a última compilação, minimizando o trabalho em projetos grandes
 - **Modelo de execução** — o SO consiste em segmentos de texto (imutável), dados (cresce para cima) e pilha (cresce para baixo). Todo o código é **executado diretamente pelo hardware** — sem interpretador, sem JIT — o que garante latência mínima e performance máxima
+
+---
+
+# 🔗 Veja também
+
+- [[Fases da Compilação]] — as quatro fases (pré-processador, compilador, montador, linker) com saídas reais do `gcc`
+- [[Como C Funciona]] — do código-fonte ao processo em execução
+- [[O Compilador]] — arquitetura do compilador, otimizações e flags
