@@ -347,3 +347,4 @@ Cada versão do padrão ISO acrescenta recursos. O compilador escolhe um **diale
 - [[Como Go Funciona]] — o compilador de Go e seu runtime embutido
 - [[Bits e Bytes]] — o que é código de máquina na essência: bytes interpretados pela CPU
 - [[MOC - Protocolos de Hardware]] — o código dos microcontroladores que usam esses protocolos é compilado com toolchains cruzadas
+- [[Convenções e Estilo]] — como usar as flags de aviso (`-Wall -Wextra`) como parte do estilo, com exemplos reais

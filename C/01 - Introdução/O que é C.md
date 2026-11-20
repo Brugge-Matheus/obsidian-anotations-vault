@@ -141,7 +141,7 @@ Frequentemente confundidos, mas **são linguagens diferentes**. O C++ nasceu com
 
 # 🏗️ Como um programa C se parece
 
-O famoso "Olá, mundo" — será dissecado em detalhes em *Ambiente e Primeiro Programa*:
+O famoso "Olá, mundo" — ele é compilado e examinado fase por fase em [[Fases da Compilação]]:
 
 ```c
 #include <stdio.h>
