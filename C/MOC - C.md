@@ -23,14 +23,14 @@ tags:
 
 ## 02 · Fundamentos
 
-| # | Nota | Em uma linha | Status |
-| --- | --- | --- | --- |
-| 6 | [[Sintaxe, Blocos e Escopo em C]] | Tokens, `;`, blocos, escopo, tempo de vida e ponteiro pendurado | ✅ |
-| 7 | [[Variáveis e Constantes em C]] | Declaração × definição, valor inicial, `const`, `#define`, `enum`, literais | ✅ |
-| 8 | [[Tipos de Dados em C]] | Inteiros, `char`, floats, `bool`, `sizeof`, `<stdint.h>`, overflow | ✅ |
-| 9 | [[Operadores em C]] | Aritméticos, lógicos, bit a bit e máscaras, precedência, ordem de avaliação | ✅ |
-| 10 | [[Controle de Fluxo em C]] | `if`, `switch` (*fall-through*), laços, `break`/`continue`, `goto` e salto no assembly | ✅ |
-| 11 | [[Conversões de Tipo em C]] | Promoções inteiras, conversões usuais, `signed` × `unsigned`, *casts*, `-Wconversion` | ✅ |
+| #   | Nota                              | Em uma linha                                                                           | Status |
+| --- | --------------------------------- | -------------------------------------------------------------------------------------- | ------ |
+| 6   | [[Sintaxe, Blocos e Escopo em C]] | Tokens, `;`, blocos, escopo, tempo de vida e ponteiro pendurado                        | ✅      |
+| 7   | [[Variáveis e Constantes em C]]   | Declaração × definição, valor inicial, `const`, `#define`, `enum`, literais            | ✅      |
+| 8   | [[Tipos de Dados em C]]           | Inteiros, `char`, floats, `bool`, `sizeof`, `<stdint.h>`, overflow                     | ✅      |
+| 9   | [[Operadores em C]]               | Aritméticos, lógicos, bit a bit e máscaras, precedência, ordem de avaliação            | ✅      |
+| 10  | [[Controle de Fluxo em C]]        | `if`, `switch` (*fall-through*), laços, `break`/`continue`, `goto` e salto no assembly | ✅      |
+| 11  | [[Conversões de Tipo em C]]       | Promoções inteiras, conversões usuais, `signed` × `unsigned`, *casts*, `-Wconversion`  | ✅      |
 
 ## 03 · Ponteiros e Memória
 
