@@ -8,7 +8,7 @@ tags:
 
 > **Fontes:** a definir conforme os materiais que forem enviados (sugestões: *The C Programming Language* — Kernighan & Ritchie, o padrão ISO C, [cppreference](https://en.cppreference.com/w/c) e o manual do GCC/Clang).
 > **Versão de referência:** C23 (ISO/IEC 9899:2024). Diferenças para C99/C11 serão destacadas quando importarem.
-> **Status:** em andamento 🔄 — módulo 01 (Introdução) completo ✅ · módulo 02 (Fundamentos): 3 de 6 notas
+> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · próximo: módulo 03 (Ponteiros e Memória)
 
 ---
 
@@ -29,9 +29,9 @@ tags:
 | 6 | [[Sintaxe, Blocos e Escopo em C]] | Tokens, `;`, blocos, escopo, tempo de vida e ponteiro pendurado | ✅ |
 | 7 | [[Variáveis e Constantes em C]] | Declaração × definição, valor inicial, `const`, `#define`, `enum`, literais | ✅ |
 | 8 | [[Tipos de Dados em C]] | Inteiros, `char`, floats, `bool`, `sizeof`, `<stdint.h>`, overflow | ✅ |
-| 9 | Operadores | Aritméticos, relacionais, lógicos, bit a bit, precedência | ⏳ |
-| 10 | Controle de Fluxo | `if`, `switch`, `for`, `while`, `break`/`continue`, `goto` | ⏳ |
-| 11 | Conversões de Tipo | Promoções inteiras, conversões implícitas, *casts* | ⏳ |
+| 9 | [[Operadores em C]] | Aritméticos, lógicos, bit a bit e máscaras, precedência, ordem de avaliação | ✅ |
+| 10 | [[Controle de Fluxo em C]] | `if`, `switch` (*fall-through*), laços, `break`/`continue`, `goto` e salto no assembly | ✅ |
+| 11 | [[Conversões de Tipo em C]] | Promoções inteiras, conversões usuais, `signed` × `unsigned`, *casts*, `-Wconversion` | ✅ |
 
 ## 03 · Ponteiros e Memória
 

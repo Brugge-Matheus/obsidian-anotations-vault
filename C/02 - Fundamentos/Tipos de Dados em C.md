@@ -6,7 +6,7 @@ source: "Padrão ISO C (C17/C23: <limits.h>, <float.h>, <stdint.h>, IEEE 754); e
 ---
 # Tipos de Dados em C
 
-📚 **Referência:** Padrão ISO C (C17/C23), `<limits.h>`, `<float.h>`, `<stdint.h>` e experimentos reais com `gcc` 13.3 | Anterior: [[Variáveis e Constantes em C]] | Próxima: *Operadores* | Compare com [[Tipos de Dados]] (Go)
+📚 **Referência:** Padrão ISO C (C17/C23), `<limits.h>`, `<float.h>`, `<stdint.h>` e experimentos reais com `gcc` 13.3 | Anterior: [[Variáveis e Constantes em C]] | Próxima: [[Operadores em C]] | Compare com [[Tipos de Dados]] (Go)
 
 ---
 
@@ -18,7 +18,7 @@ Na memória só há **bytes**; o **tipo** diz como interpretá-los. Os mesmos 4 
 2. **Como os bits são interpretados** (inteiro com sinal, ponto flutuante...);
 3. **Quais operações** são válidas.
 
-Lembrando [[O que é C]]: a tipagem é **estática** (fixada na compilação) e **fraca** (há conversões implícitas, tema da nota *Conversões de Tipo*).
+Lembrando [[O que é C]]: a tipagem é **estática** (fixada na compilação) e **fraca** (há conversões implícitas, tema da nota [[Conversões de Tipo em C]]).
 
 ```
 Tipos em C
@@ -105,7 +105,7 @@ printf("%d  (%.17g)\n", 0.1 + 0.2 == 0.3, 0.1 + 0.2);
 
 **Nunca compare floats com `==`.** Compare com uma **tolerância**: `fabs(a - b) < 1e-9`. Outros efeitos reais: um `float` **perde** inteiros acima de 2²⁴ (`16777217` virou `16777216`); `1.0/0` dá `inf` e `0.0/0` dá `nan` (valores especiais do IEEE 754, sem erro em tempo de execução).
 
-> 💡 **Divisão inteira × real:** `7 / 2` = **3** (truncada) e `7.0 / 2` = **3.5**; se **ambos** os operandos são inteiros, a divisão é inteira (mais em *Operadores*).
+> 💡 **Divisão inteira × real:** `7 / 2` = **3** (truncada) e `7.0 / 2` = **3.5**; se **ambos** os operandos são inteiros, a divisão é inteira (mais em [[Operadores em C]]).
 
 ---
 
