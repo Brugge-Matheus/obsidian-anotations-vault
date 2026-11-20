@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d80eea46a78190d7",
+        "id": "83043a6bf500f80d",
         "type": "tabs",
         "children": [
           {
-            "id": "c57a5184c660e6bd",
+            "id": "090ec3f51ba6b201",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -194,10 +194,16 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "c57a5184c660e6bd",
+  "active": "090ec3f51ba6b201",
   "lastOpenFiles": [
-    "Sintaxe, Blocos e Escopo em C.md",
+    "GO/02 - Fundamentos/Tipos de Dados.md",
     "C/MOC - C.md",
+    "C/02 - Fundamentos/Operadores em C.md",
+    "C/02 - Fundamentos/Conversões de Tipo em C.md",
+    "C/02 - Fundamentos/Controle de Fluxo em C.md",
+    "C/02 - Fundamentos/Tipos de Dados em C.md",
+    "C/02 - Fundamentos/Sintaxe, Blocos e Escopo em C.md",
+    "Sintaxe, Blocos e Escopo em C.md",
     "GO/MOC - GO.md",
     "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
     "C/01 - Introdução/Convenções e Estilo.md",
@@ -226,12 +232,6 @@
     "Protocolos de Hardware/Protocolos/I2C.md",
     "Protocolos de Hardware/Protocolos/CAN.md",
     "Protocolos de Hardware/Protocolos/1-Wire.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Arquivos Mapeados em Memória.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/WSClock.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Tamanho de Página.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Tabelas de Páginas para Memórias Grandes.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Substituição de Páginas e Algoritmo Ótimo.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Resumo dos Algoritmos de Substituição de Páginas.md",
     "Untitled.canvas",
     "Sem título.canvas"
   ]
