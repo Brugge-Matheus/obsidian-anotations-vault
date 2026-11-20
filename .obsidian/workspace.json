@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Protocolos de Hardware/MOC - Protocolos de Hardware.md",
+                "file": "C/MOC - C.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MOC - Protocolos de Hardware"
+              "title": "MOC - C"
             }
           }
         ]
@@ -194,9 +194,15 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0c2a6c5b00f1da18",
+  "active": "c57a5184c660e6bd",
   "lastOpenFiles": [
     "C/MOC - C.md",
+    "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
+    "C/01 - Introdução/Convenções e Estilo.md",
+    "C/01 - Introdução/O Compilador.md",
+    "C/01 - Introdução/Como C Funciona.md",
+    "C/01 - Introdução/O que é C.md",
+    "Protocolos de Hardware/MOC - Protocolos de Hardware.md",
     "C/10 - Ferramentas e Depuração",
     "C/09 - C por Dentro",
     "C/08 - C e o Sistema Operacional",
@@ -211,7 +217,6 @@
     "Excalidraw/Drawing 2026-10-29 10.11.38.excalidraw.md",
     "Excalidraw/Drawing 2026-10-26 00.41.53.excalidraw.md",
     "Excalidraw/Drawing 2026-10-24 21.16.31.excalidraw.md",
-    "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
     "Protocolos de Hardware/Prática/Comparativo e Escolha do Protocolo.md",
     "Protocolos de Hardware/Protocolos/UART.md",
     "Protocolos de Hardware/Protocolos/SPI.md",
@@ -219,7 +224,6 @@
     "Protocolos de Hardware/Protocolos/I2C.md",
     "Protocolos de Hardware/Protocolos/CAN.md",
     "Protocolos de Hardware/Protocolos/1-Wire.md",
-    "Protocolos de Hardware/MOC - Protocolos de Hardware.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Arquivos Mapeados em Memória.md",
     "Sistemas Operacionais/Gerenciamento de Memória/WSClock.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Tamanho de Página.md",
@@ -228,10 +232,6 @@
     "Sistemas Operacionais/Gerenciamento de Memória/Resumo dos Algoritmos de Substituição de Páginas.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Páginas Compartilhadas.md",
     "Sistemas Operacionais/Gerenciamento de Memória/Política de Limpeza.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Não Usada Recentemente (NRU).md",
-    "Sistemas Operacionais/Gerenciamento de Memória/LRU e Envelhecimento.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/FIFO, Segunda Chance e Relógio.md",
-    "Sistemas Operacionais/Gerenciamento de Memória/Espaços Separados de Instruções e Dados.md",
     "Untitled.canvas",
     "Sem título.canvas"
   ]

@@ -10,10 +10,6 @@ tags:
 > **Versão de referência:** C23 (ISO/IEC 9899:2024). Diferenças para C99/C11 serão destacadas quando importarem.
 > **Status:** em andamento 🔄 — módulo 01 (Introdução) completo ✅ · módulo 02 (Fundamentos): 3 de 6 notas
 
-> **Como este MOC funciona:** cada módulo abaixo tem uma **pasta própria** com o mesmo nome. Os tópicos aparecem como **planejados** (sem link) e viram `[[link]]` assim que a nota é escrita — assim o grafo do Obsidian não enche de nós vazios. A ordem e os tópicos são uma proposta e podem mudar conforme os assuntos que você for pedindo.
->
-> **Nome dos arquivos:** notas de C que têm o mesmo nome de uma nota de Go ganham o sufixo **"em C"** (ex.: `Tipos de Dados em C`), porque o Obsidian resolve `[[links]]` pelo nome do arquivo.
-
 ---
 
 ## 01 · Introdução
