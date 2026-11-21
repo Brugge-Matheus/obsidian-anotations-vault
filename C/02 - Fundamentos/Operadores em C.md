@@ -86,7 +86,7 @@ Somam ou subtraem 1 de um *lvalue*. A **posição** muda o valor da expressão:
 | `++i` (**pré**) | incrementa **e depois** usa | valor **novo** | `int r = ++i;` → `r = 6`, `i = 6` |
 | `i++` (**pós**) | usa **e depois** incrementa | valor **antigo** | `int r = i++;` → `r = 5`, `i = 6` |
 
-Sozinhos (`i++;`) são equivalentes. Funcionam também em ponteiros (*Aritmética de Ponteiros*, nota futura).
+Sozinhos (`i++;`) são equivalentes. Funcionam também em ponteiros ([[Aritmética de Ponteiros em C]]).
 
 > ⚠️ **Não modifique a mesma variável duas vezes na mesma expressão.** `i = i++ + ++i;` é **comportamento indefinido** (veja *ordem de avaliação* abaixo). O `gcc` avisa (`-Wsequence-point`), o `clang` também (`-Wunsequenced`) e ambos imprimiram `4`, mas o padrão **não garante nada**: outro compilador (ou o mesmo com outra flag) pode dar outro número.
 
@@ -198,8 +198,8 @@ Avalia o operando da esquerda, **descarta** o valor e produz o da direita: `int 
 |---|---|---|
 | `sizeof` | tamanho em bytes | [[Tipos de Dados em C]] |
 | `(tipo)` | conversão explícita (*cast*) | [[Conversões de Tipo em C]] |
-| `&` `*` (unários) | endereço de / valor apontado | *Ponteiros* (nota futura) |
-| `[]` `.` `->` `()` | índice, campo, campo via ponteiro, chamada | *Arrays*, *Structs*, *Funções* |
+| `&` `*` (unários) | endereço de / valor apontado | [[Ponteiros em C]] |
+| `[]` `.` `->` `()` | índice, campo, campo via ponteiro, chamada | [[Arrays em C]], *Structs*, *Funções* |
 
 Note que `&` e `*` têm **papel duplo**: `a & b` é E bit a bit (binário), `&a` é endereço (unário); `a * b` multiplica, `*p` acessa o apontado.
 

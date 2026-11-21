@@ -7,7 +7,7 @@ tags:
 # C — Mapa de Conteúdo
 
 > **Versão de referência:** C23 (ISO/IEC 9899:2024). Diferenças para C99/C11 serão destacadas quando importarem.
-> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · próximo: módulo 03 (Ponteiros e Memória)
+> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · módulo 03 (Ponteiros, Memória e Arrays): 4 de 8 notas
 
 ---
 
@@ -36,80 +36,81 @@ tags:
 
 | #   | Nota                       | Em uma linha                                               | Status |
 | --- | -------------------------- | ---------------------------------------------------------- | ------ |
-| 12  | Ponteiros                  | Endereços, `&` e `*`, `NULL`, ponteiros para ponteiros     | ⏳      |
-| 13  | Aritmética de Ponteiros    | Somar/subtrair, relação com o tamanho do tipo              | ⏳      |
-| 14  | Arrays e Ponteiros         | *Decay*, indexação, arrays multidimensionais               | ⏳      |
-| 15  | Strings em C               | `char[]`, terminador `\0`, `<string.h>`, armadilhas        | ⏳      |
-| 16  | Alocação Dinâmica          | `malloc`, `calloc`, `realloc`, `free`                      | ⏳      |
-| 17  | Stack vs Heap              | Onde cada coisa vive, tempo de vida, fragmentação          | ⏳      |
-| 18  | Erros Clássicos de Memória | *Leak*, *use-after-free*, *double free*, *buffer overflow* | ⏳      |
+| 12  | [[Arrays em C]]            | Declaração, inicialização, memória contígua, limites, multidimensionais | ✅      |
+| 13  | [[Ponteiros em C]]         | Endereços, `&` e `*`, `NULL`, `const`, `void *`, ponteiros para ponteiros | ✅      |
+| 14  | [[Aritmética de Ponteiros em C]] | `p + n`, `p2 - p1`, "um além do fim", percursos com ponteiros      | ✅      |
+| 15  | [[Arrays e Ponteiros em C]] | *Decay*, `v[i]` ≡ `*(v+i)`, arrays em parâmetros, `char s[]` × `char *s` | ✅      |
+| 16  | Strings em C               | `char[]`, terminador `\0`, `<string.h>`, armadilhas        | ⏳      |
+| 17  | Alocação Dinâmica          | `malloc`, `calloc`, `realloc`, `free`                      | ⏳      |
+| 18  | Stack vs Heap              | Onde cada coisa vive, tempo de vida, fragmentação          | ⏳      |
+| 19  | Erros Clássicos de Memória | *Leak*, *use-after-free*, *double free*, *buffer overflow* | ⏳      |
 
 ## 04 · Tipos Compostos
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 19 | Structs | Campos, inicialização, passagem por valor × ponteiro | ⏳ |
-| 20 | Alinhamento e Padding | Por que `sizeof(struct)` é maior que a soma dos campos | ⏳ |
-| 21 | Unions | Mesma memória, vários tipos; *type punning* | ⏳ |
-| 22 | Enums e `typedef` | Constantes nomeadas, apelidos de tipos | ⏳ |
-| 23 | Campos de Bits e Máscaras | *Bitfields*, operadores bit a bit, registradores de hardware | ⏳ |
+| 20 | Structs | Campos, inicialização, passagem por valor × ponteiro | ⏳ |
+| 21 | Alinhamento e Padding | Por que `sizeof(struct)` é maior que a soma dos campos | ⏳ |
+| 22 | Unions | Mesma memória, vários tipos; *type punning* | ⏳ |
+| 23 | Enums e `typedef` | Constantes nomeadas, apelidos de tipos | ⏳ |
+| 24 | Campos de Bits e Máscaras | *Bitfields*, operadores bit a bit, registradores de hardware | ⏳ |
 
 ## 05 · Funções
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 24 | Funções — Fundamentos | Protótipos, parâmetros por valor, retorno | ⏳ |
-| 25 | Ponteiros para Função | *Callbacks*, tabelas de funções | ⏳ |
-| 26 | Funções Variádicas | `<stdarg.h>`, como `printf` funciona | ⏳ |
-| 27 | Recursão | Pilha de chamadas, custo, recursão de cauda | ⏳ |
+| 25 | Funções — Fundamentos | Protótipos, parâmetros por valor, retorno | ⏳ |
+| 26 | Ponteiros para Função | *Callbacks*, tabelas de funções | ⏳ |
+| 27 | Funções Variádicas | `<stdarg.h>`, como `printf` funciona | ⏳ |
+| 28 | Recursão | Pilha de chamadas, custo, recursão de cauda | ⏳ |
 
 ## 06 · Pré-processador e Modularização
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 28 | O Pré-processador | `#include`, `#define`, macros, `#ifdef` | ⏳ |
-| 29 | Arquivos de Cabeçalho | `.h` × `.c`, *header guards*, declaração × definição | ⏳ |
-| 30 | `static`, `extern` e Linkagem | Visibilidade entre arquivos, tempo de vida | ⏳ |
-| 31 | Bibliotecas Estáticas e Dinâmicas | `.a`, `.so`, linkagem, `-l` e `-L` | ⏳ |
-| 32 | Make e Build | `Makefile`, dependências, compilação incremental | ⏳ |
+| 29 | O Pré-processador | `#include`, `#define`, macros, `#ifdef` | ⏳ |
+| 30 | Arquivos de Cabeçalho | `.h` × `.c`, *header guards*, declaração × definição | ⏳ |
+| 31 | `static`, `extern` e Linkagem | Visibilidade entre arquivos, tempo de vida | ⏳ |
+| 32 | Bibliotecas Estáticas e Dinâmicas | `.a`, `.so`, linkagem, `-l` e `-L` | ⏳ |
+| 33 | Make e Build | `Makefile`, dependências, compilação incremental | ⏳ |
 
 ## 07 · Biblioteca Padrão e IO
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 33 | `stdio`: Entrada e Saída | `printf`, `scanf`, buffers, `fgets` | ⏳ |
-| 34 | Arquivos | `fopen`, `fread`, `fwrite`, modos, `FILE *` | ⏳ |
-| 35 | `stdlib` e Utilitários | `qsort`, `atoi`/`strtol`, `exit`, `rand` | ⏳ |
-| 36 | Tratamento de Erros | `errno`, códigos de retorno, `perror` | ⏳ |
+| 34 | `stdio`: Entrada e Saída | `printf`, `scanf`, buffers, `fgets` | ⏳ |
+| 35 | Arquivos | `fopen`, `fread`, `fwrite`, modos, `FILE *` | ⏳ |
+| 36 | `stdlib` e Utilitários | `qsort`, `atoi`/`strtol`, `exit`, `rand` | ⏳ |
+| 37 | Tratamento de Erros | `errno`, códigos de retorno, `perror` | ⏳ |
 
 ## 08 · C e o Sistema Operacional
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 37 | Chamadas de Sistema em C | `open`, `read`, `write`, a ponte entre `libc` e kernel | ⏳ |
-| 38 | Processos | `fork`, `exec`, `wait` | ⏳ |
-| 39 | Threads (pthreads) | `pthread_create`, mutexes, variáveis de condição | ⏳ |
-| 40 | Sinais | `signal`, `sigaction`, tratadores | ⏳ |
-| 41 | Pipes e Sockets | Comunicação entre processos e pela rede | ⏳ |
+| 38 | Chamadas de Sistema em C | `open`, `read`, `write`, a ponte entre `libc` e kernel | ⏳ |
+| 39 | Processos | `fork`, `exec`, `wait` | ⏳ |
+| 40 | Threads (pthreads) | `pthread_create`, mutexes, variáveis de condição | ⏳ |
+| 41 | Sinais | `signal`, `sigaction`, tratadores | ⏳ |
+| 42 | Pipes e Sockets | Comunicação entre processos e pela rede | ⏳ |
 
 ## 09 · C por Dentro
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 42 | Layout de Memória de um Programa | `text`, `data`, `bss`, *heap*, *stack* | ⏳ |
-| 43 | Comportamento Indefinido | UB, por que importa, como o compilador o explora | ⏳ |
-| 44 | Convenção de Chamada e ABI | Como argumentos e retorno passam, *stack frame* | ⏳ |
-| 45 | Do C ao Assembly | Ler a saída do compilador, otimizações (`-O2`) | ⏳ |
-| 46 | Endianness e Representação | *Little/big endian*, complemento de dois, ponto flutuante | ⏳ |
+| 43 | Layout de Memória de um Programa | `text`, `data`, `bss`, *heap*, *stack* | ⏳ |
+| 44 | Comportamento Indefinido | UB, por que importa, como o compilador o explora | ⏳ |
+| 45 | Convenção de Chamada e ABI | Como argumentos e retorno passam, *stack frame* | ⏳ |
+| 46 | Do C ao Assembly | Ler a saída do compilador, otimizações (`-O2`) | ⏳ |
+| 47 | Endianness e Representação | *Little/big endian*, complemento de dois, ponto flutuante | ⏳ |
 
 ## 10 · Ferramentas e Depuração
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 47 | GDB | Breakpoints, inspeção de memória, *core dumps* | ⏳ |
-| 48 | Valgrind e Sanitizers | `-fsanitize=address,undefined`, achar bugs de memória | ⏳ |
-| 49 | Warnings e Análise Estática | `-Wall -Wextra`, `clang-tidy`, `cppcheck` | ⏳ |
-| 50 | Testes em C | Testes simples, *asserts*, frameworks leves | ⏳ |
+| 48 | GDB | Breakpoints, inspeção de memória, *core dumps* | ⏳ |
+| 49 | Valgrind e Sanitizers | `-fsanitize=address,undefined`, achar bugs de memória | ⏳ |
+| 50 | Warnings e Análise Estática | `-Wall -Wextra`, `clang-tidy`, `cppcheck` | ⏳ |
+| 51 | Testes em C | Testes simples, *asserts*, frameworks leves | ⏳ |
 
 ---
 

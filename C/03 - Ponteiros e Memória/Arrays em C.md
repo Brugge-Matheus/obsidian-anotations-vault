@@ -6,7 +6,7 @@ source: "Padrão ISO C (C17/C23: arrays, inicializadores, VLA); experimentos com
 ---
 # Arrays em C
 
-📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=address` e `-fsanitize=bounds` | Anterior: [[Conversões de Tipo em C]] | Próxima: *Ponteiros* | Compare com [[Arrays e Slices]] (Go) e veja a visão geral em [[Arrays]] (Estruturas de Dados)
+📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=address` e `-fsanitize=bounds` | Anterior: [[Conversões de Tipo em C]] | Próxima: [[Ponteiros em C]] | Compare com [[Arrays e Slices]] (Go) e veja a visão geral em [[Arrays]] (Estruturas de Dados)
 
 ---
 
@@ -24,7 +24,7 @@ Três ideias definem tudo o que vem a seguir:
 2. **Contíguo:** os elementos ocupam **bytes seguidos**, sem lacunas.
 3. **Sem rede de proteção:** C **não verifica** se o índice é válido, nem guarda o tamanho junto do array (ao contrário de Go, [[Arrays e Slices]]).
 
-> 💡 **Endereço:** o número que identifica a posição de um byte na memória. Como o array é contíguo, basta conhecer o endereço do **primeiro** elemento e o tamanho do tipo para achar qualquer outro. O operador `&x` dá o endereço de `x`, e o formato `%p` do `printf` o imprime. Guardar e manipular endereços é o assunto de *Ponteiros*, próxima nota.
+> 💡 **Endereço:** o número que identifica a posição de um byte na memória. Como o array é contíguo, basta conhecer o endereço do **primeiro** elemento e o tamanho do tipo para achar qualquer outro. O operador `&x` dá o endereço de `x`, e o formato `%p` do `printf` o imprime. Guardar e manipular endereços é o assunto de [[Ponteiros em C]], próxima nota.
 
 ---
 
@@ -76,7 +76,7 @@ Para `int v[4] = {1, 2, 3, 4};` os endereços reais impressos foram:
 ```
 
 - Cada elemento está **4 bytes** depois do anterior (`sizeof(int)`); a diferença `(char *)&v[1] - (char *)&v[0]` deu **4**.
-- **`&v` e `&v[0]` são o mesmo endereço** (`0x...0720`): o array **começa** onde começa seu primeiro elemento (o que isso implica está em *Arrays e Ponteiros*).
+- **`&v` e `&v[0]` são o mesmo endereço** (`0x...0720`): o array **começa** onde começa seu primeiro elemento (o que isso implica está em [[Arrays e Ponteiros em C]]).
 - O endereço do elemento `i` é: **endereço de `v[0]` + `i × sizeof(elemento)`**. É por isso que o índice começa em **0**: ele é o **deslocamento** (*offset*) a partir do início.
 
 ---
@@ -132,7 +132,7 @@ void dobra(int v[], size_t n) {
 - A função **altera o array original** (não existe cópia);
 - O tamanho se **perde**: por isso o padrão em C é **passar o tamanho como outro parâmetro** (`size_t n`). O `gcc` avisa quem tenta usar `sizeof` ali (`-Wsizeof-array-argument`: *'sizeof' on array function parameter 'v' will return size of 'int *'*).
 
-O mecanismo por trás disso (chamado ***decay***) é o tema de *Arrays e Ponteiros*.
+O mecanismo por trás disso (chamado ***decay***) é o tema de [[Arrays e Ponteiros em C]].
 
 ---
 

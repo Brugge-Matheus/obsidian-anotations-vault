@@ -126,7 +126,7 @@ printf("%d  (%.17g)\n", 0.1 + 0.2 == 0.3, 0.1 + 0.2);
 |---|---|
 | Função **sem retorno** | `void limpar(void);` |
 | Função **sem parâmetros** | `int main(void)` (veja [[Convenções e Estilo]]) |
-| **Ponteiro genérico** | `void *p` (visto em *Ponteiros*) |
+| **Ponteiro genérico** | `void *p` (visto em [[Ponteiros em C]]) |
 
 ---
 

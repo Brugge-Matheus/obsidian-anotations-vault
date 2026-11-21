@@ -6,7 +6,7 @@ source: "Padrão ISO C (C17/C23: conversões, promoções inteiras, conversões 
 ---
 # Conversões de Tipo em C
 
-📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=undefined` e `-Wconversion` | Anterior: [[Controle de Fluxo em C]] | Próxima: *Ponteiros* (módulo 03)
+📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=undefined` e `-Wconversion` | Anterior: [[Controle de Fluxo em C]] | Próxima: [[Arrays em C]] (módulo 03)
 
 ---
 
@@ -132,7 +132,7 @@ Isso funciona porque o **cast é um operador unário de precedência alta**: `(d
 - **Converte o valor** (regras acima) e produz um **novo valor**; a variável original **não muda**.
 - É útil para: forçar divisão real, **estreitar de propósito** (`(uint8_t)x`), cortar os bits extras das promoções e **descartar** um resultado com `(void)f();`.
 - ⚠️ **O cast silencia o compilador**: ele deixa de avisar justamente onde havia risco. Cada `(tipo)` deve ter uma **razão**; se estiver "para o aviso sumir", o problema continua lá.
-- Casts entre **ponteiros** (`(char *)p`) e para **remover `const`** têm riscos próprios e serão tratados em *Ponteiros* e *Tipos Compostos*.
+- Casts entre **ponteiros** (`(char *)p`) e para **remover `const`** têm riscos próprios e serão tratados em [[Ponteiros em C]] e *Tipos Compostos*.
 
 ---
 
@@ -158,8 +158,8 @@ if (isalpha((unsigned char)c)) { ... }     // cast necessário e justificado
 | Caso | Regra | Detalhes |
 |---|---|---|
 | `void *` → qualquer ponteiro | **Implícita em C** (não em C++): `int *p = malloc(n * sizeof *p);` sem cast | *Alocação Dinâmica* |
-| O inteiro **`0`** → ponteiro nulo | `p = 0;` (e `NULL`) é válido | *Ponteiros* |
-| Ponteiro ↔ inteiro | Só com cast, e use **`uintptr_t`** ([[Tipos de Dados em C]]) | *Ponteiros* |
+| O inteiro **`0`** → ponteiro nulo | `p = 0;` (e `NULL`) é válido | [[Ponteiros em C]] |
+| Ponteiro ↔ inteiro | Só com cast, e use **`uintptr_t`** ([[Tipos de Dados em C]]) | [[Ponteiros em C]] |
 | Valor → `bool` | Qualquer valor **≠ 0** vira `1` | [[Tipos de Dados em C]] |
 
 ---
