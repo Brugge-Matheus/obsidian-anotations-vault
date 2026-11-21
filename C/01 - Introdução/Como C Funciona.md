@@ -16,8 +16,6 @@ Um arquivo `.c` é **só texto**. Para virar um programa rodando, ele passa por 
 
 ```
  ola.c ──► [ COMPILADOR ] ──► ola (executável) ──► [ SO carrega ] ──► [ CPU executa ]
- texto      traduz para           arquivo ELF          cria um             instruções
- humano     código de máquina     no disco             PROCESSO            de máquina
 ```
 
 Três atores, três momentos diferentes:

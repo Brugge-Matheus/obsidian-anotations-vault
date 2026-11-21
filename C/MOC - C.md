@@ -32,17 +32,17 @@ tags:
 | 10  | [[Controle de Fluxo em C]]        | `if`, `switch` (*fall-through*), laços, `break`/`continue`, `goto` e salto no assembly | ✅      |
 | 11  | [[Conversões de Tipo em C]]       | Promoções inteiras, conversões usuais, `signed` × `unsigned`, *casts*, `-Wconversion`  | ✅      |
 
-## 03 · Ponteiros e Memória
+## 03 · Ponteiros, Memória e Arrays
 
-| # | Nota | Em uma linha | Status |
-| --- | --- | --- | --- |
-| 12 | Ponteiros | Endereços, `&` e `*`, `NULL`, ponteiros para ponteiros | ⏳ |
-| 13 | Aritmética de Ponteiros | Somar/subtrair, relação com o tamanho do tipo | ⏳ |
-| 14 | Arrays e Ponteiros | *Decay*, indexação, arrays multidimensionais | ⏳ |
-| 15 | Strings em C | `char[]`, terminador `\0`, `<string.h>`, armadilhas | ⏳ |
-| 16 | Alocação Dinâmica | `malloc`, `calloc`, `realloc`, `free` | ⏳ |
-| 17 | Stack vs Heap | Onde cada coisa vive, tempo de vida, fragmentação | ⏳ |
-| 18 | Erros Clássicos de Memória | *Leak*, *use-after-free*, *double free*, *buffer overflow* | ⏳ |
+| #   | Nota                       | Em uma linha                                               | Status |
+| --- | -------------------------- | ---------------------------------------------------------- | ------ |
+| 12  | Ponteiros                  | Endereços, `&` e `*`, `NULL`, ponteiros para ponteiros     | ⏳      |
+| 13  | Aritmética de Ponteiros    | Somar/subtrair, relação com o tamanho do tipo              | ⏳      |
+| 14  | Arrays e Ponteiros         | *Decay*, indexação, arrays multidimensionais               | ⏳      |
+| 15  | Strings em C               | `char[]`, terminador `\0`, `<string.h>`, armadilhas        | ⏳      |
+| 16  | Alocação Dinâmica          | `malloc`, `calloc`, `realloc`, `free`                      | ⏳      |
+| 17  | Stack vs Heap              | Onde cada coisa vive, tempo de vida, fragmentação          | ⏳      |
+| 18  | Erros Clássicos de Memória | *Leak*, *use-after-free*, *double free*, *buffer overflow* | ⏳      |
 
 ## 04 · Tipos Compostos
 

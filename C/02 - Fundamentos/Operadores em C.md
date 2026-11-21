@@ -105,11 +105,11 @@ Sozinhos (`i++;`) são equivalentes. Funcionam também em ponteiros (*Aritmétic
 
 # 🔗 Operadores lógicos: `&&`, `||` e `!`
 
-| Operador | Significado | Observação |
-|---|---|---|
-| `&&` | E | Verdadeiro se **ambos** forem ≠ 0 |
-| `\|\|` | OU | Verdadeiro se **ao menos um** for ≠ 0 |
-| `!` | NÃO | `!0` = `1`; `!` de qualquer valor ≠ 0 = `0` |
+| Operador | Significado | Observação                                  |
+| -------- | ----------- | ------------------------------------------- |
+| `&&`     | E           | Verdadeiro se **ambos** forem ≠ 0           |
+| `\|\|`   | OU          | Verdadeiro se **ao menos um** for ≠ 0       |
+| `!`      | NÃO         | `!0` = `1`; `!` de qualquer valor ≠ 0 = `0` |
 
 Aceitam **qualquer valor escalar** (0 é falso, o resto é verdadeiro) e **sempre devolvem `0` ou `1`**. Daí o truque `!!x`, que **normaliza** qualquer valor para `0`/`1` (`!!5` = `1`).
 
@@ -138,14 +138,14 @@ Isso é uma ferramenta de **segurança**: `i < n && v[i] > 0` só lê `v[i]` se 
 
 Operam **bit por bit** sobre inteiros (a representação binária está em [[Bits e Bytes]]). Os operandos sofrem as **promoções inteiras** ([[Conversões de Tipo em C]]).
 
-| Operador | Nome | Regra | `12 op 10` (`1100` e `1010`) |
-|---|---|---|---|
-| `&` | E | 1 só se **ambos** 1 | `1000` = **8** |
-| `\|` | OU | 1 se **algum** 1 | `1110` = **14** |
-| `^` | OU exclusivo (XOR) | 1 se forem **diferentes** | `0110` = **6** |
-| `~` | NÃO (inverte todos os bits) | `0↔1` | `~12` (em 8 bits) = `11110011` = **243** |
-| `<<` | Deslocamento à esquerda | empurra bits, entra `0` | `1 << 3` = **8** |
-| `>>` | Deslocamento à direita | empurra bits para baixo | `0xF0 >> 4` = **15** |
+| Operador | Nome                        | Regra                     | `12 op 10` (`1100` e `1010`)             |
+| -------- | --------------------------- | ------------------------- | ---------------------------------------- |
+| `&`      | E                           | 1 só se **ambos** 1       | `1000` = **8**                           |
+| `\|`     | OU                          | 1 se **algum** 1          | `1110` = **14**                          |
+| `^`      | OU exclusivo (XOR)          | 1 se forem **diferentes** | `0110` = **6**                           |
+| `~`      | NÃO (inverte todos os bits) | `0↔1`                     | `~12` (em 8 bits) = `11110011` = **243** |
+| `<<`     | Deslocamento à esquerda     | empurra bits, entra `0`   | `1 << 3` = **8**                         |
+| `>>`     | Deslocamento à direita      | empurra bits para baixo   | `0xF0 >> 4` = **15**                     |
 
 `x << n` equivale a **multiplicar por 2ⁿ**, e `x >> n` a **dividir por 2ⁿ** (em valores sem sinal).
 
@@ -209,23 +209,23 @@ Note que `&` e `*` têm **papel duplo**: `a & b` é E bit a bit (binário), `&a`
 
 Quando há vários operadores na mesma expressão, a **precedência** diz quais ligam **primeiro** (como na matemática: `*` antes de `+`) e a **associatividade** desempata operadores de **mesma** precedência (da esquerda para a direita ou o contrário). Da **mais alta** para a **mais baixa**:
 
-| Nível | Operadores | Associatividade |
-|---|---|---|
-| 1 | `()` `[]` `.` `->` `x++` `x--` (pós-fixos) | esquerda → direita |
-| 2 | `++x` `--x` `+` `-` (unários) `!` `~` `*` `&` `sizeof` `(tipo)` | **direita → esquerda** |
-| 3 | `*` `/` `%` | esquerda → direita |
-| 4 | `+` `-` | esquerda → direita |
-| 5 | `<<` `>>` | esquerda → direita |
-| 6 | `<` `<=` `>` `>=` | esquerda → direita |
-| 7 | `==` `!=` | esquerda → direita |
-| 8 | `&` | esquerda → direita |
-| 9 | `^` | esquerda → direita |
-| 10 | `\|` | esquerda → direita |
-| 11 | `&&` | esquerda → direita |
-| 12 | `\|\|` | esquerda → direita |
-| 13 | `?:` | **direita → esquerda** |
-| 14 | `=` `+=` `-=` `*=` `/=` `%=` `<<=` `>>=` `&=` `^=` `\|=` | **direita → esquerda** |
-| 15 | `,` | esquerda → direita |
+| Nível | Operadores                                                      | Associatividade        |
+| ----- | --------------------------------------------------------------- | ---------------------- |
+| 1     | `()` `[]` `.` `->` `x++` `x--` (pós-fixos)                      | esquerda → direita     |
+| 2     | `++x` `--x` `+` `-` (unários) `!` `~` `*` `&` `sizeof` `(tipo)` | **direita → esquerda** |
+| 3     | `*` `/` `%`                                                     | esquerda → direita     |
+| 4     | `+` `-`                                                         | esquerda → direita     |
+| 5     | `<<` `>>`                                                       | esquerda → direita     |
+| 6     | `<` `<=` `>` `>=`                                               | esquerda → direita     |
+| 7     | `==` `!=`                                                       | esquerda → direita     |
+| 8     | `&`                                                             | esquerda → direita     |
+| 9     | `^`                                                             | esquerda → direita     |
+| 10    | `\|`                                                            | esquerda → direita     |
+| 11    | `&&`                                                            | esquerda → direita     |
+| 12    | `\|\|`                                                          | esquerda → direita     |
+| 13    | `?:`                                                            | **direita → esquerda** |
+| 14    | `=` `+=` `-=` `*=` `/=` `%=` `<<=` `>>=` `&=` `^=` `\|=`        | **direita → esquerda** |
+| 15    | `,`                                                             | esquerda → direita     |
 
 Não decore a tabela: **memorize o essencial e use parênteses** no resto. As armadilhas reais:
 
