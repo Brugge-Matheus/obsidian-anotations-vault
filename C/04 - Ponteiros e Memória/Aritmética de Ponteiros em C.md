@@ -128,7 +128,7 @@ while (*e) e++;               // avança até o byte zero (o '\0' final)
 // e - s  →  9
 ```
 
-É a lógica do `strlen` ([[Tipos de Dados em C]] mostra o `'\0'` em `char s[] = "oi"`; o assunto completo está em *Strings em C*).
+É a lógica do `strlen` ([[Tipos de Dados em C]] mostra o `'\0'` em `char s[] = "oi"`; o assunto completo está em [[Strings em C]]).
 
 ---
 

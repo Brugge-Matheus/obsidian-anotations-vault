@@ -170,7 +170,7 @@ t[0] = 'x';       // ✅ OK: t é uma CÓPIA em memória gravável
 s[0] = 'x';       // ❌ Segmentation fault (exit code 139)
 ```
 
-`char t[] = "abc"` **copia** o texto para um array seu; `char *s = "abc"` apenas **aponta** para o literal. Detalhes em *Strings em C*. Boa prática: `const char *s = "abc";`, que faz o compilador impedir o erro.
+`char t[] = "abc"` **copia** o texto para um array seu; `char *s = "abc"` apenas **aponta** para o literal. Detalhes em [[Strings em C]]. Boa prática: `const char *s = "abc";`, que faz o compilador impedir o erro.
 
 ---
 

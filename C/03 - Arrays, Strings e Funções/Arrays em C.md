@@ -36,7 +36,7 @@ Três ideias definem tudo o que vem a seguir:
 | `int b[] = {10, 20, 30, 40};` | o compilador **conta**: `sizeof b` = 16 bytes (4 × 4) |
 | `int c[5] = {0};` | **todos zero** (idioma para zerar) |
 | `int d[6] = {[1] = 7, [4] = 9};` | **designada** (C99): `0 7 0 0 9 0` |
-| `char s[] = "oi";` | **3** bytes: `'o'`, `'i'` e o terminador `'\0'` (*Strings em C*) |
+| `char s[] = "oi";` | **3** bytes: `'o'`, `'i'` e o terminador `'\0'` ([[Strings em C]]) |
 | `char t[] = {'o', 'i'};` | **2** bytes, **sem** terminador |
 
 Valores reais conferidos acima. Pontos de atenção:

@@ -158,7 +158,7 @@ const char *s = "oi";    // ponteiro para o literal, que fica em .rodata (soment
 s[0] = 'O';              // UB → na prática, Segmentation fault     sizeof s = 8
 ```
 
-Teste real: modificar o literal apontado por `char *s = "oi";` terminou em **`Segmentation fault`** (código 139). Os dois parecem iguais ao **ler**, mas são diferentes: o array **contém** os bytes; o ponteiro **aponta** para bytes que não são seus. Use **`const char *`** para literais (o `gcc` com `-Wwrite-strings` avisa quando falta o `const`). O tema completo está em *Strings em C*.
+Teste real: modificar o literal apontado por `char *s = "oi";` terminou em **`Segmentation fault`** (código 139). Os dois parecem iguais ao **ler**, mas são diferentes: o array **contém** os bytes; o ponteiro **aponta** para bytes que não são seus. Use **`const char *`** para literais (o `gcc` com `-Wwrite-strings` avisa quando falta o `const`). O tema completo está em [[Strings em C]].
 
 ---
 
