@@ -157,7 +157,7 @@ if (isalpha((unsigned char)c)) { ... }     // cast necessário e justificado
 
 | Caso | Regra | Detalhes |
 |---|---|---|
-| `void *` → qualquer ponteiro | **Implícita em C** (não em C++): `int *p = malloc(n * sizeof *p);` sem cast | *Alocação Dinâmica* |
+| `void *` → qualquer ponteiro | **Implícita em C** (não em C++): `int *p = malloc(n * sizeof *p);` sem cast | [[Alocação Dinâmica em C]] |
 | O inteiro **`0`** → ponteiro nulo | `p = 0;` (e `NULL`) é válido | [[Ponteiros em C]] |
 | Ponteiro ↔ inteiro | Só com cast, e use **`uintptr_t`** ([[Tipos de Dados em C]]) | [[Ponteiros em C]] |
 | Valor → `bool` | Qualquer valor **≠ 0** vira `1` | [[Tipos de Dados em C]] |

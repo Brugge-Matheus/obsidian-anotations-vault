@@ -7,7 +7,7 @@ tags:
 # C — Mapa de Conteúdo
 
 > **Versão de referência:** C23 (ISO/IEC 9899:2024). Diferenças para C99/C11 serão destacadas quando importarem.
-> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · módulo 03 (Arrays, Strings e Funções) completo ✅ · módulo 04 (Ponteiros e Memória): 3 de 7 notas
+> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · módulo 03 (Arrays, Strings e Funções) completo ✅ · módulo 04 (Ponteiros e Memória) completo ✅
 
 ---
 
@@ -49,10 +49,10 @@ tags:
 | 17  | [[Ponteiros em C]]         | Endereços, `&` e `*`, `NULL`, `const`, `void *`, ponteiros para ponteiros | ✅      |
 | 18  | [[Aritmética de Ponteiros em C]] | `p + n`, `p2 - p1`, "um além do fim", percursos com ponteiros      | ✅      |
 | 19  | [[Arrays e Ponteiros em C]] | *Decay*, `v[i]` ≡ `*(v+i)`, arrays em parâmetros, `char s[]` × `char *s` | ✅      |
-| 20  | Funções e Ponteiros        | Parâmetros por ponteiro, retorno de ponteiros, ponteiros para função, *callbacks*, `qsort` | ⏳      |
-| 21  | Alocação Dinâmica          | `malloc`, `calloc`, `realloc`, `free`                      | ⏳      |
-| 22  | Stack vs Heap              | Onde cada coisa vive, tempo de vida, fragmentação          | ⏳      |
-| 23  | Erros Clássicos de Memória | *Leak*, *use-after-free*, *double free*, *buffer overflow* | ⏳      |
+| 20  | [[Funções e Ponteiros em C]] | Parâmetros por ponteiro, retorno de ponteiros, ponteiros para função, *callbacks*, `qsort` | ✅      |
+| 21  | [[Alocação Dinâmica em C]] | `malloc`, `calloc`, `realloc`, `free`, propriedade do bloco | ✅      |
+| 22  | [[Stack vs Heap em C]]     | Onde cada coisa vive, tempo de vida, fragmentação          | ✅      |
+| 23  | [[Erros Clássicos de Memória em C]] | *Leak*, *use-after-free*, *double free*, *buffer overflow*, ASan/Valgrind | ✅      |
 
 ## 05 · Tipos Compostos
 

@@ -91,7 +91,7 @@ Um ponteiro só é útil se apontar para algo **válido**. Há quatro situaçõe
 
 **`NULL`** é o valor reservado para "não aponta para nada" (de `<stddef.h>`; o inteiro `0` em contexto de ponteiro também vale, e `p == NULL` e `!p` dão o mesmo resultado, testado). Desreferenciar `NULL` é UB, mas o sistema operacional **não mapeia** o endereço 0, então o programa **morre com `Segmentation fault`** (código de saída 139). Com o UBSan a mensagem é clara: `load of null pointer of type 'int'`.
 
-> ✅ **Regras:** (1) **inicialize** todo ponteiro (`= &x`, `= NULL` ou `= malloc(...)`); (2) **verifique** se é `NULL` antes de usar quando ele puder falhar (`malloc`, `fopen`); (3) depois de liberar a memória, **atribua `NULL`** ao ponteiro. A nota *Erros Clássicos de Memória* detalha os danos.
+> ✅ **Regras:** (1) **inicialize** todo ponteiro (`= &x`, `= NULL` ou `= malloc(...)`); (2) **verifique** se é `NULL` antes de usar quando ele puder falhar (`malloc`, `fopen`); (3) depois de liberar a memória, **atribua `NULL`** ao ponteiro. A nota [[Erros Clássicos de Memória em C]] detalha os danos.
 
 ---
 

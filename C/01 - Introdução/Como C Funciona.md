@@ -154,7 +154,7 @@ $ size ola
 | **stack** | Variáveis locais e endereços de retorno | `int x = soma(2, 3);` dentro de `main` |
 | **heap** | Memória alocada em tempo de execução | `malloc(100)` |
 
-Esse mapa é a base para entender **ponteiros**, **escopo**, **tempo de vida** e **erros de memória**. Cada região será aprofundada na nota *Layout de Memória de um Programa* e em *Stack vs Heap*. Para a parte de **memória virtual** por trás disso, veja [[Memória Virtual]] e [[Paginação]].
+Esse mapa é a base para entender **ponteiros**, **escopo**, **tempo de vida** e **erros de memória**. Cada região será aprofundada na nota *Layout de Memória de um Programa* e em [[Stack vs Heap em C]]. Para a parte de **memória virtual** por trás disso, veja [[Memória Virtual]] e [[Paginação]].
 
 ---
 

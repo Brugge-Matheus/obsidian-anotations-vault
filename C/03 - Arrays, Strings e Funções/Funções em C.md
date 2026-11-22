@@ -91,7 +91,7 @@ nivel2: &b = 0x7ffcde822ca4      ← 32 bytes MAIS BAIXO
 nivel3: &c = 0x7ffcde822c84      ← mais 32 bytes abaixo
 ```
 
-Cada chamada **empilha** um quadro (32 bytes aqui) em endereços **cada vez menores**: no x86 a pilha **cresce para baixo**. Quando as chamadas retornam, o espaço é reaproveitado. A pilha é **limitada** (8 MiB no Linux, [[Arrays em C]]), tema de [[Recursão em C]] e de *Stack vs Heap*.
+Cada chamada **empilha** um quadro (32 bytes aqui) em endereços **cada vez menores**: no x86 a pilha **cresce para baixo**. Quando as chamadas retornam, o espaço é reaproveitado. A pilha é **limitada** (8 MiB no Linux, [[Arrays em C]]), tema de [[Recursão em C]] e de [[Stack vs Heap em C]].
 
 ## Como os argumentos chegam (convenção de chamada)
 

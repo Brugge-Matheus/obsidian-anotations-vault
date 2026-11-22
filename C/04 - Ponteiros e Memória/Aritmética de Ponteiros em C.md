@@ -87,7 +87,7 @@ A aritmética só é **definida** enquanto o ponteiro permanece **dentro do mesm
 
 Essa exceção existe para tornar o **laço com ponteiros** natural: o ponteiro de parada é o "fim" que nunca é lido. Testado, `v + 5 - v` deu **5**.
 
-> ⚠️ Os mesmos perigos de [[Arrays em C]] valem aqui: C **não verifica** nada. Ultrapassar os limites com ponteiros é a origem do *buffer overflow* (*Erros Clássicos de Memória*).
+> ⚠️ Os mesmos perigos de [[Arrays em C]] valem aqui: C **não verifica** nada. Ultrapassar os limites com ponteiros é a origem do *buffer overflow* ([[Erros Clássicos de Memória em C]]).
 
 ---
 

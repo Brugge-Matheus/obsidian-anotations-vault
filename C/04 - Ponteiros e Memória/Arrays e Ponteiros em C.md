@@ -6,7 +6,7 @@ source: "Padrão ISO C (C17/C23: conversão de array em ponteiro, parâmetros, a
 ---
 # Arrays e Ponteiros em C
 
-📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3 | Anterior: [[Aritmética de Ponteiros em C]] | Próxima: *Funções e Ponteiros* | Compare com [[Arrays e Slices]] (Go)
+📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3 | Anterior: [[Aritmética de Ponteiros em C]] | Próxima: [[Funções e Ponteiros em C]] | Compare com [[Arrays e Slices]] (Go)
 
 ---
 

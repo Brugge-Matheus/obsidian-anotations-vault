@@ -174,7 +174,7 @@ int *f(void) { int x = 42; return &x; }    // x morre quando f retorna
 warning: function returns address of local variable [-Wreturn-local-addr]
 ```
 
-Isso se chama **ponteiro pendurado** (*dangling pointer*) e será aprofundado em *Stack vs Heap* e *Erros Clássicos de Memória*. Em Go o compilador move `x` para o heap automaticamente (*escape analysis*); **em C, a responsabilidade é sua**.
+Isso se chama **ponteiro pendurado** (*dangling pointer*) e será aprofundado em [[Stack vs Heap em C]] e [[Erros Clássicos de Memória em C]]. Em Go o compilador move `x` para o heap automaticamente (*escape analysis*); **em C, a responsabilidade é sua**.
 
 > 📌 **Mais à frente:** `static` e `extern` em **escopo de arquivo** controlam a **linkagem** (visibilidade **entre** arquivos `.c`), assunto da nota *static, extern e Linkagem*.
 

@@ -92,7 +92,7 @@ Um array `int v[5]` tem índices **0 a 4**. Usar `v[5]` (ou `v[-1]`) lê ou escr
 | `-fsanitize=address` (ASan) | `stack-buffer-overflow ... READ of size 4` |
 | `-O2 -Wall` com índice **constante** (`v[7]`) | `-Warray-bounds`: *array subscript 7 is above array bounds of 'int[5]'* |
 
-O silêncio é o perigo: ler fora devolve lixo; **escrever** fora **corrompe** outras variáveis, o endereço de retorno e abre brechas de segurança (*buffer overflow*, em *Erros Clássicos de Memória*). Durante o desenvolvimento, compile com `-fsanitize=address,undefined`, como sugerido em [[Convenções e Estilo]].
+O silêncio é o perigo: ler fora devolve lixo; **escrever** fora **corrompe** outras variáveis, o endereço de retorno e abre brechas de segurança (*buffer overflow*, em [[Erros Clássicos de Memória em C]]). Durante o desenvolvimento, compile com `-fsanitize=address,undefined`, como sugerido em [[Convenções e Estilo]].
 
 > ✅ **Regra:** o laço correto sobre `n` elementos é `i < n` (**nunca `<=`**), e o índice válido máximo é **`n - 1`**.
 
@@ -164,7 +164,7 @@ O elemento `m[i][j]` está no deslocamento **`i × colunas + j`** (elementos) a 
 - **VLA** (*variable length array*, C99; opcional desde o C11): `int n = 3; int vla[n];` — o tamanho vem de uma variável em tempo de execução (`sizeof vla` deu **12**). Não aceita inicializador e vive na **pilha**.
 - **Limite da pilha:** arrays locais grandes estouram a pilha. Um `char grande[16 * 1024 * 1024]` local (16 MiB) causou **`Segmentation fault`** (código 139) com a pilha padrão de **8 MiB** (`ulimit -s` = 8192).
 
-Para tamanho **decidido em tempo de execução** ou **grande**, a solução é a **alocação dinâmica** (*Alocação Dinâmica*; onde cada coisa vive: *Stack vs Heap*).
+Para tamanho **decidido em tempo de execução** ou **grande**, a solução é a **alocação dinâmica** ([[Alocação Dinâmica em C]]; onde cada coisa vive: [[Stack vs Heap em C]]).
 
 ---
 
