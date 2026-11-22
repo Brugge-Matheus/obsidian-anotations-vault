@@ -6,7 +6,7 @@ source: "Padrão ISO C (C17/C23: arrays, inicializadores, VLA); experimentos com
 ---
 # Arrays em C
 
-📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=address` e `-fsanitize=bounds` | Anterior: [[Conversões de Tipo em C]] | Próxima: [[Ponteiros em C]] | Compare com [[Arrays e Slices]] (Go) e veja a visão geral em [[Arrays]] (Estruturas de Dados)
+📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=address` e `-fsanitize=bounds` | Anterior: [[Conversões de Tipo em C]] | Próxima: *Strings em C* | Compare com [[Arrays e Slices]] (Go) e veja a visão geral em [[Arrays]] (Estruturas de Dados)
 
 ---
 
@@ -24,7 +24,7 @@ Três ideias definem tudo o que vem a seguir:
 2. **Contíguo:** os elementos ocupam **bytes seguidos**, sem lacunas.
 3. **Sem rede de proteção:** C **não verifica** se o índice é válido, nem guarda o tamanho junto do array (ao contrário de Go, [[Arrays e Slices]]).
 
-> 💡 **Endereço:** o número que identifica a posição de um byte na memória. Como o array é contíguo, basta conhecer o endereço do **primeiro** elemento e o tamanho do tipo para achar qualquer outro. O operador `&x` dá o endereço de `x`, e o formato `%p` do `printf` o imprime. Guardar e manipular endereços é o assunto de [[Ponteiros em C]], próxima nota.
+> 💡 **Endereço:** o número que identifica a posição de um byte na memória. Como o array é contíguo, basta conhecer o endereço do **primeiro** elemento e o tamanho do tipo para achar qualquer outro. O operador `&x` dá o endereço de `x`, e o formato `%p` do `printf` o imprime. Guardar e manipular endereços é o assunto de [[Ponteiros em C]] (módulo 04); por ora basta saber que `&x` dá o endereço de `x`.
 
 ---
 

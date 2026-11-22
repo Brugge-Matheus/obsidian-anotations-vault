@@ -7,7 +7,7 @@ tags:
 # C — Mapa de Conteúdo
 
 > **Versão de referência:** C23 (ISO/IEC 9899:2024). Diferenças para C99/C11 serão destacadas quando importarem.
-> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · módulo 03 (Ponteiros, Memória e Arrays): 4 de 8 notas
+> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · módulo 03 (Arrays, Strings e Funções): 1 de 5 notas · módulo 04 (Ponteiros e Memória): 3 de 7 notas
 
 ---
 
@@ -32,37 +32,37 @@ tags:
 | 10  | [[Controle de Fluxo em C]]        | `if`, `switch` (*fall-through*), laços, `break`/`continue`, `goto` e salto no assembly | ✅      |
 | 11  | [[Conversões de Tipo em C]]       | Promoções inteiras, conversões usuais, `signed` × `unsigned`, *casts*, `-Wconversion`  | ✅      |
 
-## 03 · Ponteiros, Memória e Arrays
+## 03 · Arrays, Strings e Funções
 
 | #   | Nota                       | Em uma linha                                               | Status |
 | --- | -------------------------- | ---------------------------------------------------------- | ------ |
 | 12  | [[Arrays em C]]            | Declaração, inicialização, memória contígua, limites, multidimensionais | ✅      |
-| 13  | [[Ponteiros em C]]         | Endereços, `&` e `*`, `NULL`, `const`, `void *`, ponteiros para ponteiros | ✅      |
-| 14  | [[Aritmética de Ponteiros em C]] | `p + n`, `p2 - p1`, "um além do fim", percursos com ponteiros      | ✅      |
-| 15  | [[Arrays e Ponteiros em C]] | *Decay*, `v[i]` ≡ `*(v+i)`, arrays em parâmetros, `char s[]` × `char *s` | ✅      |
-| 16  | Strings em C               | `char[]`, terminador `\0`, `<string.h>`, armadilhas        | ⏳      |
-| 17  | Alocação Dinâmica          | `malloc`, `calloc`, `realloc`, `free`                      | ⏳      |
-| 18  | Stack vs Heap              | Onde cada coisa vive, tempo de vida, fragmentação          | ⏳      |
-| 19  | Erros Clássicos de Memória | *Leak*, *use-after-free*, *double free*, *buffer overflow* | ⏳      |
+| 13  | Strings em C               | `char[]`, terminador `\0`, `<string.h>`, armadilhas        | ⏳      |
+| 14  | Funções em C               | Protótipos, parâmetros por valor, retorno, `static`, `inline` | ⏳      |
+| 15  | Recursão em C              | Pilha de chamadas, custo, recursão de cauda                | ⏳      |
+| 16  | Funções Variádicas em C    | `<stdarg.h>`, como `printf` funciona                       | ⏳      |
 
-## 04 · Tipos Compostos
+## 04 · Ponteiros e Memória
 
-| # | Nota | Em uma linha | Status |
-| --- | --- | --- | --- |
-| 20 | Structs | Campos, inicialização, passagem por valor × ponteiro | ⏳ |
-| 21 | Alinhamento e Padding | Por que `sizeof(struct)` é maior que a soma dos campos | ⏳ |
-| 22 | Unions | Mesma memória, vários tipos; *type punning* | ⏳ |
-| 23 | Enums e `typedef` | Constantes nomeadas, apelidos de tipos | ⏳ |
-| 24 | Campos de Bits e Máscaras | *Bitfields*, operadores bit a bit, registradores de hardware | ⏳ |
+| #   | Nota                       | Em uma linha                                               | Status |
+| --- | -------------------------- | ---------------------------------------------------------- | ------ |
+| 17  | [[Ponteiros em C]]         | Endereços, `&` e `*`, `NULL`, `const`, `void *`, ponteiros para ponteiros | ✅      |
+| 18  | [[Aritmética de Ponteiros em C]] | `p + n`, `p2 - p1`, "um além do fim", percursos com ponteiros      | ✅      |
+| 19  | [[Arrays e Ponteiros em C]] | *Decay*, `v[i]` ≡ `*(v+i)`, arrays em parâmetros, `char s[]` × `char *s` | ✅      |
+| 20  | Funções e Ponteiros        | Parâmetros por ponteiro, retorno de ponteiros, ponteiros para função, *callbacks*, `qsort` | ⏳      |
+| 21  | Alocação Dinâmica          | `malloc`, `calloc`, `realloc`, `free`                      | ⏳      |
+| 22  | Stack vs Heap              | Onde cada coisa vive, tempo de vida, fragmentação          | ⏳      |
+| 23  | Erros Clássicos de Memória | *Leak*, *use-after-free*, *double free*, *buffer overflow* | ⏳      |
 
-## 05 · Funções
+## 05 · Tipos Compostos
 
-| # | Nota | Em uma linha | Status |
-| --- | --- | --- | --- |
-| 25 | Funções — Fundamentos | Protótipos, parâmetros por valor, retorno | ⏳ |
-| 26 | Ponteiros para Função | *Callbacks*, tabelas de funções | ⏳ |
-| 27 | Funções Variádicas | `<stdarg.h>`, como `printf` funciona | ⏳ |
-| 28 | Recursão | Pilha de chamadas, custo, recursão de cauda | ⏳ |
+| #   | Nota                       | Em uma linha                                               | Status |
+| --- | -------------------------- | ---------------------------------------------------------- | ------ |
+| 24  | Structs                    | Campos, inicialização, passagem por valor × ponteiro      | ⏳      |
+| 25  | Alinhamento e Padding      | Por que `sizeof(struct)` é maior que a soma dos campos    | ⏳      |
+| 26  | Unions                     | Mesma memória, vários tipos; *type punning*                | ⏳      |
+| 27  | Enums e `typedef`          | Constantes nomeadas, apelidos de tipos                     | ⏳      |
+| 28  | Campos de Bits e Máscaras  | *Bitfields*, operadores bit a bit, registradores de hardware | ⏳      |
 
 ## 06 · Pré-processador e Modularização
 
