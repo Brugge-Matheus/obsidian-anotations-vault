@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C/02 - Fundamentos/Conversões de Tipo em C.md",
+                "file": "C/03 - Arrays, Strings e Funções/Funções em C.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Conversões de Tipo em C"
+              "title": "Funções em C"
             }
           }
         ]
@@ -80,7 +80,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "369de5b4728c2e4c",
@@ -196,11 +197,27 @@
   },
   "active": "090ec3f51ba6b201",
   "lastOpenFiles": [
+    "C/02 - Fundamentos/Tipos de Dados em C.md",
+    "C/03 - Arrays, Strings e Funções/Funções em C.md",
     "C/MOC - C.md",
+    "C/03 - Arrays, Strings e Funções/Strings em C.md",
+    "C/04 - Ponteiros e Memória/Stack vs Heap em C.md",
+    "C/04 - Ponteiros e Memória/Funções e Ponteiros em C.md",
+    "C/04 - Ponteiros e Memória/Erros Clássicos de Memória em C.md",
+    "C/04 - Ponteiros e Memória/Alocação Dinâmica em C.md",
+    "C/05 - Tipos Compostos",
+    "C/04 - Ponteiros e Memória/Ponteiros em C.md",
+    "C/04 - Ponteiros e Memória/Arrays e Ponteiros em C.md",
+    "C/04 - Ponteiros e Memória/Aritmética de Ponteiros em C.md",
+    "C/04 - Ponteiros e Memória",
+    "C/03 - Arrays, Strings e Funções/Recursão em C.md",
+    "C/03 - Arrays, Strings e Funções/Funções Variádicas em C.md",
+    "C/03 - Arrays, Strings e Funções/Arrays em C.md",
+    "C/03 - Arrays, Strings e Funções",
+    "C/03 - Ponteiros e Memória/Arrays em C.md",
     "C/02 - Fundamentos/Conversões de Tipo em C.md",
     "C/02 - Fundamentos/Controle de Fluxo em C.md",
     "C/02 - Fundamentos/Operadores em C.md",
-    "C/02 - Fundamentos/Tipos de Dados em C.md",
     "C/02 - Fundamentos/Variáveis e Constantes em C.md",
     "C/02 - Fundamentos/Sintaxe, Blocos e Escopo em C.md",
     "C/01 - Introdução/Convenções e Estilo.md",
@@ -209,9 +226,6 @@
     "GO/02 - Fundamentos/Tipos de Dados.md",
     "Sintaxe, Blocos e Escopo em C.md",
     "GO/MOC - GO.md",
-    "Sistemas Operacionais/MOC - Sistemas Operacionais.md",
-    "C/01 - Introdução/O que é C.md",
-    "Protocolos de Hardware/MOC - Protocolos de Hardware.md",
     "C/10 - Ferramentas e Depuração",
     "C/09 - C por Dentro",
     "C/08 - C e o Sistema Operacional",
@@ -219,19 +233,6 @@
     "C/06 - Pré-processador e Modularização",
     "C/05 - Funções",
     "C/04 - Tipos Compostos",
-    "C/03 - Ponteiros e Memória",
-    "C/02 - Fundamentos",
-    "C/01 - Introdução",
-    "Protocolos de Hardware/Fundamentos/Fundamentos de Protocolos de Hardware.md",
-    "Excalidraw/Drawing 2026-10-29 10.11.38.excalidraw.md",
-    "Excalidraw/Drawing 2026-10-26 00.41.53.excalidraw.md",
-    "Excalidraw/Drawing 2026-10-24 21.16.31.excalidraw.md",
-    "Protocolos de Hardware/Prática/Comparativo e Escolha do Protocolo.md",
-    "Protocolos de Hardware/Protocolos/UART.md",
-    "Protocolos de Hardware/Protocolos/SPI.md",
-    "Protocolos de Hardware/Protocolos/RS-232.md",
-    "Protocolos de Hardware/Protocolos/I2C.md",
-    "Protocolos de Hardware/Protocolos/CAN.md",
     "Untitled.canvas",
     "Sem título.canvas"
   ]

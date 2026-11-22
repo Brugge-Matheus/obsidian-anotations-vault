@@ -46,12 +46,12 @@ A diferença entre as duas primeiras formas e a quarta (e o *segfault* real ao a
 
 ## Sequências de escape
 
-| Escape | Significa | | Escape | Significa |
-|---|---|---|---|---|
-| `\n` | nova linha | | `\\` | barra invertida |
-| `\t` | tabulação | | `\"` | aspas duplas |
-| `\0` | byte zero (o terminador) | | `\xHH` | byte em hexadecimal (`"\x41"` = `"A"`) |
-| `\r` | retorno de carro | | `\ooo` | byte em octal (`"\101"` = `"A"`) |
+| Escape | Significa                |     | Escape | Significa                              |
+| ------ | ------------------------ | --- | ------ | -------------------------------------- |
+| `\n`   | nova linha               |     | `\\`   | barra invertida                        |
+| `\t`   | tabulação                |     | `\"`   | aspas duplas                           |
+| `\0`   | byte zero (o terminador) |     | `\xHH` | byte em hexadecimal (`"\x41"` = `"A"`) |
+| `\r`   | retorno de carro         |     | `\ooo` | byte em octal (`"\101"` = `"A"`)       |
 
 **Literais adjacentes são concatenados** pelo compilador: `"ab" "cd" "ef"` vale `"abcdef"`. Útil para quebrar textos longos em várias linhas do código.
 
@@ -61,10 +61,11 @@ A diferença entre as duas primeiras formas e a quarta (e o *segfault* real ao a
 
 Dois números diferentes, que se confundem:
 
-| | Mede | Para `char g[10] = "oi";` |
-|---|---|---|
-| **`sizeof g`** | o **tamanho do array** (bytes reservados), em tempo de compilação | **10** |
-| **`strlen(g)`** | o **texto**: caracteres **até o `'\0'`**, sem contá-lo, em tempo de execução | **2** |
+|                 | Mede                                                                         | Para `char g[10] = "oi";` |
+| --------------- | ---------------------------------------------------------------------------- | ------------------------- |
+| **`sizeof g`**  | o **tamanho do array** (bytes reservados), em tempo de compilação            | **10**                    |
+| **`strlen(g)`** | o **texto**: caracteres **até o `'\0'`**, sem contá-lo, em tempo de execução | **2**                     |
+|                 |                                                                              |                           |
 
 O `strlen` (de `<string.h>`) **percorre** a string byte a byte, então custa **O(n)**: chamá-lo repetidamente numa condição de laço é um desperdício ([[Controle de Fluxo em C]]). Calcule uma vez e guarde. Escrever o seu próprio é um bom exercício de como as strings funcionam:
 
@@ -83,16 +84,16 @@ O parâmetro é `const char *` (a função só lê), como visto em [[Ponteiros e
 
 # 🧰 A biblioteca `<string.h>`
 
-| Função | Faz | Cuidado |
-|---|---|---|
-| `strlen(s)` | tamanho do texto | O(n) |
-| `strcmp(a, b)` | **compara** conteúdo: `0` se iguais, **negativo/positivo** conforme a ordem | use só o **sinal** (`< 0`, `== 0`, `> 0`) |
-| `strcpy(dst, src)` | **copia** `src` (com `'\0'`) para `dst` | **não verifica** se cabe |
-| `strcat(dst, src)` | **acrescenta** `src` ao fim de `dst` | **não verifica** se cabe |
-| `strncpy`, `strncat` | versões "com limite" | `strncpy` tem **armadilha** (abaixo) |
-| `strchr(s, c)` / `strrchr` | 1ª / última ocorrência do caractere (ou `NULL`) | devolve um **endereço dentro de `s`**, não uma cópia |
-| `strstr(s, sub)` | 1ª ocorrência da substring (ou `NULL`) | idem |
-| `memcpy`, `memmove`, `memset`, `memcmp` | operam em **bytes**, **sem** olhar o terminador | `memcpy` com áreas que **se sobrepõem** é UB; use `memmove` |
+| Função                                  | Faz                                                                         | Cuidado                                                     |
+| --------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `strlen(s)`                             | tamanho do texto                                                            | O(n)                                                        |
+| `strcmp(a, b)`                          | **compara** conteúdo: `0` se iguais, **negativo/positivo** conforme a ordem | use só o **sinal** (`< 0`, `== 0`, `> 0`)                   |
+| `strcpy(dst, src)`                      | **copia** `src` (com `'\0'`) para `dst`                                     | **não verifica** se cabe                                    |
+| `strcat(dst, src)`                      | **acrescenta** `src` ao fim de `dst`                                        | **não verifica** se cabe                                    |
+| `strncpy`, `strncat`                    | versões "com limite"                                                        | `strncpy` tem **armadilha** (abaixo)                        |
+| `strchr(s, c)` / `strrchr`              | 1ª / última ocorrência do caractere (ou `NULL`)                             | devolve um **endereço dentro de `s`**, não uma cópia        |
+| `strstr(s, sub)`                        | 1ª ocorrência da substring (ou `NULL`)                                      | idem                                                        |
+| `memcpy`, `memmove`, `memset`, `memcmp` | operam em **bytes**, **sem** olhar o terminador                             | `memcpy` com áreas que **se sobrepõem** é UB; use `memmove` |
 
 Resultados reais: `strcmp("banana", "banana")` → igual; `("banana", "bananas")` → **negativo** (mais curta vem antes); `("banana", "abacate")` → **positivo**. `strchr("um dois tres", 'd')` devolveu `"dois tres"` e `strchr(..., 'z')` devolveu `NULL`. `memmove(b + 2, b, 4)` em `"abcdef"` deu `"ababcd"` (correto mesmo com sobreposição).
 
