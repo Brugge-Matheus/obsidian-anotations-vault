@@ -6,7 +6,7 @@ source: "Padrão ISO C (C17/C23: arrays, inicializadores, VLA); experimentos com
 ---
 # Arrays em C
 
-📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=address` e `-fsanitize=bounds` | Anterior: [[Conversões de Tipo em C]] | Próxima: *Strings em C* | Compare com [[Arrays e Slices]] (Go) e veja a visão geral em [[Arrays]] (Estruturas de Dados)
+📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=address` e `-fsanitize=bounds` | Anterior: [[Conversões de Tipo em C]] | Próxima: [[Strings em C]] | Compare com [[Arrays e Slices]] (Go) e veja a visão geral em [[Arrays]] (Estruturas de Dados)
 
 ---
 
