@@ -36,7 +36,7 @@ tags:
 
 | #   | Nota                       | Em uma linha                                               | Status |
 | --- | -------------------------- | ---------------------------------------------------------- | ------ |
-| 12  | [[Arrays em C]]            | Declaração, inicialização, memória contígua, limites, VLA | ✅      |
+| 12  | [[Arrays em C]]            | Declaração, laços, `sizeof`, memória contígua, limites, funções, listas de palavras (`names[][100]`) | ✅      |
 | 13  | [[Matrizes em C]]          | Arrays de arrays, *row-major*, `i×col+j`, percurso e *cache*, matriz em funções | ✅      |
 | 14  | [[Strings em C]]           | Terminador `\0`, `fgets`, listas de strings (`names[][100]` × `char *`), `<string.h>`, `snprintf`, UTF-8 | ✅      |
 | 15  | [[Funções em C]]           | Protótipos, `()` × `(void)`, por valor, retorno, pilha de chamadas, `static`, `inline` | ✅      |
