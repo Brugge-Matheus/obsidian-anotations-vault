@@ -38,7 +38,7 @@ tags:
 | --- | -------------------------- | ---------------------------------------------------------- | ------ |
 | 12  | [[Arrays em C]]            | Declaração, inicialização, memória contígua, limites, VLA | ✅      |
 | 13  | [[Matrizes em C]]          | Arrays de arrays, *row-major*, `i×col+j`, percurso e *cache*, matriz em funções | ✅      |
-| 14  | [[Strings em C]]           | Terminador `\0`, literais, `<string.h>`, `snprintf`, UTF-8, `strtol`        | ✅      |
+| 14  | [[Strings em C]]           | Terminador `\0`, `fgets`, listas de strings (`names[][100]` × `char *`), `<string.h>`, `snprintf`, UTF-8 | ✅      |
 | 15  | [[Funções em C]]           | Protótipos, `()` × `(void)`, por valor, retorno, pilha de chamadas, `static`, `inline` | ✅      |
 | 16  | [[Recursão em C]]          | Caso base, pilha de chamadas, estouro de pilha, custo, recursão de cauda | ✅      |
 | 17  | [[Funções Variádicas em C]] | `<stdarg.h>`, promoções de argumento, como `printf` funciona, `format` | ✅      |
