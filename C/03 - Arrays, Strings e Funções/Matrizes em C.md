@@ -74,26 +74,85 @@ Como tudo é contínuo, a mesma matriz também pode ser vista como **um array "a
 
 # ⚡ Percorrer por linha × por coluna
 
-Como as linhas são contínuas, **ler na ordem da memória** (linha a linha) é **muito mais rápido** que pular de linha em linha. O processador traz da memória **blocos** (linhas de *cache*, normalmente 64 bytes = 16 `int`), então depois de ler `m[i][0]` os vizinhos `m[i][1]`, `m[i][2]`... já estão no *cache*. Pular `m[0][j]`, `m[1][j]`, `m[2][j]` aproveita **um** elemento por bloco carregado ([[Arrays]]).
+Existem duas formas de visitar **todos** os elementos de uma matriz: **linha a linha** (o `j` varia mais rápido) ou **coluna a coluna** (o `i` varia mais rápido). As duas fazem **exatamente as mesmas contas** e dão o **mesmo resultado**, mas não têm o mesmo custo.
 
-```c
-for (int i = 0; i < N; i++)          // RÁPIDO: o j (último índice) varia mais rápido
-    for (int j = 0; j < N; j++)
-        soma += m[i][j];
+Pegue uma matriz pequena, `int m[3][4]`, e veja a **ordem em que cada elemento é visitado**, junto com a posição dele na memória:
 
-for (int j = 0; j < N; j++)          // LENTO: salta uma linha inteira (N ints) a cada passo
-    for (int i = 0; i < N; i++)
-        soma += m[i][j];
+```
+ Linha a linha (i externo, j interno)        Coluna a coluna (j externo, i interno)
+
+      j=0  j=1  j=2  j=3                           j=0  j=1  j=2  j=3
+ i=0 │ 1    2    3    4                       i=0 │ 1    4    7   10
+ i=1 │ 5    6    7    8                       i=1 │ 2    5    8   11
+ i=2 │ 9   10   11   12                       i=2 │ 3    6    9   12
+
+ Na memória: m[0][0] m[0][1] m[0][2] m[0][3] m[1][0] m[1][1] ...   (linha após linha)
+ Visitas:       1       2       3       4       5       6   ...  → anda de 1 em 1 elemento
+                                                               (percurso por coluna: pula de 4 em 4)
 ```
 
-Medido com uma matriz de **4096 × 4096** `int` (64 MiB), `-O1`, neste ambiente:
+No percurso **por linha**, cada passo vai para o **vizinho** na memória. No percurso **por coluna**, cada passo **salta uma linha inteira** (no exemplo, 4 elementos; em uma matriz com 4096 colunas, 4096 elementos = 16 KiB de salto).
 
-| Percurso | Tempo | Soma |
+## Por que isso muda o tempo: o *cache*
+
+O processador é muito mais rápido que a memória principal. Para compensar, ele **não busca um `int` por vez**: traz da memória um **bloco** de bytes vizinhos (uma **linha de *cache***, normalmente **64 bytes = 16 `int`**) e guarda numa memória pequena e rápida, o ***cache*** ([[Arrays]]).
+
+- **Por linha:** depois de ler `m[i][0]`, os 15 vizinhos (`m[i][1]` ... `m[i][15]`) **já estão no *cache***. Um bloco trazido serve para **16** leituras.
+- **Por coluna:** depois de ler `m[0][j]`, o próximo é `m[1][j]`, a **16 KiB de distância**, em **outro** bloco. Cada bloco trazido serve para **1** leitura, e o resto dele é desperdiçado.
+
+## O teste completo
+
+O programa abaixo soma todos os elementos das duas formas e mede o tempo de cada uma. `N` é o **número de linhas e de colunas** (a matriz é quadrada), definido com `#define` ([[Variáveis e Constantes em C]]) para poder mudar o tamanho em um só lugar:
+
+```c
+#include <stdio.h>
+#include <time.h>
+
+#define N 4096                       // a matriz tem N linhas e N colunas
+
+static int m[N][N];                  // 4096 x 4096 ints = 64 MiB (static: fora da pilha)
+
+int main(void) {
+    for (int i = 0; i < N; i++)                    // preenche com algo qualquer
+        for (int j = 0; j < N; j++)
+            m[i][j] = i + j;
+
+    long soma = 0;
+
+    clock_t t0 = clock();
+    for (int i = 0; i < N; i++)                    // percurso 1: linha a linha
+        for (int j = 0; j < N; j++)
+            soma += m[i][j];
+    clock_t t1 = clock();
+
+    long soma2 = 0;
+    for (int j = 0; j < N; j++)                    // percurso 2: coluna a coluna
+        for (int i = 0; i < N; i++)
+            soma2 += m[i][j];
+    clock_t t2 = clock();
+
+    printf("linha a linha:   %.0f ms\n", (t1 - t0) * 1000.0 / CLOCKS_PER_SEC);
+    printf("coluna a coluna: %.0f ms\n", (t2 - t1) * 1000.0 / CLOCKS_PER_SEC);
+    printf("somas iguais: %s (%ld)\n", soma == soma2 ? "sim" : "nao", soma);
+    return 0;
+}
+```
+
+Detalhes do programa:
+- A matriz é **`static`** porque 64 MiB como variável local estouraria a pilha de 8 MiB ([[Stack vs Heap em C]]); `static` a coloca na região de dados, que é grande.
+- `clock()` (de `<time.h>`) mede o tempo de CPU; `CLOCKS_PER_SEC` converte para segundos.
+- Compilado com `gcc -O1`. Rodando 3 vezes neste ambiente:
+
+| Percurso | Tempo (3 execuções) | Soma |
 |---|---|---|
-| **linha a linha** | ~**9 ms** | igual |
-| **coluna a coluna** | ~**128 ms** | igual |
+| **linha a linha** | **11 a 14 ms** | `68702699520` |
+| **coluna a coluna** | **148 a 226 ms** | `68702699520` (igual) |
 
-Resultado: **12 a 15 vezes mais lento**, com o **mesmo** resultado e a mesma quantidade de contas. Os números mudam de máquina para máquina, mas a regra é universal: **o último índice deve ser o do laço mais interno**.
+O percurso por coluna ficou **de 10 a 20 vezes mais lento**, para as **mesmas** 16,7 milhões de somas. Os tempos variam de máquina para máquina e de execução para execução, mas a diferença é sempre grande.
+
+Reduzindo `N` para **64** (a matriz de 16 KiB inteira cabe no *cache*), os dois percursos medem **0 ms**: a diferença só aparece quando a matriz é **maior que o *cache***, porque aí cada salto vai de fato até a memória principal.
+
+> ✅ **Regra prática:** com `m[i][j]`, deixe o **último índice (`j`) no laço mais interno**, que é a ordem em que a memória está guardada.
 
 ---
 
@@ -240,7 +299,7 @@ Em Go, uma `[2][3]int` também é contígua e *row-major*; a matriz "do dia a di
 
 - Uma matriz em C é um **array de arrays**: `int m[2][3]` = 2 linhas de `int[3]`; **só a primeira dimensão** pode ser omitida na declaração com inicializador
 - Memória **contígua** em ordem de **linha** (*row-major*): `m[i][j]` está em `i × COLUNAS + j`; `sizeof m` = 24, `sizeof m[0]` = 12 (uma linha); em 3D, `i×(L×C) + j×C + k`
-- **Percorra com o último índice no laço interno**: neste teste, 4096×4096 levou ~**9 ms** por linha e ~**128 ms** por coluna (**12–15× mais lento**), por causa do *cache*
+- **Percorra com o último índice no laço interno**: neste teste, 4096×4096 levou ~**11–14 ms** por linha e ~**148–226 ms** por coluna (**10–20× mais lento**), por causa do *cache*
 - **Funções:** `m` decai para `int (*)[COLUNAS]` (**sem cópia**, a função altera a original); a **coluna fixa** (`int m[][3]`) ou **VLA como parâmetro** (`size_t n, size_t m, int a[n][m]`, tamanhos **antes**; protótipo com `[*]`)
 - **Matriz ≠ `int **`**: tipos incompatíveis (aviso do `gcc`); `const int m[][3]` gera aviso `-Wpedantic` no C17 e não no C23
 - **Dinâmica:** `int (*a)[col] = malloc(lin * sizeof *a);` → **um** `malloc`, **um** `free`, acesso `a[i][j]` (depende de VLA); alternativa portável: bloco único `i * col + j`
