@@ -6,7 +6,7 @@ source: "Padrão ISO C (C17/C23: ponteiros, qualificadores, void *); experimento
 ---
 # Ponteiros em C
 
-📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=undefined` e `-fsanitize=address` | Anterior: *Funções Variádicas em C* | Próxima: [[Aritmética de Ponteiros em C]] | Compare com [[Ponteiros]] (Go)
+📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=undefined` e `-fsanitize=address` | Anterior: [[Funções Variádicas em C]] | Próxima: [[Aritmética de Ponteiros em C]] | Compare com [[Ponteiros]] (Go)
 
 ---
 

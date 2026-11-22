@@ -7,7 +7,7 @@ tags:
 # C — Mapa de Conteúdo
 
 > **Versão de referência:** C23 (ISO/IEC 9899:2024). Diferenças para C99/C11 serão destacadas quando importarem.
-> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · módulo 03 (Arrays, Strings e Funções): 2 de 5 notas · módulo 04 (Ponteiros e Memória): 3 de 7 notas
+> **Status:** em andamento 🔄 — módulos 01 (Introdução) e 02 (Fundamentos) completos ✅ · módulo 03 (Arrays, Strings e Funções) completo ✅ · módulo 04 (Ponteiros e Memória): 3 de 7 notas
 
 ---
 
@@ -38,9 +38,9 @@ tags:
 | --- | -------------------------- | ---------------------------------------------------------- | ------ |
 | 12  | [[Arrays em C]]            | Declaração, inicialização, memória contígua, limites, multidimensionais | ✅      |
 | 13  | [[Strings em C]]           | Terminador `\0`, literais, `<string.h>`, `snprintf`, UTF-8, `strtol`        | ✅      |
-| 14  | Funções em C               | Protótipos, parâmetros por valor, retorno, `static`, `inline` | ⏳      |
-| 15  | Recursão em C              | Pilha de chamadas, custo, recursão de cauda                | ⏳      |
-| 16  | Funções Variádicas em C    | `<stdarg.h>`, como `printf` funciona                       | ⏳      |
+| 14  | [[Funções em C]]           | Protótipos, `()` × `(void)`, por valor, retorno, pilha de chamadas, `static`, `inline` | ✅      |
+| 15  | [[Recursão em C]]          | Caso base, pilha de chamadas, estouro de pilha, custo, recursão de cauda | ✅      |
+| 16  | [[Funções Variádicas em C]] | `<stdarg.h>`, promoções de argumento, como `printf` funciona, `format` | ✅      |
 
 ## 04 · Ponteiros e Memória
 

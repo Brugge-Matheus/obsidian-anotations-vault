@@ -199,7 +199,7 @@ Avalia o operando da esquerda, **descarta** o valor e produz o da direita: `int 
 | `sizeof` | tamanho em bytes | [[Tipos de Dados em C]] |
 | `(tipo)` | conversão explícita (*cast*) | [[Conversões de Tipo em C]] |
 | `&` `*` (unários) | endereço de / valor apontado | [[Ponteiros em C]] |
-| `[]` `.` `->` `()` | índice, campo, campo via ponteiro, chamada | [[Arrays em C]], *Structs*, *Funções* |
+| `[]` `.` `->` `()` | índice, campo, campo via ponteiro, chamada | [[Arrays em C]], *Structs*, [[Funções em C]] |
 
 Note que `&` e `*` têm **papel duplo**: `a & b` é E bit a bit (binário), `&a` é endereço (unário); `a * b` multiplica, `*p` acessa o apontado.
 

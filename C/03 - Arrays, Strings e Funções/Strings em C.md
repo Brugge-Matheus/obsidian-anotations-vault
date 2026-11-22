@@ -7,7 +7,7 @@ source: "Padrão ISO C (C17/C23: strings, <string.h>, <ctype.h>, <stdlib.h>); ex
 ---
 # Strings em C
 
-📚 **Referência:** Padrão ISO C (C17/C23), `<string.h>`, `<ctype.h>`, `<stdlib.h>` e experimentos reais com `gcc` 13.3 e `-fsanitize=address` | Anterior: [[Arrays em C]] | Próxima: *Funções em C* | Compare com [[Strings em Profundidade]] (Go)
+📚 **Referência:** Padrão ISO C (C17/C23), `<string.h>`, `<ctype.h>`, `<stdlib.h>` e experimentos reais com `gcc` 13.3 e `-fsanitize=address` | Anterior: [[Arrays em C]] | Próxima: [[Funções em C]] | Compare com [[Strings em Profundidade]] (Go)
 
 ---
 
