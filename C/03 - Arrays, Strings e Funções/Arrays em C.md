@@ -6,7 +6,7 @@ source: "Padrão ISO C (C17/C23: arrays, inicializadores, VLA); experimentos com
 ---
 # Arrays em C
 
-📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=address` e `-fsanitize=bounds` | Anterior: [[Conversões de Tipo em C]] | Próxima: [[Strings em C]] | Compare com [[Arrays e Slices]] (Go) e veja a visão geral em [[Arrays]] (Estruturas de Dados)
+📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=address` e `-fsanitize=bounds` | Anterior: [[Conversões de Tipo em C]] | Próxima: [[Matrizes em C]] | Compare com [[Arrays e Slices]] (Go) e veja a visão geral em [[Arrays]] (Estruturas de Dados)
 
 ---
 
@@ -155,7 +155,7 @@ Na memória **não há "linhas e colunas"**: tudo é **uma sequência contínua*
 
 Resultados reais: `sizeof(m)` = **24**, `sizeof(m[0])` = **12** (uma linha), `sizeof(m[0][0])` = 4. Logo, linhas = `sizeof m / sizeof m[0]` = 2 e colunas = `sizeof m[0] / sizeof m[0][0]` = 3. E `&m[1][0]` está **4 bytes** depois de `&m[0][2]`: a linha 1 começa **logo após** o fim da linha 0.
 
-O elemento `m[i][j]` está no deslocamento **`i × colunas + j`** (elementos) a partir do início. Em C a **última dimensão é essencial** para o compilador fazer essa conta: ao passar para uma função, só a **primeira** dimensão pode ser omitida: `void f(int m[][3], size_t linhas)`.
+O elemento `m[i][j]` está no deslocamento **`i × colunas + j`** (elementos) a partir do início. Em C a **última dimensão é essencial** para o compilador fazer essa conta: ao passar para uma função, só a **primeira** dimensão pode ser omitida: `void f(int m[][3], size_t linhas)`. O assunto completo (VLA em parâmetros, custo do percurso, erros típicos) está em [[Matrizes em C]].
 
 ---
 

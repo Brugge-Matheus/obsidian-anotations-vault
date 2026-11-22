@@ -36,81 +36,82 @@ tags:
 
 | #   | Nota                       | Em uma linha                                               | Status |
 | --- | -------------------------- | ---------------------------------------------------------- | ------ |
-| 12  | [[Arrays em C]]            | Declaração, inicialização, memória contígua, limites, multidimensionais | ✅      |
-| 13  | [[Strings em C]]           | Terminador `\0`, literais, `<string.h>`, `snprintf`, UTF-8, `strtol`        | ✅      |
-| 14  | [[Funções em C]]           | Protótipos, `()` × `(void)`, por valor, retorno, pilha de chamadas, `static`, `inline` | ✅      |
-| 15  | [[Recursão em C]]          | Caso base, pilha de chamadas, estouro de pilha, custo, recursão de cauda | ✅      |
-| 16  | [[Funções Variádicas em C]] | `<stdarg.h>`, promoções de argumento, como `printf` funciona, `format` | ✅      |
+| 12  | [[Arrays em C]]            | Declaração, inicialização, memória contígua, limites, VLA | ✅      |
+| 13  | [[Matrizes em C]]          | Arrays de arrays, *row-major*, `i×col+j`, percurso e *cache*, matriz em funções | ✅      |
+| 14  | [[Strings em C]]           | Terminador `\0`, literais, `<string.h>`, `snprintf`, UTF-8, `strtol`        | ✅      |
+| 15  | [[Funções em C]]           | Protótipos, `()` × `(void)`, por valor, retorno, pilha de chamadas, `static`, `inline` | ✅      |
+| 16  | [[Recursão em C]]          | Caso base, pilha de chamadas, estouro de pilha, custo, recursão de cauda | ✅      |
+| 17  | [[Funções Variádicas em C]] | `<stdarg.h>`, promoções de argumento, como `printf` funciona, `format` | ✅      |
 
 ## 04 · Ponteiros e Memória
 
 | #   | Nota                       | Em uma linha                                               | Status |
 | --- | -------------------------- | ---------------------------------------------------------- | ------ |
-| 17  | [[Ponteiros em C]]         | Endereços, `&` e `*`, `NULL`, `const`, `void *`, ponteiros para ponteiros | ✅      |
-| 18  | [[Aritmética de Ponteiros em C]] | `p + n`, `p2 - p1`, "um além do fim", percursos com ponteiros      | ✅      |
-| 19  | [[Arrays e Ponteiros em C]] | *Decay*, `v[i]` ≡ `*(v+i)`, arrays em parâmetros, `char s[]` × `char *s` | ✅      |
-| 20  | [[Funções e Ponteiros em C]] | Parâmetros por ponteiro, retorno de ponteiros, ponteiros para função, *callbacks*, `qsort` | ✅      |
-| 21  | [[Alocação Dinâmica em C]] | `malloc`, `calloc`, `realloc`, `free`, propriedade do bloco | ✅      |
-| 22  | [[Stack vs Heap em C]]     | Onde cada coisa vive, tempo de vida, fragmentação          | ✅      |
-| 23  | [[Erros Clássicos de Memória em C]] | *Leak*, *use-after-free*, *double free*, *buffer overflow*, ASan/Valgrind | ✅      |
+| 18  | [[Ponteiros em C]]         | Endereços, `&` e `*`, `NULL`, `const`, `void *`, ponteiros para ponteiros | ✅      |
+| 19  | [[Aritmética de Ponteiros em C]] | `p + n`, `p2 - p1`, "um além do fim", percursos com ponteiros      | ✅      |
+| 20  | [[Arrays e Ponteiros em C]] | *Decay*, `v[i]` ≡ `*(v+i)`, arrays em parâmetros, `char s[]` × `char *s` | ✅      |
+| 21  | [[Funções e Ponteiros em C]] | Parâmetros por ponteiro, retorno de ponteiros, ponteiros para função, *callbacks*, `qsort` | ✅      |
+| 22  | [[Alocação Dinâmica em C]] | `malloc`, `calloc`, `realloc`, `free`, propriedade do bloco | ✅      |
+| 23  | [[Stack vs Heap em C]]     | Onde cada coisa vive, tempo de vida, fragmentação          | ✅      |
+| 24  | [[Erros Clássicos de Memória em C]] | *Leak*, *use-after-free*, *double free*, *buffer overflow*, ASan/Valgrind | ✅      |
 
 ## 05 · Tipos Compostos
 
 | #   | Nota                       | Em uma linha                                               | Status |
 | --- | -------------------------- | ---------------------------------------------------------- | ------ |
-| 24  | Structs                    | Campos, inicialização, passagem por valor × ponteiro      | ⏳      |
-| 25  | Alinhamento e Padding      | Por que `sizeof(struct)` é maior que a soma dos campos    | ⏳      |
-| 26  | Unions                     | Mesma memória, vários tipos; *type punning*                | ⏳      |
-| 27  | Enums e `typedef`          | Constantes nomeadas, apelidos de tipos                     | ⏳      |
-| 28  | Campos de Bits e Máscaras  | *Bitfields*, operadores bit a bit, registradores de hardware | ⏳      |
+| 25  | Structs                    | Campos, inicialização, passagem por valor × ponteiro      | ⏳      |
+| 26  | Alinhamento e Padding      | Por que `sizeof(struct)` é maior que a soma dos campos    | ⏳      |
+| 27  | Unions                     | Mesma memória, vários tipos; *type punning*                | ⏳      |
+| 28  | Enums e `typedef`          | Constantes nomeadas, apelidos de tipos                     | ⏳      |
+| 29  | Campos de Bits e Máscaras  | *Bitfields*, operadores bit a bit, registradores de hardware | ⏳      |
 
 ## 06 · Pré-processador e Modularização
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 29 | O Pré-processador | `#include`, `#define`, macros, `#ifdef` | ⏳ |
-| 30 | Arquivos de Cabeçalho | `.h` × `.c`, *header guards*, declaração × definição | ⏳ |
-| 31 | `static`, `extern` e Linkagem | Visibilidade entre arquivos, tempo de vida | ⏳ |
-| 32 | Bibliotecas Estáticas e Dinâmicas | `.a`, `.so`, linkagem, `-l` e `-L` | ⏳ |
-| 33 | Make e Build | `Makefile`, dependências, compilação incremental | ⏳ |
+| 30 | O Pré-processador | `#include`, `#define`, macros, `#ifdef` | ⏳ |
+| 31 | Arquivos de Cabeçalho | `.h` × `.c`, *header guards*, declaração × definição | ⏳ |
+| 32 | `static`, `extern` e Linkagem | Visibilidade entre arquivos, tempo de vida | ⏳ |
+| 33 | Bibliotecas Estáticas e Dinâmicas | `.a`, `.so`, linkagem, `-l` e `-L` | ⏳ |
+| 34 | Make e Build | `Makefile`, dependências, compilação incremental | ⏳ |
 
 ## 07 · Biblioteca Padrão e IO
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 34 | `stdio`: Entrada e Saída | `printf`, `scanf`, buffers, `fgets` | ⏳ |
-| 35 | Arquivos | `fopen`, `fread`, `fwrite`, modos, `FILE *` | ⏳ |
-| 36 | `stdlib` e Utilitários | `qsort`, `atoi`/`strtol`, `exit`, `rand` | ⏳ |
-| 37 | Tratamento de Erros | `errno`, códigos de retorno, `perror` | ⏳ |
+| 35 | `stdio`: Entrada e Saída | `printf`, `scanf`, buffers, `fgets` | ⏳ |
+| 36 | Arquivos | `fopen`, `fread`, `fwrite`, modos, `FILE *` | ⏳ |
+| 37 | `stdlib` e Utilitários | `qsort`, `atoi`/`strtol`, `exit`, `rand` | ⏳ |
+| 38 | Tratamento de Erros | `errno`, códigos de retorno, `perror` | ⏳ |
 
 ## 08 · C e o Sistema Operacional
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 38 | Chamadas de Sistema em C | `open`, `read`, `write`, a ponte entre `libc` e kernel | ⏳ |
-| 39 | Processos | `fork`, `exec`, `wait` | ⏳ |
-| 40 | Threads (pthreads) | `pthread_create`, mutexes, variáveis de condição | ⏳ |
-| 41 | Sinais | `signal`, `sigaction`, tratadores | ⏳ |
-| 42 | Pipes e Sockets | Comunicação entre processos e pela rede | ⏳ |
+| 39 | Chamadas de Sistema em C | `open`, `read`, `write`, a ponte entre `libc` e kernel | ⏳ |
+| 40 | Processos | `fork`, `exec`, `wait` | ⏳ |
+| 41 | Threads (pthreads) | `pthread_create`, mutexes, variáveis de condição | ⏳ |
+| 42 | Sinais | `signal`, `sigaction`, tratadores | ⏳ |
+| 43 | Pipes e Sockets | Comunicação entre processos e pela rede | ⏳ |
 
 ## 09 · C por Dentro
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 43 | Layout de Memória de um Programa | `text`, `data`, `bss`, *heap*, *stack* | ⏳ |
-| 44 | Comportamento Indefinido | UB, por que importa, como o compilador o explora | ⏳ |
-| 45 | Convenção de Chamada e ABI | Como argumentos e retorno passam, *stack frame* | ⏳ |
-| 46 | Do C ao Assembly | Ler a saída do compilador, otimizações (`-O2`) | ⏳ |
-| 47 | Endianness e Representação | *Little/big endian*, complemento de dois, ponto flutuante | ⏳ |
+| 44 | Layout de Memória de um Programa | `text`, `data`, `bss`, *heap*, *stack* | ⏳ |
+| 45 | Comportamento Indefinido | UB, por que importa, como o compilador o explora | ⏳ |
+| 46 | Convenção de Chamada e ABI | Como argumentos e retorno passam, *stack frame* | ⏳ |
+| 47 | Do C ao Assembly | Ler a saída do compilador, otimizações (`-O2`) | ⏳ |
+| 48 | Endianness e Representação | *Little/big endian*, complemento de dois, ponto flutuante | ⏳ |
 
 ## 10 · Ferramentas e Depuração
 
 | # | Nota | Em uma linha | Status |
 | --- | --- | --- | --- |
-| 48 | GDB | Breakpoints, inspeção de memória, *core dumps* | ⏳ |
-| 49 | Valgrind e Sanitizers | `-fsanitize=address,undefined`, achar bugs de memória | ⏳ |
-| 50 | Warnings e Análise Estática | `-Wall -Wextra`, `clang-tidy`, `cppcheck` | ⏳ |
-| 51 | Testes em C | Testes simples, *asserts*, frameworks leves | ⏳ |
+| 49 | GDB | Breakpoints, inspeção de memória, *core dumps* | ⏳ |
+| 50 | Valgrind e Sanitizers | `-fsanitize=address,undefined`, achar bugs de memória | ⏳ |
+| 51 | Warnings e Análise Estática | `-Wall -Wextra`, `clang-tidy`, `cppcheck` | ⏳ |
+| 52 | Testes em C | Testes simples, *asserts*, frameworks leves | ⏳ |
 
 ---
 
