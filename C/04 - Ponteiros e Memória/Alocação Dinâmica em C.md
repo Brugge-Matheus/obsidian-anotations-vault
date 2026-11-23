@@ -8,6 +8,8 @@ source: "Padrão ISO C (C17/C23: <stdlib.h> malloc, calloc, realloc, free); glib
 
 📚 **Referência:** Padrão ISO C (C17/C23), `<stdlib.h>` e experimentos reais com `gcc` 13.3, `strace` e `ulimit` | Anterior: [[Funções e Ponteiros em C]] | Próxima: [[Stack vs Heap em C]] | Compare com [[Memória e Escape Analysis]] e [[Garbage Collector]] (Go)
 
+
+> 🧭 **Como ler esta nota:** primeiro o **porquê** e a analogia, depois um **programa completo** (ler `n`, alocar, usar, liberar), em seguida cada função (`malloc`, `calloc`, `realloc`, `free`), a questão de **quem libera**, o que fazer quando a alocação falha e, por fim, os erros comuns e exercícios.
 ---
 
 # 🎯 Por que alocar memória dinamicamente
@@ -22,6 +24,78 @@ Até aqui, toda memória vinha de **variáveis declaradas**: o tamanho era fixo 
 | A quantidade **cresce** durante o programa (lista, vetor) | não se redimensiona um array |
 
 A solução é pedir memória ao sistema **durante a execução**, numa região chamada ***heap***, e **devolvê-la** quando não for mais necessária. Em C isso é **manual**: **você** decide quando alocar e quando liberar (em Go quem libera é o coletor de lixo, [[Garbage Collector]]). A comparação entre *heap* e pilha é o tema da próxima nota.
+
+## Uma analogia
+
+Pense num **guarda-volumes**. Você chega e **pede um armário** com um certo tamanho (`malloc`): recebe uma **chave** (o ponteiro) e fica **responsável** por ele. Pode guardar o que quiser e **ele continua seu**, mesmo que você mude de sala (ao contrário de uma variável local, que some ao sair da função). Quando termina, **devolve a chave** (`free`). Se **perder a chave** sem devolver o armário (o *leak*), ele fica ocupado até o fim do dia (o fim do programa); se **usar a chave depois de devolvê-la** (*use-after-free*), pode abrir o armário de **outra pessoa**. Se **não houver armário livre**, o balcão **avisa** (`malloc` devolve `NULL`).
+
+## O ciclo de vida de um bloco
+
+```
+   malloc(n)              uso                    free(p)
+ ┌───────────┐       ┌───────────────┐       ┌────────────┐
+ │  PEDIDO   │ ────► │  EM USO       │ ────► │  LIBERADO  │ ────►  NÃO usar mais!
+ │ (p = bloco)│       │ (ler/escrever)│       │ (p pendurado)│        (p = NULL)
+ └───────────┘       └───────────────┘       └────────────┘
+   testar NULL        dentro de 0..n-1         uma única vez
+```
+
+---
+
+# 🧪 Um programa completo, passo a passo
+
+Ler a **quantidade** de números do usuário, **alocar** o array com esse tamanho, **ler** os valores, calcular a **média** e **liberar**. Isto é impossível com um array comum de tamanho fixo:
+
+```c
+int n;
+if (scanf("%d", &n) != 1 || n <= 0) { puts("n invalido"); return 1; }     // (1) valida n
+
+int *v = malloc((size_t)n * sizeof *v);                                    // (2) pede n ints
+if (v == NULL) { perror("malloc"); return 1; }                             // (3) confere
+
+int lidos = 0;
+while (lidos < n && scanf("%d", &v[lidos]) == 1) lidos++;                  // (4) lê até n valores
+
+long soma = 0;
+for (int i = 0; i < lidos; i++) soma += v[i];
+printf("n=%d lidos=%d soma=%ld media=%.2f\n", n, lidos, soma, lidos ? (double)soma / lidos : 0.0);
+
+free(v);                                                                   // (5) devolve
+v = NULL;                                                                  // (6) evita pendurado
+```
+
+Testes reais (compilado com ASan e UBSan, sem erros nem vazamentos):
+
+| Entrada | Saída |
+|---|---|
+| `4` `10 20 30 40` | `n=4 lidos=4 soma=100 media=25.00` |
+| `3` `7 8` (faltou 1 valor) | `n=3 lidos=2 soma=15 media=7.50` (o contador `lidos` evitou usar lixo) |
+| `0` | `n invalido` (o programa nem aloca) |
+
+Repare nos cuidados: a **validação de `n`** antes de alocar, a conversão `(size_t)n` (para o produto não ser com sinal), o **teste de `NULL`**, o **contador `lidos`** para usar só o que foi realmente lido ([[Arrays em C]]) e o **par `free`/`NULL`** no fim.
+
+## Texto na *heap*
+
+Strings também precisam do **byte extra do `'\0'`**. Um erro clássico é alocar `strlen(s)` em vez de `strlen(s) + 1`:
+
+```c
+char *s = malloc(strlen("abc"));         // ERRADO: 3 bytes, faltou o '\0'
+strcpy(s, "abc");                        // escreve 4 bytes: heap-buffer-overflow
+```
+
+O `gcc` avisa em tempo de compilação (`writing 4 bytes into a region of size 3 overflows the destination`) e o ASan acusa `heap-buffer-overflow ... WRITE of size 4`. O certo é `malloc(strlen(s) + 1)` ou, mais simples, **`strdup`**. E uma função que **monta e devolve** um texto novo, deixando o `free` com o chamador ([[Strings em C]]):
+
+```c
+char *junta(const char *a, const char *b) {
+    size_t n = strlen(a) + strlen(b) + 1;           // + 1 do '\0'
+    char *r = malloc(n);
+    if (r == NULL) return NULL;
+    snprintf(r, n, "%s%s", a, b);                   // nunca passa de n bytes
+    return r;
+}
+// char *s = junta("Ola, ", "mundo");   →  "Ola, mundo"  (strlen 10)
+// ... usa s ...  free(s);              ← o CHAMADOR libera
+```
 
 ---
 
@@ -159,6 +233,35 @@ O `malloc` **não** chama o sistema operacional a cada pedido. Ele gerencia a *h
 | **Bloco único** (`int *flat`) | **1** `calloc(lin * col, sizeof *flat)` | `flat[i * col + j]` | **1** `free` |
 
 Os dois funcionaram (`m[2][3] = 7` e `flat[2*col+3] = 7`). O **bloco único** é preferível: menos chamadas, **memória contígua** (melhor para a *cache*, [[Arrays]]) e **um** `free` só. É a mesma conta `i × colunas + j` de [[Arrays em C]].
+
+---
+
+# 🧯 Erros mais comuns
+
+| Erro | Exemplo | Efeito | Correção |
+|---|---|---|---|
+| Não testar o `NULL` | `v = malloc(...); v[0] = 1;` | desreferência nula se faltar memória | `if (v == NULL)` |
+| Tamanho errado | `malloc(n)` para `n` ints | **bloco pequeno**: *overflow* | `n * sizeof *v` |
+| Esquecer o `'\0'` | `malloc(strlen(s))` | *overflow* de 1 byte | `strlen(s) + 1` |
+| Não dar `free` | sair sem liberar | ***leak*** | um `free` por alocação |
+| `free` duas vezes | `free(p); free(p);` | abortado (*double free*) | `p = NULL` após o `free` |
+| Usar depois do `free` | `free(p); p[0] = 1;` | corrompe a memória | `p = NULL` |
+| `free` de ponteiro que não veio de `malloc` | `free(&x)`, `free(p + 1)` | abortado | só o ponteiro **original** |
+| `v = realloc(v, ...)` | falha devolve `NULL` | **perde** o bloco (vazamento) | usar `tmp` |
+| Usar o ponteiro antigo após `realloc` | `q = &v[0]; v = realloc(...)` | `q` pode apontar para o bloco **antigo** | recalcular os ponteiros |
+| `sizeof` do ponteiro | `sizeof v` esperando o tamanho do bloco | 8 | guardar o `n` |
+
+Todos estes erros foram reproduzidos em [[Erros Clássicos de Memória em C]] com as ferramentas de detecção.
+
+---
+
+# 🧪 Para praticar
+
+1. Leia `n` e aloque um array de `n` **`double`**; leia os valores, ache o **maior** e imprima; libere.
+2. Escreva `int *copia_array(const int *v, size_t n)` que devolve uma **cópia** na *heap* (ou `NULL`), e faça o `main` liberar.
+3. Escreva `char *maiuscula_copia(const char *s)` que devolve uma **cópia em maiúsculas** na *heap* (use `toupper` com `(unsigned char)`).
+4. Faça um **vetor que cresce**: comece com capacidade 2 e use `realloc` (com `tmp`) para **dobrar** a capacidade a cada vez que enche, lendo números até o usuário digitar `0`.
+5. Rode o programa do exercício 4 com `-fsanitize=address,undefined` e com `valgrind --leak-check=full`: sem erros e sem vazamentos?
 
 ---
 

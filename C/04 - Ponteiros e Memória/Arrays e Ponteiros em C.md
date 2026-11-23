@@ -43,6 +43,20 @@ Os valores `sizeof v = 20` e `sizeof p = 8` foram impressos pelo programa de tes
 
 ---
 
+Visualmente, `v` **é** o bloco todo; `p` é só um papel com o **endereço** do primeiro elemento:
+
+```
+   v  (array: 20 bytes, os dados moram AQUI)          p  (ponteiro: 8 bytes)
+  ┌────┬────┬────┬────┬────┐                         ┌──────────────┐
+  │ 10 │ 20 │ 30 │ 40 │ 50 │ ◄───────────────────────│  endereço de │
+  └────┴────┴────┴────┴────┘                         │    v[0]      │
+   v[0]                                              └──────────────┘
+```
+
+Duas variáveis, **dois objetos distintos**: se você muda `p` (`p++`), o array não se mexe; se você altera `p[1]`, está alterando o **array** através do ponteiro.
+
+---
+
 # 🔁 O *decay*: array vira ponteiro
 
 > **Regra:** numa expressão, um array é convertido em um **ponteiro para o seu primeiro elemento** (tipo `T *`), **exceto** em três casos: como operando de **`sizeof`**, como operando de **`&`**, e como **literal de string** que inicializa um array de `char` (`char s[] = "oi"`).
@@ -94,6 +108,31 @@ O teste confirmou: o `sizeof v` **dentro** das três funções vale **8** (o `gc
 - **O tamanho se perde:** passe-o à parte (`size_t n`), como em [[Arrays em C]];
 - Se a função só lê, **proteja** com `const`: `void imprime(const int *v, size_t n)` ([[Ponteiros em C]]);
 - **Não se pode devolver um array local**: `int *f(void) { int v[3] = {1,2,3}; return v; }` devolve o endereço de uma variável que **deixa de existir** ao sair da função (ponteiro pendurado, [[Sintaxe, Blocos e Escopo em C]]). O `gcc` avisa: `function returns address of local variable` (`-Wreturn-local-addr`).
+
+---
+
+# ✂️ Passando um pedaço do array
+
+Como o parâmetro é só um **endereço**, nada impede que ele seja o endereço de **um elemento do meio**. Isso permite passar **apenas uma parte** do array, sem copiar nada:
+
+```c
+int soma(const int *v, size_t n);              // soma n elementos a partir de v
+int v[6] = {1, 2, 3, 4, 5, 6};
+
+soma(v, 6)        // 21   o array todo
+soma(v + 2, 3)    // 12   3 + 4 + 5: começa no elemento 2, com 3 elementos
+soma(&v[1], 2)    // 5    2 + 3:     &v[1] é o mesmo endereço de v + 1
+```
+
+Dentro da função, o `v` recebido **não sabe** que é "o meio" de algum array: para ele, `v[0]` é o primeiro elemento do que recebeu. É o mesmo princípio de `zera_metade(v + 3, 3)`, que zerou só a **primeira metade da fatia** (a posição 3 do original) e deixou o resto: `1 2 3 0 5 6`. Essa técnica é a base de algoritmos como a **busca binária** e a **ordenação por divisão** (ordenar a metade esquerda e a direita), em [[Arrays]] e [[Funções e Ponteiros em C]].
+
+## Índices negativos com ponteiros
+
+Como `p[i]` é `*(p + i)`, o índice pode ser **negativo** quando `p` aponta para o **meio** de um array (com `p = v + 3`, `p[0] = 4`, `p[-1] = 3`, `p[-3] = 1`, `p[2] = 6`). Funciona porque o resultado `p + i` ainda cai **dentro** do array. Com `v[-1]` (antes do início) seria UB.
+
+## O parâmetro `int v[10]` mente
+
+Em `void f(int v[10])`, o `10` é **ignorado** (o tipo é `int *`). Passando um array de apenas 3 elementos, o programa compila e imprime `sizeof v` = **8**; o `gcc` ainda acusa dois avisos: `-Wsizeof-array-argument` (o `sizeof`) e `-Wstringop-overflow` (*'f' accessing 40 bytes in a region of size 12*, porque ele leu o `10` como uma **promessa** do chamador). Portanto, trate esse número como **documentação**, não como garantia.
 
 ---
 
@@ -162,6 +201,46 @@ Teste real: modificar o literal apontado por `char *s = "oi";` terminou em **`Se
 
 ---
 
+# 🧰 Um array de ponteiros que você já usou: `argv`
+
+O `main` pode receber os argumentos da linha de comando: `int main(int argc, char **argv)`. O `argv` é um **array de ponteiros para strings** (o `char *nomes[]` desta nota), e `argc` é a quantidade:
+
+```c
+int main(int argc, char **argv) {
+    for (int i = 1; i < argc; i++) printf("arg %d = %s\n", i, argv[i]);
+}
+// ./prog ola mundo  →  argc = 3   arg 1 = ola   arg 2 = mundo     (argv[0] é o nome do programa)
+```
+
+`argv[i]` é um `char *` (uma string, [[Strings em C]]) e `argv[i][0]` é a **primeira letra** dela. Os mesmos conceitos de `char *nomes[]` valem: ponteiros para textos que estão em outro lugar ([[Como C Funciona]] mostra onde o sistema coloca esses textos).
+
+---
+
+# 🧯 Erros mais comuns
+
+| Erro | Exemplo | Efeito | Correção |
+|---|---|---|---|
+| Usar `sizeof` num parâmetro | `sizeof v` com `int v[]` na função | **8**, não o tamanho do array | passar `n` |
+| Achar que o array é copiado ao passar | `f(v)` e esperar que o original fique intacto | a função **altera o original** | copiar antes (`memcpy`) ou passar `const` |
+| Tentar `v++` ou `v = outro` | `v++` num array | erro de compilação | usar um ponteiro auxiliar `int *p = v;` |
+| Devolver array local | `return v;` (local) | ponteiro **pendurado** | receber o buffer ou usar `malloc` |
+| Confiar no `5` de `int v[5]` em parâmetro | `f(int v[5])` | o número é ignorado | passar `n` |
+| `int **` no lugar de matriz | passar `int m[2][3]` a `int **` | tipo incompatível ([[Matrizes em C]]) | `int (*m)[3]` |
+| Alterar literal por `char *` | `char *s = "oi"; s[0] = 'O';` | `Segmentation fault` | `char s[] = "oi";` |
+| Confundir `char s[]` com `char *s` ao medir | `sizeof s` | 3 (array) × 8 (ponteiro) | usar `strlen` para o texto |
+
+---
+
+# 🧪 Para praticar
+
+1. Com `int v[8]`, escreva `void zera(int *p, size_t n)` e use-a para zerar **só os elementos 2 a 5** (chame `zera(v + 2, 4)`).
+2. Dado `int v[] = {3, 1, 4, 1, 5, 9, 2, 6}`, escreva `int soma(const int *v, size_t n)` e use-a para somar a **primeira metade** e a **segunda metade** (`soma(v, 4)` e `soma(v + 4, 4)`).
+3. Escreva um programa que imprime **todos os argumentos** da linha de comando em ordem inversa.
+4. Diga, sem executar: em `int v[5]; int *p = v;`, qual é o valor de `sizeof v`, `sizeof p`, `sizeof &v`, `sizeof *p`, `sizeof(v + 0)`? Depois confira (`20, 8, 8, 4, 8`).
+5. Por que `int v[3]; v = (int[3]){1,2,3};` não compila, enquanto `int *p = v; p = (int *){...}` seria diferente? Explique com a tabela "array × ponteiro".
+
+---
+
 # ✅ Resumo do Conceito
 
 - **Array ≠ ponteiro**: array = **bloco de elementos** (`sizeof` = N × tamanho); ponteiro = **endereço** (8 bytes); array **não** pode ser incrementado ou atribuído
@@ -172,6 +251,8 @@ Teste real: modificar o literal apontado por `char *s = "oi";` terminou em **`Se
 - **Multidimensional:** `m` decai para `int (*)[3]`; `m[i][j]` ≡ `*(*(m + i) + j)`; a **última dimensão** é obrigatória em parâmetros
 - **`int *ap[3]`** (array de ponteiros) ≠ **`int (*pa)[3]`** (ponteiro para array); `char *nomes[]` guarda endereços, `char nm[][6]` guarda os bytes
 - **`char s[]`** (cópia modificável) ≠ **`const char *s`** (aponta para literal em `.rodata`)
+- **Pedaço de array:** passe `v + k` (ou `&v[k]`) e um `n` menor; `p[-1]` vale quando `p` está no meio do array; o `10` de `int v[10]` em parâmetro é **ignorado**
+- **`argv`** é um array de ponteiros para strings (`char **`), `argc` diz quantos
 
 ---
 

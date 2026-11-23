@@ -9,6 +9,8 @@ source: "Padrão ISO C (comportamento indefinido); AddressSanitizer/LeakSanitize
 
 📚 **Referência:** Padrão ISO C (comportamento indefinido), AddressSanitizer/LeakSanitizer, Valgrind e `gcc -fanalyzer`; todos os erros abaixo foram **reproduzidos** com `gcc` 13.3 | Anterior: [[Stack vs Heap em C]] | Próxima: *Structs em C* | Compare com [[Garbage Collector]] (Go)
 
+
+> 🧭 **Como ler esta nota:** primeiro **por que** estes erros são tão perigosos; depois **oito erros**, cada um com **o código, o que acontece sem ferramentas e o que a ferramenta mostra**; em seguida, **como ler um relatório do ASan**, um guia **do sintoma à causa**, o catálogo de **ferramentas**, o **checklist** de prevenção e uma **caça aos bugs** para praticar.
 ---
 
 # ⚠️ Por que estes erros são especiais
@@ -150,6 +152,49 @@ Sem ferramentas, o programa **imprimiu `7`**: o dado ainda estava na pilha **por
 
 ---
 
+# 📖 Como ler um relatório do AddressSanitizer
+
+A saída do ASan assusta pelo tamanho, mas **tem sempre a mesma estrutura**. Vamos ler o relatório do *use-after-free* (seção 2), que aqui foi cortado só nas linhas de rodapé:
+
+```
+==370==ERROR: AddressSanitizer: heap-use-after-free on address 0x502000000010 ...      ← (1) O QUE aconteceu
+READ of size 4 at 0x502000000010 thread T0                                             ← (2) a AÇÃO errada
+    #0 ... in main /tmp/e12/uaf.c:7                                                    ← (3) ONDE (arquivo:linha)
+
+0x502000000010 is located 0 bytes inside of 4-byte region [0x...010,0x...014)          ← (4) o bloco envolvido
+freed by thread T0 here:                                                                ← (5) QUEM liberou
+    #0 ... in free ...
+    #1 ... in main /tmp/e12/uaf.c:6                                                    ←     (linha do free)
+
+previously allocated by thread T0 here:                                                 ← (6) QUEM alocou
+    #1 ... in main /tmp/e12/uaf.c:4                                                    ←     (linha do malloc)
+
+SUMMARY: AddressSanitizer: heap-use-after-free /tmp/e12/uaf.c:7 in main                ← (7) resumo de uma linha
+```
+
+Leia **de cima para baixo**: (1) o **tipo** do erro (`heap-use-after-free`, `heap-buffer-overflow`, `stack-buffer-overflow`, `attempting double-free`...); (2) se era **leitura** ou **escrita** e de quantos bytes; (3) a **linha do seu código** onde ocorreu (a primeira linha `#0` que aponta para o **seu** arquivo, não para a biblioteca); (4) onde o endereço cai em relação ao bloco (`0 bytes after 20-byte region` = logo **depois** do fim: *overflow* de um elemento); (5) e (6) a **linha do `free`** e a **do `malloc`**, que contam a história do bloco. Na prática, **vá direto para as linhas `uaf.c:7`, `uaf.c:6` e `uaf.c:4`**: uso, liberação, alocação.
+
+> 💡 O ASan **para no primeiro erro**: corrija, recompile e rode de novo (um programa com vários bugs revela um por vez). Para ver os símbolos e linhas, compile com **`-g`**.
+
+---
+
+# 🩺 Do sintoma à causa
+
+Quando o programa se comporta mal, o **sintoma** sugere por onde começar:
+
+| Sintoma | Causa provável | Ferramenta |
+|---|---|---|
+| `Segmentation fault` logo ao usar um ponteiro | ponteiro **`NULL`**, não inicializado ou pendurado | ASan, `gdb` (a linha do erro) |
+| `free(): double free detected` / `invalid pointer` | *double free* ou `free` de endereço que não veio de `malloc` (seções 3 e 4) | ASan |
+| Funciona, mas imprime **lixo** em algum valor | **memória não inicializada** (6) ou *use-after-free* (2) | Valgrind, ASan |
+| **O resultado muda** entre execuções iguais | variável não inicializada, ou *overflow* corrompendo vizinhos | Valgrind, `-Wuninitialized`, ASan |
+| Um valor "se alterou sozinho" | *buffer overflow* escrevendo no vizinho (1) | ASan, UBSan |
+| O programa **gasta mais e mais memória** | ***leak*** (5) | LeakSanitizer, Valgrind |
+| Crasha **só às vezes** ou só em outra máquina | UB que depende do lixo/da disposição da memória | ASan + UBSan em **todos** os testes |
+| Trava ao entrar numa função recursiva | *stack overflow* ([[Recursão em C]], [[Stack vs Heap em C]]) | `ulimit -s`, `gdb` |
+
+---
+
 # 🛠️ As ferramentas
 
 | Ferramenta | Como usar | O que acha | Custo |
@@ -182,6 +227,47 @@ O `-fanalyzer` apontou **estaticamente** (sem executar) os casos de *double free
 | Rode **ASan/UBSan/Valgrind** nos testes e **`-fanalyzer`** na compilação | tudo o que escapou à revisão |
 
 Linguagens com **coletor de lixo e verificação de limites**, como Go, eliminam a maior parte desses erros por construção ([[Garbage Collector]]); o preço é perder o controle fino da memória. Em C, a **disciplina e as ferramentas** ocupam esse lugar.
+
+---
+
+# 🕵️ Caça aos bugs
+
+O programa abaixo **compila sem erros** e tem **três** defeitos de memória. Tente achá-los antes de ler a resposta:
+
+```c
+char *copia_nome(const char *s) {
+    char *r = malloc(strlen(s));
+    strcpy(r, s);
+    return r;
+}
+int main(void) {
+    char *a = copia_nome("Ana");
+    char *b = copia_nome("Bia");
+    free(a);
+    printf("%s e %s\n", a, b);
+    return 0;
+}
+```
+
+**Resposta (conferida com o ASan, um erro por vez):**
+
+| # | Bug | Onde | Como o ASan acusa | Correção |
+|---|---|---|---|---|
+| 1 | **faltou 1 byte** para o `'\0'`: `malloc(strlen(s))` | `copia_nome` | `heap-buffer-overflow ... WRITE` | `malloc(strlen(s) + 1)` |
+| 2 | **uso depois do `free`**: `printf` de `a` | `main` | `heap-use-after-free ... READ` | não usar `a` depois do `free(a)` |
+| 3 | **vazamento**: `b` nunca é liberado | `main` | `LeakSanitizer: detected memory leaks` (ao encerrar) | `free(b);` antes do `return` |
+
+Sem ferramentas, o programa original **rodou até o fim sem nenhuma mensagem** (imprimiu lixo no lugar do primeiro texto, e `Bia` no segundo): é exatamente por isso que se testa com `-fsanitize=address`. Depois de corrigir os três, o ASan não acusa nada e o programa termina com código `0`.
+
+---
+
+# 🧪 Para praticar
+
+1. Reproduza cada um dos oito erros desta nota em um arquivo pequeno e compile com `-fsanitize=address,undefined`. Para cada um, identifique no relatório as linhas do **uso**, do **`free`** e do **`malloc`**.
+2. Escreva uma função com **três saídas antecipadas** (`return` no meio) depois de dois `malloc`, e depois reescreva com o padrão **`goto fim;`** de limpeza único.
+3. Reescreva `copia_nome` de duas formas seguras: com `strdup` e com `snprintf`.
+4. Escreva um programa com um **vazamento** dentro de um laço (um `malloc` por volta, sem `free`) e use `valgrind --leak-check=full` para ver o total perdido. Quantos bytes foram perdidos?
+5. Pegue um programa de uma nota anterior (por exemplo, a lista de nomes de [[Strings em C]]) e rode-o sob ASan + UBSan: apareceu algum aviso que você não esperava?
 
 ---
 

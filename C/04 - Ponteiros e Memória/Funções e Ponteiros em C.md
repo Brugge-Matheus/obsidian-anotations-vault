@@ -9,6 +9,8 @@ source: "Padrão ISO C (C17/C23: ponteiros para função, qsort e bsearch de <st
 
 📚 **Referência:** Padrão ISO C (C17/C23), `qsort`/`bsearch` de `<stdlib.h>` e experimentos reais com `gcc` 13.3 e `-fsanitize=undefined` | Anterior: [[Arrays e Ponteiros em C]] | Próxima: [[Alocação Dinâmica em C]] | Compare com [[Funções — Fundamentos]] (Go)
 
+
+> 🧭 **Como ler esta nota:** são **três** ideias diferentes que usam as mesmas palavras. (1) **Ponteiro como parâmetro**: para a função alterar ou ler dados do chamador. (2) **Ponteiro como retorno**: o que é seguro devolver. (3) **Ponteiro *para função***: o próprio código vira um valor (*callbacks*, tabelas). Se o item 3 parecer estranho, leia primeiro os dois primeiros: eles são a base.
 ---
 
 # 🔗 Onde funções e ponteiros se encontram
@@ -144,6 +146,37 @@ int aplica(op_fn f, int a, int b) { return f(a, b); }
 
 No código de máquina é uma **chamada indireta**: em vez de `call soma`, o `gcc -S` de `aplica` gerou `call rcx`, saltando para o endereço que estava no **registrador** ([[Funções em C]] mostra a chamada direta).
 
+## O primeiro *callback*: "aplique esta função a todos"
+
+Antes de `qsort`, o exemplo mais simples: uma função que recebe **outra função** como parâmetro e a chama para cada elemento.
+
+```c
+int dobra(int x)    { return 2 * x; }
+int quadrado(int x) { return x * x; }
+
+void aplica_a_todos(int *v, size_t n, int (*f)(int)) {     // f: a função que você escolhe
+    for (size_t i = 0; i < n; i++) v[i] = f(v[i]);
+}
+
+int v[] = {3, 1, 2};
+aplica_a_todos(v, 3, dobra);        // 6 2 4
+aplica_a_todos(v, 3, quadrado);     // 36 4 16   (aplicada sobre o resultado anterior)
+```
+
+A função `aplica_a_todos` **não sabe** o que `f` faz: só sabe chamá-la. Quem usa decide o comportamento **passando o nome da função**, sem parênteses: `dobra` é o **endereço** da função, e `dobra(...)` seria uma **chamada**. É a ideia de `map` em outras linguagens (em Go, funções também são valores, [[Funções — Fundamentos]]).
+
+## Declarações difíceis: o `typedef` resolve
+
+A declaração clássica `signal` da biblioteca padrão é famosa por ser ilegível:
+
+```c
+void (*signal(int sig, void (*h)(int)))(int);        // "signal é uma função que recebe (int, ponteiro p/ função) e devolve ponteiro p/ função"
+typedef void (*handler_t)(int);                      // com um apelido, vira simples:
+handler_t signal(int sig, handler_t h);
+```
+
+As duas formas compilaram e funcionaram (um *handler* devolvido foi chamado: `handler 7`). **Regra:** quando uma declaração tiver mais de um nível de ponteiro e parênteses, **crie um `typedef` para a parte de dentro** e escreva a de fora com ele.
+
 ---
 
 # 📋 Tabelas de funções (*dispatch tables*)
@@ -192,6 +225,15 @@ Para um **array de strings** o *callback* recebe um ponteiro **para** `const cha
 
 > ⚠️ **Não compare por subtração.** `return *a - *b;` é tentador, mas **estoura**: com `INT_MAX` e `-1` deu `-2147483648` (deveria ser positivo) e o UBSan acusou `signed integer overflow: 2147483647 - -1`. Use `(a > b) - (a < b)` ([[Tipos de Dados em C]]).
 
+## Ordem decrescente: o mesmo `qsort`, outro *callback*
+
+Para ordenar do **maior para o menor**, não se muda o `qsort`: troca-se o **callback**, invertendo os argumentos:
+
+```c
+int cmp_decresc(const void *a, const void *b) { return cmp_int(b, a); }   // note: (b, a)
+qsort(v, 6, sizeof v[0], cmp_decresc);                                     // 99 42 15 3 0 -7
+```
+
 ## Callback com contexto (`void *ctx`)
 
 C não tem *closures*: um *callback* não "lembra" variáveis do chamador. A solução tradicional é passar um ponteiro extra, **`void *contexto`**, que a biblioteca repassa sem olhar:
@@ -211,6 +253,34 @@ Quem **escreve** o *callback* converte `ctx` de volta ao tipo certo (`(long *)ct
 
 ---
 
+# 🧯 Erros mais comuns
+
+| Erro | Exemplo | Efeito | Correção |
+|---|---|---|---|
+| Passar o valor quando a função espera ponteiro | `troca(a, b)` em vez de `troca(&a, &b)` | erro de tipo (aviso do `gcc`) ou *segfault* | `&` na chamada |
+| Esquecer o `*` dentro da função | `a = b;` em vez de `*a = *b;` | só muda a **cópia do ponteiro** | `*a = *b;` |
+| Devolver endereço de local | `return &x;` | ponteiro **pendurado** | devolver por valor, receber buffer ou `malloc` |
+| Devolver `static` e guardar dois resultados | `a = rotulo(1), b = rotulo(2)` | `a == b` (mesmo buffer) | pedir um buffer ao chamador |
+| Não testar o `NULL` devolvido | `*acha(s, 'z')` | `Segmentation fault` | `if (r != NULL)` |
+| Chamar `f(x)` sem testar `f == NULL` | ponteiro de função nulo | UB | validar antes |
+| Parênteses faltando | `int *f(int, int)` em vez de `int (*f)(int, int)` | declara uma **função**, não um ponteiro | `(*f)` |
+| Comparar por subtração no `qsort` | `return *a - *b;` | **estouro** com `INT_MAX` e `-1` | `(a > b) - (a < b)` |
+| Chamar função com assinatura errada | converter `int (*)(int)` em outra | UB | usar o tipo exato (ou `typedef`) |
+| Passar a função **chamada** em vez do nome | `qsort(..., cmp_int(a, b))` | erro de tipo | `qsort(..., cmp_int)` |
+
+---
+
+# 🧪 Para praticar
+
+1. Escreva `void troca(int *a, int *b)` e `void ordena2(int *a, int *b)`, que coloca o menor em `*a` e o maior em `*b` usando `troca`.
+2. Escreva `int divide(int a, int b, int *q, int *r)` que devolve `0` em sucesso ou `-1` se `b == 0`, e devolve o quociente e o resto pelos ponteiros.
+3. Escreva `const char *ultimo_char(const char *s, char c)` que devolve o ponteiro para a **última** ocorrência de `c` (ou `NULL`), sem usar `strrchr`.
+4. Escreva `void mapeia(int *v, size_t n, int (*f)(int))` e use-a com `dobra`, `quadrado` e uma função sua (por exemplo, `negativo`).
+5. Use `qsort` para ordenar um array de `double` em ordem **crescente** e depois **decrescente**; lembre de **não** usar subtração (compare com `(x > y) - (x < y)`).
+6. Crie uma tabela de funções com `{'+', soma}`, `{'-', sub}`, `{'*', mul}`, `{'/', divide}` e uma calculadora que leia `a op b` e escolha a função pela tabela.
+
+---
+
 # ✅ Resumo do Conceito
 
 - **Parâmetro por ponteiro:** `const T *` para entrada, `T *` para saída/alteração; padrão **status no retorno + resultado por ponteiro** (`dividir`); `T **` para alterar o ponteiro do chamador (`pula_espacos`)
@@ -220,6 +290,7 @@ Quem **escreve** o *callback* converte `ctx` de volta ao tipo certo (`(long *)ct
 - **Tabelas de funções:** array de ponteiros para função substitui `if`/`switch` (menus, máquinas de estados, vetores de interrupção)
 - ***Callback*** = função entregue a outra; `qsort`/`bsearch` usam `void *` e um comparador `int (*)(const void *, const void *)`; **não compare por subtração** (overflow)
 - **`void *ctx`** passa o contexto aos *callbacks*; sem verificação de tipos
+- **Callback simples:** `aplica_a_todos(v, n, dobra)` passa o **nome** da função; a ordem do `qsort` (crescente × decrescente) muda só trocando o *callback*; `typedef` torna legíveis as declarações com mais de um nível (`signal`)
 
 ---
 

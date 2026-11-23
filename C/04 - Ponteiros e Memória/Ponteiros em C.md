@@ -8,6 +8,8 @@ source: "Padrão ISO C (C17/C23: ponteiros, qualificadores, void *); experimento
 
 📚 **Referência:** Padrão ISO C (C17/C23) e experimentos reais com `gcc` 13.3, `-fsanitize=undefined` e `-fsanitize=address` | Anterior: [[Funções Variádicas em C]] | Próxima: [[Aritmética de Ponteiros em C]] | Compare com [[Ponteiros]] (Go)
 
+> 🧭 **Como ler esta nota:** ponteiros são o assunto que mais assusta quem aprende C, mas a ideia é uma só: **uma variável que guarda um endereço**. Vá em ordem: o que é e os dois operadores (`&` e `*`), um programa passo a passo, passagem para funções (onde ponteiros se tornam indispensáveis), `const`, `void *` e, no fim, os erros comuns e exercícios.
+
 ---
 
 # 📍 O que é um ponteiro
@@ -25,6 +27,25 @@ Lembrando [[Arrays em C]]: **endereço** é o número que identifica a posição
 ```
 
 Para que serve? Para **acessar ou alterar** um objeto **sem copiá-lo**, para que uma função modifique variáveis do chamador, para percorrer arrays e para trabalhar com memória alocada dinamicamente. É a ferramenta que dá a C o controle direto da memória ([[O que é C]]).
+
+## Uma analogia
+
+Imagine um **prédio com apartamentos numerados** (a memória). Uma variável `int x` é **um apartamento** com um morador (o valor `10`). O **endereço** é o **número do apartamento**. Um **ponteiro** é **um papel com o número de um apartamento anotado**: o papel não é o apartamento, nem o morador; ele só diz **onde** encontrá-los. Com o papel você pode ir até lá e **ler** ou **trocar** o morador. E o papel também é um objeto: ele fica guardado em **algum lugar** (tem o seu próprio endereço).
+
+## As três coisas que se pode perguntar sobre um ponteiro
+
+Dado `int x = 10; int *p = &x;`, há **três valores** diferentes envolvidos, e a maior parte da confusão vem de misturá-los. Saída real de um programa que imprime cada um:
+
+| Expressão | O que é | Valor no teste |
+|---|---|---|
+| `x` | o **dado** (o morador) | `10` |
+| `&x` | o **endereço** de `x` (o número do apartamento) | `0x7fff80e239b8` |
+| `p` | o **conteúdo** do ponteiro: um endereço | `0x7fff80e239b8` (**igual a `&x`**, por isso `p == &x` deu `1`) |
+| `*p` | o dado **para onde `p` aponta** | `10` (o mesmo que `x`) |
+| `&p` | o endereço **do próprio ponteiro** | `0x7fff80e239c8` (outro lugar da memória) |
+| `sizeof x` / `sizeof p` | tamanho do `int` / do ponteiro | `4` / `8` |
+
+Resumo para guardar: **`p` é um endereço; `*p` é o dado nesse endereço; `&p` é onde o próprio `p` mora.**
 
 ---
 
@@ -48,6 +69,38 @@ Resultados reais: `x=10`, `p` igual a `&x`, `*p=10`; depois de `*p = 20`, **`x` 
 ## Lendo uma declaração
 
 `int *p;` lê-se "`p` é um ponteiro para `int`". O tipo do ponteiro é **`int *`**, e a declaração `int *a, b;` cria **só `a` como ponteiro**; `b` é um `int` (o `*` pertence ao nome). Por isso muitos preferem **uma declaração por linha**, como em [[Convenções e Estilo]].
+
+---
+
+# 🔬 Seguindo um programa passo a passo
+
+Acompanhe o estado das variáveis a cada linha (saídas reais):
+
+```c
+int x = 10;
+int *p = &x;          // (1) p aponta para x
+*p = 20;              // (2) escreve em x através de p
+int y = 5;
+p = &y;               // (3) p muda de alvo: agora aponta para y
+*p += 1;              // (4) altera y, não x
+int *q = p;           // (5) q é uma cópia do ENDEREÇO em p
+*q = 100;             // (6) altera y através de q
+```
+
+| Depois de | `x` | `y` | `p` aponta para | `q` aponta para |
+|---|---|---|---|---|
+| (1) | 10 | — | `x` | — |
+| (2) `*p = 20` | **20** | — | `x` | — |
+| (3) `p = &y` | 20 | 5 | **`y`** | — |
+| (4) `*p += 1` | 20 | **6** | `y` | — |
+| (5) `q = p` | 20 | 6 | `y` | `y` |
+| (6) `*q = 100` | 20 | **100** | `y` | `y` |
+
+Três lições:
+
+- **Trocar o alvo** (`p = &y`) e **alterar o dado** (`*p = 20`) são coisas diferentes: sem o `*`, mexe-se no **ponteiro**; com o `*`, no **dado apontado**.
+- **Dois ponteiros para o mesmo objeto** (`p` e `q`) são **apelidos** (*alias*): após `*q = 100`, `*p` também vale 100 (e `p == q` deu `1`).
+- **Comparar ponteiros compara endereços, não dados.** Com `a = 7` e `b = 7` e `pa = &a`, `pb = &b`: `*pa == *pb` deu **1** (mesmo valor) e `pa == pb` deu **0** (objetos diferentes).
 
 ---
 
@@ -137,6 +190,28 @@ void divide(int a, int b, int *q, int *r) { *q = a / b;  *r = a % b; }
 
 > 💡 Os arrays seguem a mesma ideia: ao passá-los, a função recebe um **endereço** e por isso altera o original (visto em [[Arrays em C]]; explicação em [[Arrays e Ponteiros em C]]). Em Go o conceito é o mesmo, porém sem aritmética ([[Ponteiros]]).
 
+## Você já usa ponteiros: o `scanf`
+
+Por que `scanf("%d", &idade)` leva um **`&`**? Porque o `scanf` é uma função: se recebesse `idade`, receberia uma **cópia** e não conseguiria alterar o original. Recebendo `&idade` (o **endereço**), ele **grava o valor digitado** direto na variável. Teste real: `scanf("%d %lf %c", &idade, &nota, &c)` com a entrada `30 8.5 x` deu `idade=30 nota=8.5 c=x`.
+
+Esquecer o `&` é um erro clássico: `scanf("%d", idade)` entrega o **valor** (lixo) como se fosse um endereço. O `gcc` avisa (`format '%d' expects argument of type 'int *', but argument 2 has type 'int'`) e, ao executar, o programa terminou com **`Segmentation fault`**. Observe também: as variáveis com `%s` (strings, [[Strings em C]]) **não levam `&`**, pois o próprio array já é, na prática, um endereço ([[Arrays e Ponteiros em C]]).
+
+## Mais exemplos de parâmetros de saída
+
+```c
+void incrementa(int *c) { (*c)++; }                     // os parênteses importam: (*c)++
+// int cont = 0; incrementa(&cont); incrementa(&cont);  →  cont = 2
+
+void media(const int *v, int n, double *saida) {        // devolve o resultado POR PARÂMETRO
+    int s = 0;
+    for (int i = 0; i < n; i++) s += v[i];
+    *saida = (double)s / n;
+}
+// int v[] = {4, 6, 8}; double m; media(v, 3, &m);      →  m = 6.0
+```
+
+Repare que, nas duas funções, o **`*`** aparece **dentro** da função (para acessar o dado) e o **`&`** aparece **na chamada** (para entregar o endereço). Leia sempre assim: **`&` para dar o endereço, `*` para usar o dado**. E `*c++` não é `(*c)++`: sem parênteses, o `++` anda o **ponteiro** (precedência em [[Operadores em C]], percurso em [[Aritmética de Ponteiros em C]]).
+
 ---
 
 # 🔒 `const` e ponteiros
@@ -170,6 +245,33 @@ printf("%.1f", *pd);       // 2.5
 
 ---
 
+# 🧯 Erros mais comuns
+
+| Erro | Exemplo | Efeito | Correção |
+|---|---|---|---|
+| Não inicializar | `int *p; *p = 5;` | ponteiro **selvagem**: UB | `int *p = &x;` ou `= NULL` |
+| Desreferenciar `NULL` | `int *p = NULL; *p = 1;` | `Segmentation fault` | testar `if (p != NULL)` antes |
+| Confundir `p` com `*p` | `p = 20;` (queria `*p = 20;`) | o **endereço** vira 20 (aviso do `gcc`) | `*p = 20;` |
+| `*` na declaração mal lido | `int *a, b;` | só `a` é ponteiro (`sizeof a` = 8, `sizeof b` = 4) | uma declaração por linha |
+| `scanf` sem `&` | `scanf("%d", n);` | `Segmentation fault` | `scanf("%d", &n);` |
+| Comparar dados com `==` entre ponteiros | `if (pa == pb)` | compara **endereços** | `if (*pa == *pb)` |
+| Guardar o endereço de uma local e usar depois | `return &x;` (x local) | ponteiro **pendurado** | devolver por valor ou usar `malloc` ([[Funções e Ponteiros em C]]) |
+| `(*c)++` escrito como `*c++` | `*c++` | anda o ponteiro, não o dado | `(*c)++` |
+
+Para detectar: `-Wall -Wextra` e `-fsanitize=address,undefined` ([[Erros Clássicos de Memória em C]]).
+
+---
+
+# 🧪 Para praticar
+
+1. Declare `int a = 3, b = 4;` e `int *pa = &a, *pb = &b;`. Sem executar, diga o valor de `*pa + *pb`, de `pa == pb` e de `*pa == a`. Depois confira.
+2. Escreva `void zera(int *x)` que coloca 0 na variável do chamador, e `void troca(int *a, int *b)` sem olhar a nota.
+3. Escreva `void min_max(const int *v, int n, int *min, int *max)` que devolve o menor e o maior valor por **parâmetros de saída**.
+4. Escreva um programa que lê dois inteiros com `scanf` e imprime a soma usando uma função `void soma(int a, int b, int *resultado)`.
+5. Imprima `&x`, `p` e `&p` de um programa seu. Quais dois coincidem? Rode duas vezes: o que muda?
+
+---
+
 # ✅ Resumo do Conceito
 
 - **Ponteiro** = variável que guarda um **endereço**; `&x` obtém o endereço, `*p` acessa o objeto apontado; o `*` na declaração significa "ponteiro para"
@@ -179,6 +281,8 @@ printf("%.1f", *pd);       // 2.5
 - **`**pp`** percorre ponteiro para ponteiro
 - Em C tudo é **passado por valor**; para alterar uma variável do chamador (ou devolver vários resultados) passe seu **endereço**
 - **`const int *p`** protege o dado, **`int *const p`** protege o ponteiro; use `const T *` em parâmetros somente leitura
+- **`p`** é um endereço, **`*p`** é o dado nesse endereço, **`&p`** é onde o próprio ponteiro mora; **trocar o alvo** (`p = &y`) ≠ **alterar o dado** (`*p = 20`); dois ponteiros para o mesmo objeto são **apelidos**; `pa == pb` compara **endereços**
+- **`scanf` precisa do `&`** (recebe o endereço para gravar o valor); sem ele, *segfault*; parâmetros de saída: `&` na chamada, `*` dentro da função
 - **`void *`** é genérico: converte implicitamente em C e **não pode ser desreferenciado**
 
 ---

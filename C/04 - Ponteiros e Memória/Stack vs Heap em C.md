@@ -8,6 +8,8 @@ source: "Padrão ISO C (storage duration); Linux (/proc/self/maps, ulimit); glib
 
 📚 **Referência:** Padrão ISO C (duração de armazenamento), `/proc/self/maps`, `mallinfo2` e experimentos reais com `gcc` 13.3 | Anterior: [[Alocação Dinâmica em C]] | Próxima: [[Erros Clássicos de Memória em C]] | Compare com [[Memória e Escape Analysis]] (Go)
 
+
+> 🧭 **Como ler esta nota:** começa com uma analogia, depois o **mapa real** de uma execução, as características de cada região, um **programa acompanhado linha a linha** (quem vive onde), a fragmentação e um guia de **quando usar cada uma**, fechando com erros comuns e exercícios.
 ---
 
 # 🗺️ Onde cada coisa vive
@@ -40,6 +42,10 @@ Um programa C em execução usa **regiões de memória** diferentes ([[Como C Fu
 ```
 
 Os endereços **mudam** a cada execução (ASLR, [[Ponteiros em C]]), mas a **ordem** se mantém: `0x55...` para o executável e a *heap* (perto dele), `0x7f...` para as bibliotecas e a pilha. Cada região tem **permissões**: o código não é gravável e os dados não são executáveis, proteções do sistema ([[Hardware de Proteção]]).
+
+## Uma analogia: mesa de trabalho × armazém
+
+A **pilha** é a sua **mesa de trabalho**: pequena, organizada, e cada tarefa (função) pega um espaço **na ponta** e o **devolve ao terminar**, sem você fazer nada; você só guarda ali o que está usando **agora**. A ***heap*** é um **armazém**: enorme, para guardar coisas **por quanto tempo quiser**, mas você precisa **pedir o espaço** (`malloc`), **anotar onde ficou** (o ponteiro) e **avisar quando liberar** (`free`). Pedir ao armazém **demora mais** que usar a mesa, e se você esquecer de devolver, o espaço fica ocupado.
 
 ---
 
@@ -116,6 +122,45 @@ Outros casos: um **array local** (`int v[100]`) e um **VLA** vivem **inteiros na
 
 ---
 
+# 🔬 Um programa, linha a linha: quem vive onde
+
+```c
+int global = 1;                                  // (a) região de dados
+
+int conta(void) { static int n = 0; return ++n; }          // (b) n: região de dados
+int *cria(void) { int *p = malloc(sizeof *p); *p = 42; return p; }
+
+void f(int a) {                                  // (c) a: pilha (quadro de f)
+    int local = a * 2;                           // (d) local: pilha
+    int *h = cria();                             // (e) h: pilha;  *h: HEAP
+    printf("f: local=%d  *h=%d\n", local, *h);
+    free(h);                                     // (f) libera a heap; h some no return
+}
+
+int main(void) {
+    int x = 10;                                  // (g) x: pilha (quadro de main)
+    f(x);
+    for (int i = 0; i < 3; i++) printf("conta: %d\n", conta());
+    return 0;
+}
+```
+
+| Dado | Onde vive | Quando nasce | Quando morre |
+|---|---|---|---|
+| `global` | região de **dados** | início do programa | fim do programa |
+| `n` (`static` em `conta`) | região de **dados** | início do programa | fim do programa (**por isso `conta()` lembra o valor**) |
+| `x` (em `main`) | **pilha** (quadro de `main`) | entrada de `main` | saída de `main` |
+| `a`, `local`, `h` (em `f`) | **pilha** (quadro de `f`) | **chamada** de `f` | **retorno** de `f` |
+| `*h` (o `int` alocado) | **heap** | `malloc` em `cria` | **`free(h)`** em `f` |
+
+O programa imprimiu `f: local=20  *h=42` e, nas três chamadas de `conta()`, `1`, `2` e `3` (sem erros e sem vazamentos no ASan). Observação: pôr as três chamadas **dentro de um mesmo `printf`** imprimiu `3 2 1`, porque a **ordem de avaliação dos argumentos não é definida** em C ([[Operadores em C]]); por isso o laço. Três lições:
+
+- **O `int` de `*h` sobreviveu a `cria()`**: a função `cria` terminou (seu quadro foi descartado), mas o bloco da *heap* continuou válido, e quem o **recebeu** (`f`) o liberou. É a regra de "quem libera" de [[Alocação Dinâmica em C]].
+- **`h` e `*h` são coisas diferentes** (o ponteiro na pilha, o dado na *heap*); ao fim de `f`, `h` some sozinho, mas o bloco só some com o `free`.
+- **`n`** não está na pilha, embora seja declarado **dentro** de uma função: `static` o move para a região de dados.
+
+---
+
 # 🧩 Fragmentação da *heap*
 
 A pilha é sempre **LIFO**, então **nunca tem buracos**. Na *heap*, blocos são liberados em **qualquer ordem**, e o espaço livre se **espalha**:
@@ -141,6 +186,30 @@ A fragmentação externa é um problema real em programas de **longa duração**
 | **Muitas** alocações pequenas em laço quente | evite `malloc`: use pilha ou reaproveite blocos |
 
 Em **Go** essa escolha **não é sua**: o compilador decide em tempo de compilação o que vai para a pilha e o que "escapa" para a *heap* (*escape analysis*), e o coletor libera ([[Memória e Escape Analysis]], [[Garbage Collector]]). Em C, **você decide, e o erro é seu**.
+
+---
+
+# 🧯 Erros mais comuns
+
+| Erro | Exemplo | Efeito | Correção |
+|---|---|---|---|
+| Devolver o endereço de uma local | `int *f(void) { int x; return &x; }` | ponteiro **pendurado** (a pilha foi reaproveitada) | devolver por valor ou usar `malloc` |
+| Array local enorme | `int v[10000000];` | `Segmentation fault` (pilha de 8 MiB) | `static`, global ou `malloc` |
+| Recursão sem fim ou muito funda | `f` chama `f` sem caso base | *stack overflow* | caso base; iterar ([[Recursão em C]]) |
+| Esquecer o `free` | alocar na função e sair | ***leak*** | liberar (ou devolver ao chamador) |
+| Achar que `static` local mora na pilha | `static int n` | confunde o tempo de vida | `static` vive o programa todo |
+| Alocar muita coisa pequena em laço quente | `malloc` + `free` por iteração | lento (≈ 8 ns contra ≈ 0,3 ns) | reaproveitar um bloco ou usar a pilha |
+| Misturar `free` com variáveis da pilha | `free(&x)` | abortado (*invalid pointer*) | só `free` do que veio de `malloc` |
+
+---
+
+# 🧪 Para praticar
+
+1. Escreva um programa com uma variável **global**, uma **local de `main`**, uma **`static` local** e um `malloc`, e **imprima o endereço** de cada uma (`%p`, com `(void *)`). Quais ficam perto de quais? Rode duas vezes (o que muda?).
+2. Escreva `int *dobro(int x)` que devolve o dobro **de duas formas**: errada (endereço de uma local) e certa (`malloc`). Compile com `-Wall` e veja o aviso da errada.
+3. Compare o tempo de somar 1 milhão de vezes usando um **buffer local** de 64 bytes × um **`malloc`/`free`** de 64 bytes a cada volta (com `clock()`).
+4. Declare um `char grande[16 * 1024 * 1024];` **local**, execute e observe o `Segmentation fault`; depois mude para `static` ou `malloc` e confirme que funciona.
+5. Para cada dado a seguir, diga se vai para a pilha, a *heap* ou a região de dados: um contador de chamadas que persiste, o resultado de uma conta dentro de uma função, o conteúdo de um arquivo lido por inteiro, uma tabela fixa de nomes de meses.
 
 ---
 
