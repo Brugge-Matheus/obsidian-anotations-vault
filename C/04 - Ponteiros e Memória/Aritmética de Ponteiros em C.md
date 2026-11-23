@@ -82,13 +82,13 @@ O resultado tem o tipo **`ptrdiff_t`** (com sinal, 8 bytes aqui; formato `%td`, 
 
 Os operadores `*` (desreferência) e `++` se combinam de formas que parecem iguais e **fazem coisas diferentes**, porque o `++` tem **precedência maior** que o `*` ([[Operadores em C]]). Com `int v[5] = {10, 20, 30, 40, 50}` e `p = v` antes de cada linha (resultados reais):
 
-| Expressão | Lê-se | O que faz | Resultado |
-|---|---|---|---|
-| `a = *p++` | `*(p++)` | **lê** o apontado (`10`) **e depois** avança `p` | `a = 10`, `*p` agora é `20` |
-| `b = *++p` | `*(++p)` | **avança** `p` **e depois** lê | `b = 20`, `*p` é `20` |
-| `c = (*p)++` | | lê o dado (`10`), **soma 1 no dado** (o ponteiro **não** anda) | `c = 10`, `v[0]` virou `11`, `p == v` |
-| `e = ++*p` | `++(*p)` | soma 1 no dado **e depois** lê | `e = 11`, `v[0] = 11` |
-| `d = *(p + 1)` | | lê o vizinho **sem mover** `p` | `d = 20`, `p == v` |
+| Expressão      | Lê-se    | O que faz                                                      | Resultado                             |
+| -------------- | -------- | -------------------------------------------------------------- | ------------------------------------- |
+| `a = *p++`     | `*(p++)` | **lê** o apontado (`10`) **e depois** avança `p`               | `a = 10`, `*p` agora é `20`           |
+| `b = *++p`     | `*(++p)` | **avança** `p` **e depois** lê                                 | `b = 20`, `*p` é `20`                 |
+| `c = (*p)++`   |          | lê o dado (`10`), **soma 1 no dado** (o ponteiro **não** anda) | `c = 10`, `v[0]` virou `11`, `p == v` |
+| `e = ++*p`     | `++(*p)` | soma 1 no dado **e depois** lê                                 | `e = 11`, `v[0] = 11`                 |
+| `d = *(p + 1)` |          | lê o vizinho **sem mover** `p`                                 | `d = 20`, `p == v`                    |
 
 A diferença-chave é **quem recebe o `++`**: o **ponteiro** (`p++`, anda de posição) ou o **dado** (`(*p)++`, altera o valor). O uso mais comum é `*p++`, para ler e já andar, como em laços de cópia (abaixo). Em caso de dúvida, use parênteses ou separe em duas linhas.
 
