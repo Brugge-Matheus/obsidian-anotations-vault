@@ -69,7 +69,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#sistemas-operacionais",
+                "query": "tag:#importante",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,7 +90,8 @@
               "title": "Marcadores"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -208,12 +209,13 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "cd75fa7ea9dcbaca",
+  "active": "1297dec9658de513",
   "lastOpenFiles": [
-    "C/04 - Ponteiros e Memória/Arrays e Ponteiros em C.md",
+    "C/04 - Ponteiros e Memória/Aritmética de Ponteiros em C.md",
     "C/MOC - C.md",
     "C/04 - Ponteiros e Memória/Ponteiros em C.md",
-    "C/04 - Ponteiros e Memória/Aritmética de Ponteiros em C.md",
+    "C/02 - Fundamentos/Operadores em C.md",
+    "C/04 - Ponteiros e Memória/Arrays e Ponteiros em C.md",
     "C/03 - Arrays, Strings e Funções/Arrays em C.md",
     "C/03 - Arrays, Strings e Funções/Strings em C.md",
     "C/02 - Fundamentos/Variáveis e Constantes em C.md",
@@ -232,7 +234,6 @@
     "C/03 - Ponteiros e Memória/Arrays em C.md",
     "C/02 - Fundamentos/Conversões de Tipo em C.md",
     "C/02 - Fundamentos/Controle de Fluxo em C.md",
-    "C/02 - Fundamentos/Operadores em C.md",
     "C/02 - Fundamentos/Sintaxe, Blocos e Escopo em C.md",
     "C/01 - Introdução/Convenções e Estilo.md",
     "C/01 - Introdução/O Compilador.md",

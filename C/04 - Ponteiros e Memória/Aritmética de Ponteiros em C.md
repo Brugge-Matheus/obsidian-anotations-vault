@@ -20,11 +20,11 @@ Já sabemos que um ponteiro guarda um endereço ([[Ponteiros em C]]) e que os el
 
 Resultado real com `p` apontando para o início de cada array:
 
-| Ponteiro | `p + 1` avança | Porque |
-|---|---|---|
-| `int *` | **4 bytes** | `sizeof(int)` = 4 |
-| `char *` | **1 byte** | `sizeof(char)` = 1 |
-| `double *` | **8 bytes** | `sizeof(double)` = 8 |
+| Ponteiro   | `p + 1` avança | Porque               |
+| ---------- | -------------- | -------------------- |
+| `int *`    | **4 bytes**    | `sizeof(int)` = 4    |
+| `char *`   | **1 byte**     | `sizeof(char)` = 1   |
+| `double *` | **8 bytes**    | `sizeof(double)` = 8 |
 
 Assim, com `int v[5] = {10, 20, 30, 40, 50}` e `int *pi = v;`, o compilador traduz `pi + 1` em "endereço de `pi` + 4" e `*(pi + 1)` vale **20**; `*(pi + 4)` vale 50. A fórmula geral:
 
@@ -78,9 +78,11 @@ O resultado tem o tipo **`ptrdiff_t`** (com sinal, 8 bytes aqui; formato `%td`, 
 
 ---
 
-# 🧩 A pegadinha: `*p++`, `*++p`, `(*p)++`, `++*p`
+# 🧩 A pegadinha: `*p++`, `*++p`, `(*p)++`, `++*p` 
 
 Os operadores `*` (desreferência) e `++` se combinam de formas que parecem iguais e **fazem coisas diferentes**, porque o `++` tem **precedência maior** que o `*` ([[Operadores em C]]). Com `int v[5] = {10, 20, 30, 40, 50}` e `p = v` antes de cada linha (resultados reais):
+
+#importante
 
 | Expressão      | Lê-se    | O que faz                                                      | Resultado                             |
 | -------------- | -------- | -------------------------------------------------------------- | ------------------------------------- |
@@ -107,12 +109,12 @@ A aritmética só é **definida** enquanto o ponteiro permanece **dentro do mesm
    v                           v + 5   ← pode ser FORMADO e COMPARADO, nunca DESREFERENCIADO
 ```
 
-| Ação | Situação |
-|---|---|
-| Ponteiro de `v` até `v + 5` (para `int v[5]`) | **válido** |
-| **Desreferenciar** `*(v + 5)` | **UB** (o ASan acusa `stack-buffer-overflow ... READ of size 4`) |
-| Formar `v + 6` ou `v - 1` | **UB**, mesmo sem desreferenciar |
-| Subtrair/comparar ponteiros de **arrays diferentes** | **UB** |
+| Ação                                                 | Situação                                                         |
+| ---------------------------------------------------- | ---------------------------------------------------------------- |
+| Ponteiro de `v` até `v + 5` (para `int v[5]`)        | **válido**                                                       |
+| **Desreferenciar** `*(v + 5)`                        | **UB** (o ASan acusa `stack-buffer-overflow ... READ of size 4`) |
+| Formar `v + 6` ou `v - 1`                            | **UB**, mesmo sem desreferenciar                                 |
+| Subtrair/comparar ponteiros de **arrays diferentes** | **UB**                                                           |
 
 Essa exceção existe para tornar o **laço com ponteiros** natural: o ponteiro de parada é o "fim" que nunca é lido. Testado, `v + 5 - v` deu **5**.
 
@@ -218,26 +220,17 @@ Já o **`void *`** não tem tamanho de elemento definido, então a aritmética *
 
 # 🧯 Erros mais comuns
 
-| Erro | Exemplo | Efeito | Correção |
-|---|---|---|---|
-| Esperar soma em **bytes** | achar que `p + 1` soma 1 byte num `int *` | acessa o lugar errado | `p + 1` é **um elemento** |
-| Andar além do fim | `p = p + 5; *p` (`int v[3]`) | UB (ASan: `stack-buffer-overflow`) | respeitar `v + n` como limite |
-| Desreferenciar o "um além do fim" | `*(v + n)` | UB | só **comparar** com `v + n` |
-| Subtrair ponteiros de arrays diferentes | `&a[0] - &b[0]` | UB | só dentro do mesmo array |
-| Confundir `*p++` com `(*p)++` | | anda o ponteiro em vez de alterar o dado | parênteses |
-| Somar ponteiros | `p + q` | erro de compilação | só `p ± inteiro` e `p - p` |
-| Usar `void *` com aritmética | `vp + 1` | extensão do `gcc`, não portável | converter para `char *` |
-| Perder o ponteiro inicial | `while (*p) p++;` e depois `free(p)` | o `free` recebe o endereço **errado** | guardar `ini = p` antes |
+| Erro                                    | Exemplo                                   | Efeito                                   | Correção                      |
+| --------------------------------------- | ----------------------------------------- | ---------------------------------------- | ----------------------------- |
+| Esperar soma em **bytes**               | achar que `p + 1` soma 1 byte num `int *` | acessa o lugar errado                    | `p + 1` é **um elemento**     |
+| Andar além do fim                       | `p = p + 5; *p` (`int v[3]`)              | UB (ASan: `stack-buffer-overflow`)       | respeitar `v + n` como limite |
+| Desreferenciar o "um além do fim"       | `*(v + n)`                                | UB                                       | só **comparar** com `v + n`   |
+| Subtrair ponteiros de arrays diferentes | `&a[0] - &b[0]`                           | UB                                       | só dentro do mesmo array      |
+| Confundir `*p++` com `(*p)++`           |                                           | anda o ponteiro em vez de alterar o dado | parênteses                    |
+| Somar ponteiros                         | `p + q`                                   | erro de compilação                       | só `p ± inteiro` e `p - p`    |
+| Usar `void *` com aritmética            | `vp + 1`                                  | extensão do `gcc`, não portável          | converter para `char *`       |
+| Perder o ponteiro inicial               | `while (*p) p++;` e depois `free(p)`      | o `free` recebe o endereço **errado**    | guardar `ini = p` antes       |
 
----
-
-# 🧪 Para praticar
-
-1. Com `int v[6] = {5, 3, 8, 1, 9, 2}`, escreva uma função que devolve um **ponteiro para o maior elemento** (usando o padrão `(ini, fim)`) e imprima o **índice** com `r - v`.
-2. Escreva `size_t meu_strlen(const char *s)` usando **só ponteiros** (sem índice) e confira com `strlen`.
-3. Escreva `void copia_n(int *dst, const int *src, size_t n)` com **dois ponteiros** que andam juntos.
-4. Sem executar, diga o resultado de `int v[] = {1,2,3}; int *p = v; int a = *p++ + *p++;` e explique por que **não se deve escrever isso** (ordem de avaliação, [[Operadores em C]]). Depois responda: e `*p++` sozinho?
-5. Troque `int` por `double` num programa seu e imprima as distâncias em bytes entre elementos consecutivos. O que mudou?
 
 ---
 

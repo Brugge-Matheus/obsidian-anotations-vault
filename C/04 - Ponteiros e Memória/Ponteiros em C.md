@@ -36,14 +36,14 @@ Imagine um **prédio com apartamentos numerados** (a memória). Uma variável `i
 
 Dado `int x = 10; int *p = &x;`, há **três valores** diferentes envolvidos, e a maior parte da confusão vem de misturá-los. Saída real de um programa que imprime cada um:
 
-| Expressão | O que é | Valor no teste |
-|---|---|---|
-| `x` | o **dado** (o morador) | `10` |
-| `&x` | o **endereço** de `x` (o número do apartamento) | `0x7fff80e239b8` |
-| `p` | o **conteúdo** do ponteiro: um endereço | `0x7fff80e239b8` (**igual a `&x`**, por isso `p == &x` deu `1`) |
-| `*p` | o dado **para onde `p` aponta** | `10` (o mesmo que `x`) |
-| `&p` | o endereço **do próprio ponteiro** | `0x7fff80e239c8` (outro lugar da memória) |
-| `sizeof x` / `sizeof p` | tamanho do `int` / do ponteiro | `4` / `8` |
+| Expressão               | O que é                                         | Valor no teste                                                  |
+| ----------------------- | ----------------------------------------------- | --------------------------------------------------------------- |
+| `x`                     | o **dado** (o morador)                          | `10`                                                            |
+| `&x`                    | o **endereço** de `x` (o número do apartamento) | `0x7fff80e239b8`                                                |
+| `p`                     | o **conteúdo** do ponteiro: um endereço         | `0x7fff80e239b8` (**igual a `&x`**, por isso `p == &x` deu `1`) |
+| `*p`                    | o dado **para onde `p` aponta**                 | `10` (o mesmo que `x`)                                          |
+| `&p`                    | o endereço **do próprio ponteiro**              | `0x7fff80e239c8` (outro lugar da memória)                       |
+| `sizeof x` / `sizeof p` | tamanho do `int` / do ponteiro                  | `4` / `8`                                                       |
 
 Resumo para guardar: **`p` é um endereço; `*p` é o dado nesse endereço; `&p` é onde o próprio `p` mora.**
 
@@ -51,10 +51,10 @@ Resumo para guardar: **`p` é um endereço; `*p` é o dado nesse endereço; `&p`
 
 # 🔧 Os dois operadores: `&` e `*`
 
-| Operador | Nome | Significado | Exemplo |
-|---|---|---|---|
-| `&x` | **endereço de** | o endereço de `x` | `int *p = &x;` |
-| `*p` | **desreferência** (*dereference*) | o objeto **para onde `p` aponta** | `*p = 20;` |
+| Operador | Nome                              | Significado                       | Exemplo        |
+| -------- | --------------------------------- | --------------------------------- | -------------- |
+| `&x`     | **endereço de**                   | o endereço de `x`                 | `int *p = &x;` |
+| `*p`     | **desreferência** (*dereference*) | o objeto **para onde `p` aponta** | `*p = 20;`     |
 
 ```c
 int x = 10;
@@ -135,12 +135,12 @@ O endereço impresso (`0x7ffe…`) **não é** a posição física na RAM, e sim
 
 Um ponteiro só é útil se apontar para algo **válido**. Há quatro situações:
 
-| Estado | Como surge | Efeito ao desreferenciar |
-|---|---|---|
-| **Válido** | `p = &x;` | funciona |
-| **Nulo** | `p = NULL;` (ou `0`) | **UB**; na prática, *segmentation fault* |
-| **Selvagem** (*wild*) | `int *p;` **sem inicializar** (valor = lixo) | **UB**: pode ler/escrever em qualquer lugar |
-| **Pendurado** (*dangling*) | aponta para memória que **já acabou** ([[Sintaxe, Blocos e Escopo em C]]) | **UB** |
+| Estado                     | Como surge                                                                | Efeito ao desreferenciar                    |
+| -------------------------- | ------------------------------------------------------------------------- | ------------------------------------------- |
+| **Válido**                 | `p = &x;`                                                                 | funciona                                    |
+| **Nulo**                   | `p = NULL;` (ou `0`)                                                      | **UB**; na prática, *segmentation fault*    |
+| **Selvagem** (*wild*)      | `int *p;` **sem inicializar** (valor = lixo)                              | **UB**: pode ler/escrever em qualquer lugar |
+| **Pendurado** (*dangling*) | aponta para memória que **já acabou** ([[Sintaxe, Blocos e Escopo em C]]) | **UB**                                      |
 
 **`NULL`** é o valor reservado para "não aponta para nada" (de `<stddef.h>`; o inteiro `0` em contexto de ponteiro também vale, e `p == NULL` e `!p` dão o mesmo resultado, testado). Desreferenciar `NULL` é UB, mas o sistema operacional **não mapeia** o endereço 0, então o programa **morre com `Segmentation fault`** (código de saída 139). Com o UBSan a mensagem é clara: `load of null pointer of type 'int'`.
 
@@ -247,28 +247,18 @@ printf("%.1f", *pd);       // 2.5
 
 # 🧯 Erros mais comuns
 
-| Erro | Exemplo | Efeito | Correção |
-|---|---|---|---|
-| Não inicializar | `int *p; *p = 5;` | ponteiro **selvagem**: UB | `int *p = &x;` ou `= NULL` |
-| Desreferenciar `NULL` | `int *p = NULL; *p = 1;` | `Segmentation fault` | testar `if (p != NULL)` antes |
-| Confundir `p` com `*p` | `p = 20;` (queria `*p = 20;`) | o **endereço** vira 20 (aviso do `gcc`) | `*p = 20;` |
-| `*` na declaração mal lido | `int *a, b;` | só `a` é ponteiro (`sizeof a` = 8, `sizeof b` = 4) | uma declaração por linha |
-| `scanf` sem `&` | `scanf("%d", n);` | `Segmentation fault` | `scanf("%d", &n);` |
-| Comparar dados com `==` entre ponteiros | `if (pa == pb)` | compara **endereços** | `if (*pa == *pb)` |
-| Guardar o endereço de uma local e usar depois | `return &x;` (x local) | ponteiro **pendurado** | devolver por valor ou usar `malloc` ([[Funções e Ponteiros em C]]) |
-| `(*c)++` escrito como `*c++` | `*c++` | anda o ponteiro, não o dado | `(*c)++` |
+| Erro                                          | Exemplo                       | Efeito                                             | Correção                                                           |
+| --------------------------------------------- | ----------------------------- | -------------------------------------------------- | ------------------------------------------------------------------ |
+| Não inicializar                               | `int *p; *p = 5;`             | ponteiro **selvagem**: UB                          | `int *p = &x;` ou `= NULL`                                         |
+| Desreferenciar `NULL`                         | `int *p = NULL; *p = 1;`      | `Segmentation fault`                               | testar `if (p != NULL)` antes                                      |
+| Confundir `p` com `*p`                        | `p = 20;` (queria `*p = 20;`) | o **endereço** vira 20 (aviso do `gcc`)            | `*p = 20;`                                                         |
+| `*` na declaração mal lido                    | `int *a, b;`                  | só `a` é ponteiro (`sizeof a` = 8, `sizeof b` = 4) | uma declaração por linha                                           |
+| `scanf` sem `&`                               | `scanf("%d", n);`             | `Segmentation fault`                               | `scanf("%d", &n);`                                                 |
+| Comparar dados com `==` entre ponteiros       | `if (pa == pb)`               | compara **endereços**                              | `if (*pa == *pb)`                                                  |
+| Guardar o endereço de uma local e usar depois | `return &x;` (x local)        | ponteiro **pendurado**                             | devolver por valor ou usar `malloc` ([[Funções e Ponteiros em C]]) |
+| `(*c)++` escrito como `*c++`                  | `*c++`                        | anda o ponteiro, não o dado                        | `(*c)++`                                                           |
 
 Para detectar: `-Wall -Wextra` e `-fsanitize=address,undefined` ([[Erros Clássicos de Memória em C]]).
-
----
-
-# 🧪 Para praticar
-
-1. Declare `int a = 3, b = 4;` e `int *pa = &a, *pb = &b;`. Sem executar, diga o valor de `*pa + *pb`, de `pa == pb` e de `*pa == a`. Depois confira.
-2. Escreva `void zera(int *x)` que coloca 0 na variável do chamador, e `void troca(int *a, int *b)` sem olhar a nota.
-3. Escreva `void min_max(const int *v, int n, int *min, int *max)` que devolve o menor e o maior valor por **parâmetros de saída**.
-4. Escreva um programa que lê dois inteiros com `scanf` e imprime a soma usando uma função `void soma(int a, int b, int *resultado)`.
-5. Imprima `&x`, `p` e `&p` de um programa seu. Quais dois coincidem? Rode duas vezes: o que muda?
 
 ---
 
