@@ -31,13 +31,13 @@ A confusão vem de C tratar os dois de forma tão parecida que parecem a mesma c
 
 Com `int v[5] = {10,20,30,40,50};` e `int *p = v;`:
 
-| | `v` (array) | `p` (ponteiro) |
-|---|---|---|
-| O que **é** | **5 `int`s** guardados na memória | **um endereço** (8 bytes) |
-| `sizeof` | **20** | **8** |
-| Pode mudar para onde "aponta"? | ❌ `v++` → *lvalue required as increment operand* | ✅ `p++` |
-| Pode ser atribuído (`v = ...`)? | ❌ (visto em [[Arrays em C]]) | ✅ |
-| Tem espaço próprio para dados? | ✅ os elementos **são** o array | ❌ aponta para dados que estão **em outro lugar** |
+|                                 | `v` (array)                                      | `p` (ponteiro)                                   |
+| ------------------------------- | ------------------------------------------------ | ------------------------------------------------ |
+| O que **é**                     | **5 `int`s** guardados na memória                | **um endereço** (8 bytes)                        |
+| `sizeof`                        | **20**                                           | **8**                                            |
+| Pode mudar para onde "aponta"?  | ❌ `v++` → *lvalue required as increment operand* | ✅ `p++`                                          |
+| Pode ser atribuído (`v = ...`)? | ❌ (visto em [[Arrays em C]])                     | ✅                                                |
+| Tem espaço próprio para dados?  | ✅ os elementos **são** o array                   | ❌ aponta para dados que estão **em outro lugar** |
 
 Os valores `sizeof v = 20` e `sizeof p = 8` foram impressos pelo programa de teste.
 
@@ -228,16 +228,6 @@ int main(int argc, char **argv) {
 | `int **` no lugar de matriz | passar `int m[2][3]` a `int **` | tipo incompatível ([[Matrizes em C]]) | `int (*m)[3]` |
 | Alterar literal por `char *` | `char *s = "oi"; s[0] = 'O';` | `Segmentation fault` | `char s[] = "oi";` |
 | Confundir `char s[]` com `char *s` ao medir | `sizeof s` | 3 (array) × 8 (ponteiro) | usar `strlen` para o texto |
-
----
-
-# 🧪 Para praticar
-
-1. Com `int v[8]`, escreva `void zera(int *p, size_t n)` e use-a para zerar **só os elementos 2 a 5** (chame `zera(v + 2, 4)`).
-2. Dado `int v[] = {3, 1, 4, 1, 5, 9, 2, 6}`, escreva `int soma(const int *v, size_t n)` e use-a para somar a **primeira metade** e a **segunda metade** (`soma(v, 4)` e `soma(v + 4, 4)`).
-3. Escreva um programa que imprime **todos os argumentos** da linha de comando em ordem inversa.
-4. Diga, sem executar: em `int v[5]; int *p = v;`, qual é o valor de `sizeof v`, `sizeof p`, `sizeof &v`, `sizeof *p`, `sizeof(v + 0)`? Depois confira (`20, 8, 8, 4, 8`).
-5. Por que `int v[3]; v = (int[3]){1,2,3};` não compila, enquanto `int *p = v; p = (int *){...}` seria diferente? Explique com a tabela "array × ponteiro".
 
 ---
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C/04 - Ponteiros e Memória/Aritmética de Ponteiros em C.md",
+                "file": "C/04 - Ponteiros e Memória/Funções e Ponteiros em C.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Aritmética de Ponteiros em C"
+              "title": "Funções e Ponteiros em C"
             }
           },
           {
@@ -90,8 +90,7 @@
               "title": "Marcadores"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -209,13 +208,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "1297dec9658de513",
+  "active": "cd75fa7ea9dcbaca",
   "lastOpenFiles": [
-    "C/04 - Ponteiros e Memória/Aritmética de Ponteiros em C.md",
+    "C/04 - Ponteiros e Memória/Arrays e Ponteiros em C.md",
+    "C/04 - Ponteiros e Memória/Funções e Ponteiros em C.md",
     "C/MOC - C.md",
+    "C/04 - Ponteiros e Memória/Aritmética de Ponteiros em C.md",
     "C/04 - Ponteiros e Memória/Ponteiros em C.md",
     "C/02 - Fundamentos/Operadores em C.md",
-    "C/04 - Ponteiros e Memória/Arrays e Ponteiros em C.md",
     "C/03 - Arrays, Strings e Funções/Arrays em C.md",
     "C/03 - Arrays, Strings e Funções/Strings em C.md",
     "C/02 - Fundamentos/Variáveis e Constantes em C.md",
@@ -223,7 +223,6 @@
     "C/03 - Arrays, Strings e Funções/Funções em C.md",
     "C/02 - Fundamentos/Tipos de Dados em C.md",
     "C/04 - Ponteiros e Memória/Stack vs Heap em C.md",
-    "C/04 - Ponteiros e Memória/Funções e Ponteiros em C.md",
     "C/04 - Ponteiros e Memória/Erros Clássicos de Memória em C.md",
     "C/04 - Ponteiros e Memória/Alocação Dinâmica em C.md",
     "C/05 - Tipos Compostos",
