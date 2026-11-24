@@ -17,11 +17,11 @@ source: "Padrão ISO C (C17/C23: ponteiros para função, qsort e bsearch de <st
 
 Já vimos [[Funções em C]] (sempre por valor) e [[Ponteiros em C]] (endereços). Juntos, eles aparecem de **três formas**:
 
-| Uso | Ideia | Exemplo |
-|---|---|---|
-| **Ponteiro como parâmetro** | a função **altera ou lê** dados do chamador sem copiá-los | `void troca(int *a, int *b)` |
-| **Ponteiro como retorno** | a função **devolve o endereço** de um dado | `const char *strchr(...)` |
-| **Ponteiro *para* função** | o **próprio código** vira um valor que se guarda e se passa adiante | `int (*op)(int, int)` |
+| Uso                         | Ideia                                                               | Exemplo                      |
+| --------------------------- | ------------------------------------------------------------------- | ---------------------------- |
+| **Ponteiro como parâmetro** | a função **altera ou lê** dados do chamador sem copiá-los           | `void troca(int *a, int *b)` |
+| **Ponteiro como retorno**   | a função **devolve o endereço** de um dado                          | `const char *strchr(...)`    |
+| **Ponteiro *para* função**  | o **próprio código** vira um valor que se guarda e se passa adiante | `int (*op)(int, int)`        |
 
 Os dois primeiros usam ponteiros de **dados**. O terceiro é diferente e é o que dá a C o seu mecanismo de **funções como valores**, base de *callbacks* e de tabelas de decisão.
 
